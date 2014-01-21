@@ -83,12 +83,12 @@ Cylon.robot({
 
       my.blinkm.goToRGB(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">0</span>);
       my.blinkm.getRGBColor(<span class="keyword">function</span>(data){
-        console.log(<span class="string"><span class="delimiter">"</span><span class="content">Starting Color: #&lt;Middleman::CoreExtensions::Data::DataStore:0x007faf46580e38&gt;</span><span class="delimiter">"</span></span>)
+        console.log(<span class="string"><span class="delimiter">"</span><span class="content">Starting Color: </span><span class="delimiter">"</span></span>, data)
       });
 
       every((<span class="integer">2</span>).second(), <span class="keyword">function</span>() {
         my.blinkm.getRGBColor(<span class="keyword">function</span>(data){
-          console.log(<span class="string"><span class="delimiter">"</span><span class="content">Current Color: #&lt;Middleman::CoreExtensions::Data::DataStore:0x007faf46580e38&gt;</span><span class="delimiter">"</span></span>);
+          console.log(<span class="string"><span class="delimiter">"</span><span class="content">Current Color: </span><span class="delimiter">"</span></span>, data);
         });
         my.blinkm.fadeToRandomRGB(<span class="integer">128</span>, <span class="integer">128</span>, <span class="integer">128</span>);
       });
