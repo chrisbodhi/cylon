@@ -13,9 +13,13 @@
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
 
-  _gaq.push(['_setAccount', "UA-46433484-2"]);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46433484-2', {"cookieDomain":"cylonjs.com"});
 
 
 
@@ -23,15 +27,13 @@
 
 
 
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+   ga('send', 'pageview');
+
+
 </script></head>
 <body>
     
@@ -88,27 +90,7 @@ Cylon.robot
     name: <span class="string"><span class="delimiter">'</span><span class="content">sensor</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">analogSensor</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">0</span>, <span class="key">lowerLimit</span>: <span class="integer">100</span>, <span class="key">upperLimit</span>: <span class="integer">900</span>
   ...
 </pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>analogRead(pin_number) → integer_value</dt>
-                  <dd>Returns an integer value that represents the analog read from the sensor.</dd>
-                </dl></section><section class="public-events"><h2>Events:</h2>
-                <dl class="methods">
-<dt>update</dt>
-                  <dd>
-                    This event will contain one of the following events.
-                    <br>
-                    You can also subscribe to one of the specific events, if that is the information you are interested in.
-                  </dd>
-                  <dt>analogRead</dt>
-                  <dd>Returns an integer value that represents the analog read from the sensor.</dd>
-                  <dt>upperLimit → integer_value</dt>
-                  <dd>Gets triggered if the value read by the sensor is greater or equal to upperLimit (value passed when setting up the sensor).</dd>
-                  <dt>lowerLimit → integer_value</dt>
-                  <dd>Gets triggered if the value read by the sensor is less or equal to lowerLimit (value passed when setting up the sensor).</dd>
-                  <dt>start</dt>
-                  <dd>Sent when the device has been started and is ready to use.</dd>
-                </dl></section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to"><h2>How to use</h2>
                 <p>
                   This example detects lower and upper limits on a photoresistor sensor.
                 </p>
@@ -146,6 +128,93 @@ Cylon.robot
 
 .start()
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="analogreadpinnumber">analogRead(pin_number)</h2>
+                  
+                  <p>Returns an integer value that represents the analog read from the sensor.</p>
+                  
+                  <h5 id="params">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>pin_number</strong> -  The pin number for which to return data</li>
+                  </ul>
+<h5 id="returns">Returns</h5>
+                  
+                  <p><code>integer</code> Current analog sensor value.</p>
+                  
+                  <h2 id="upperlimitlimit">upperLimit(limit)</h2>
+                  
+                  <p>Sets an upper limit for the sensor, that when exceeded, triggers a notification event of the same name.</p>
+                  
+                  <h5 id="params-1">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>limit</strong> -  The upper limit that triggers notification event</li>
+                  </ul>
+<h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>null</code></p>
+                  
+                  <h2 id="lowerlimitlimit">lowerLimit(limit)</h2>
+                  
+                  <p>Sets an lower limit for the sensor, that when exceeded, triggers a notification event of the same name.</p>
+                  
+                  <h5 id="params-2">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>limit</strong> -  The lower limit that triggers notification event</li>
+                  </ul>
+<h5 id="returns-2">Returns</h5>
+                  
+                  <p><code>null</code></p>
+                </div>
+                <div class="commands_api">
+                  <h1 id="events">Events</h1>
+                  
+                  <h2 id="update">update</h2>
+                  
+                  <p>This event will contain one of the events listed below. 
+                  You can also subscribe to one of the specific events, if that is the information you are interested in.</p>
+                  
+                  <h2 id="analogreaddata">analogRead(data)</h2>
+                  
+                  <p>The analogRead event data contains an integer value that represents the analog read from the sensor.</p>
+                  
+                  <h5 id="data">Data</h5>
+                  
+                  <ul>
+<li>
+<strong>data</strong> -  integer Current sensor reading</li>
+                  </ul>
+<h2 id="upperlimitdata">upperLimit(data)</h2>
+                  
+                  <p>Gets triggered if the value read by the sensor is greater or equal to upperLimit (value passed when setting up the sensor).</p>
+                  
+                  <h5 id="data-1">Data</h5>
+                  
+                  <ul>
+<li>
+<strong>data</strong> -  integer Current sensor reading that triggered the notification</li>
+                  </ul>
+<h2 id="lowerlimitdata">lowerLimit(data)</h2>
+                  
+                  <p>Gets triggered if the value read by the sensor is less or equal to lowerLimit (value passed when setting up the sensor).</p>
+                  
+                  <h5 id="data-2">Data</h5>
+                  
+                  <ul>
+<li>
+<strong>data</strong> -  integer Current sensor reading that triggered the notification</li>
+                  </ul>
+<h2 id="start">start</h2>
+                  
+                  <p>Sent when the device has been started and is ready to use.</p>
+                </div>
               </section><section class="circuit"><h2>Circuit and Schematic</h2>
                 <p>
                   Circuit for analog sensors is pretty much the same as the button circuit, you just need to substitute

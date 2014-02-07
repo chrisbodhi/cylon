@@ -13,9 +13,13 @@
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
 
-  _gaq.push(['_setAccount', "UA-46433484-2"]);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46433484-2', {"cookieDomain":"cylonjs.com"});
 
 
 
@@ -23,15 +27,13 @@
 
 
 
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+   ga('send', 'pageview');
+
+
 </script></head>
 <body>
     
@@ -87,27 +89,7 @@ Cylon.robot
     name: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span>
   ...
 </pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>isPressed → true | false</dt>
-                  <dd>
-                    Returns true or false matching state of the button.
-                  </dd>
-                </dl></section><section class="public-events"><h2>Events:</h2>
-                <dl class="methods">
-<dt>update</dt>
-                  <dd>
-                    This event will contain one of the following events.
-                    <br>
-                    You can also subscribe to one of the specific events, if that is the information you are interested in.
-                  </dd>
-                  <dt>push</dt>
-                  <dd>This event gets triggered when the button changes state from released to pushed.</dd>
-                  <dt>release</dt>
-                  <dd>This event gets triggered when the button changes state from pushed to released.</dd>
-                  <dt>start</dt>
-                  <dd>Sent when the device has been started and is ready to use.</dd>
-                </dl></section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to"><h2>How to use</h2>
                 <p>
                   This example detects when a button has been pushed.
                 </p>
@@ -141,6 +123,37 @@ Cylon.robot
 
 .start()
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="ispressed">isPressed()</h2>
+                  
+                  <p>Returns true or false matching state of the button.</p>
+                  
+                  <h5 id="returns">Returns</h5>
+                  
+                  <p><code>true or false</code></p>
+                </div>
+                <div class="commands_api">
+                  <h1 id="events">Events</h1>
+                  
+                  <h2 id="update">update</h2>
+                  
+                  <p>This event will contain one of the following events. 
+                  You can also subscribe to one of the specific events, if that is the information you are interested in.</p>
+                  
+                  <h2 id="push">push</h2>
+                  
+                  <p>This event gets triggered when the button changes state from released to pushed.</p>
+                  
+                  <h2 id="release">release</h2>
+                  
+                  <p>This event gets triggered when the button changes state from pushed to released.</p>
+                  
+                  <h2 id="start">start</h2>
+                  
+                  <p>Sent when the device has been started and is ready to use.</p>
+                </div>
               </section><section class="circuit"><h2>Circuit and Schematic</h2>
                 <a target="_blank" href="http://arduino.cc/en/tutorial/button">http://arduino.cc/en/tutorial/button</a>
               </section><section class="compatability hardware"><h2>Works with:</h2>

@@ -13,9 +13,13 @@
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
 
-  _gaq.push(['_setAccount', "UA-46433484-2"]);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46433484-2', {"cookieDomain":"cylonjs.com"});
 
 
 
@@ -23,15 +27,13 @@
 
 
 
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+   ga('send', 'pageview');
+
+
 </script></head>
 <body>
     
@@ -95,35 +97,7 @@ Cylon.robot
     ]
 ...
 </pre>
-              </section><section class="public-methods"><h2>Events</h2>
-                <dl class="methods">
-<dt>update</dt>
-                  <dd>
-                    This event will contain one of the following events.
-                    <br>
-                    You can also subscribe to one of the specific events, if that is the information you are interested in.
-                  </dd>
-                  <dt>navdata</dt>
-                  <dd>Gets triggered every time interval amount of time passes, returns and lets you access a NavData object.</dd>
-                  <dt>landing</dt>
-                  <dd>Gets triggered when is landing.</dd>
-                  <dt>landed</dt>
-                  <dd>Gets triggered when has landing.</dd>
-                  <dt>takeoff</dt>
-                  <dd>Gets triggered when has takeoff.</dd>
-                  <dt>hovering</dt>
-                  <dd>Gets triggered when is hovering.</dd>
-                  <dt>flying</dt>
-                  <dd>Gets triggered when is flying.</dd>
-                  <dt>lowBattery</dt>
-                  <dd>Gets triggered when have low battery.</dd>
-                  <dt>batteryChange</dt>
-                  <dd>Gets triggered when the battery has changed.</dd>
-                  <dt>altitudeChange</dt>
-                  <dd>Gets triggered when the altitude has changed.</dd>
-                  <dt>start</dt>
-                  <dd>Sent when the device has been started and is ready to use.</dd>
-                </dl></section><section class="how-to"><h2>How to use events and call them on your drivers</h2>
+              </section><section class="how-to"><h2>How to use events and call them on your drivers</h2>
                 <p>Once the connection and the devices have been setup (as explained above) you can receive navigation events on them as follows:</p>
                 <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
@@ -165,6 +139,54 @@ Cylon.robot
 
 .start()
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="events">Events</h1>
+                  
+                  <h2 id="update">update</h2>
+                  
+                  <p>This event will contain one of the following events. 
+                  You can also subscribe to one of the specific events, if that is the information you are interested in.</p>
+                  
+                  <h2 id="navdata">navdata</h2>
+                  
+                  <p>Gets triggered every time interval amount of time passes, returns and lets you access a NavData object.</p>
+                  
+                  <h2 id="landing">landing</h2>
+                  
+                  <p>Gets triggered when is landing.</p>
+                  
+                  <h2 id="landed">landed</h2>
+                  
+                  <p>Gets triggered when has landing.</p>
+                  
+                  <h2 id="takeoff">takeoff</h2>
+                  
+                  <p>Gets triggered when has takeoff.</p>
+                  
+                  <h2 id="hovering">hovering</h2>
+                  
+                  <p>Gets triggered when is hovering.</p>
+                  
+                  <h2 id="flying">flying</h2>
+                  
+                  <p>Gets triggered when is flying.</p>
+                  
+                  <h2 id="lowbattery">lowBattery</h2>
+                  
+                  <p>Gets triggered when have low battery.</p>
+                  
+                  <h2 id="batterychange">batteryChange</h2>
+                  
+                  <p>Gets triggered when the battery has changed.</p>
+                  
+                  <h2 id="altitudechange">altitudeChange</h2>
+                  
+                  <p>Gets triggered when the altitude has changed.</p>
+                  
+                  <h2 id="start">start</h2>
+                  
+                  <p>Sent when the device has been started and is ready to use.</p>
+                </div>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">
                   <!-- /Platforms All -->

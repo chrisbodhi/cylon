@@ -13,9 +13,13 @@
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
 
-  _gaq.push(['_setAccount', "UA-46433484-2"]);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46433484-2', {"cookieDomain":"cylonjs.com"});
 
 
 
@@ -23,15 +27,13 @@
 
 
 
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+   ga('send', 'pageview');
+
+
 </script></head>
 <body>
     
@@ -91,22 +93,7 @@ robot =
     name: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
 ...
 </pre>
-              </section><section class="public-methods"><h2>Commands</h2>
-                <dl class="methods">
-<dt>message</dt>
-                  <dd></dd>
-                  <dt>message_queue</dt>
-                  <dd></dd>
-                  <dt>last_message</dt>
-                  <dd></dd>
-                </dl>
-<h2>Events</h2>
-                <dl class="methods">
-<dt>Stop</dt>
-                  <dd>Stop the driver.</dd>
-                  <dt>start</dt>
-                  <dd>Sent when the device has been started and is ready to use.</dd>
-                </dl></section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to"><h2>How to use</h2>
                 <h3>Example receiving message queue from a Pebble smart watch.</h3>
                 <h3>JavaScript</h3>
                 <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
@@ -180,6 +167,44 @@ Cylon.robot bot
 
 Cylon.start()
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="message">message()</h2>
+                  
+                  <p>The message for the pebble driver.</p>
+                  
+                  <h5 id="returns">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="messagequeue">message_queue()</h2>
+                  
+                  <p>The queue of messages that are being passed in via calls from the Pebble watch app.</p>
+                  
+                  <h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="lastmessage">last_message()</h2>
+                  
+                  <p>The last message in the queue of messages passed in via calls from the Pebble watch app.</p>
+                  
+                  <h5 id="returns-2">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                </div>
+                <div class="commands_api">
+                  <h1 id="events">Events</h1>
+                  
+                  <h2 id="stop">stop</h2>
+                  
+                  <p>Stop the driver.</p>
+                  
+                  <h2 id="start">start</h2>
+                  
+                  <p>Sent when the device has been started and is ready to use.</p>
+                </div>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">
                   <!-- /Platforms All -->

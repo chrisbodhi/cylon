@@ -13,9 +13,13 @@
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
 
-  _gaq.push(['_setAccount', "UA-46433484-2"]);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46433484-2', {"cookieDomain":"cylonjs.com"});
 
 
 
@@ -23,15 +27,13 @@
 
 
 
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+   ga('send', 'pageview');
+
+
 </script></head>
 <body>
     
@@ -114,7 +116,20 @@ Cylon.robot
                 <p>In order to allow Cylon.js running on your Mac to access the Sphero, go to "Bluetooth &gt; Open Bluetooth Preferences &gt; Sharing Setup" and make sure that "Bluetooth Sharing" is checked.</p>
                 <p>Thank you to [@kopipejst](https://github.com/kopipejst) for the above connnection info.</p>
                 <h3>Ubuntu</h3>
-                <p>Coming soon.</p>
+                <p>Connecting to the Sphero from Ubuntu or any other Linux-based OS can be done entirely from the command line. Here are the steps:</p>
+                <p>Find the address of the Sphero, by using:</p>
+                <pre class="CodeRay">hcitool scan
+</pre>
+                <p>Pair to Sphero using this command (substituting the actual address of your Sphero):</p>
+                <pre class="CodeRay">sudo bluez-simple-agent hci0 &lt;address&gt;
+</pre>
+                <p>Connect to the Sphero using this command (substituting the actual address of your Sphero):</p>
+                <pre class="CodeRay">sudo rfcomm connect /dev/rfcomm1 &lt;address&gt; 1
+</pre>
+                <h2>How To Calibrate Sphero</h2>
+                <p>You might want to calibrate the orientation of the Sphero so that it is pointed 'forward'. There are 2 functions that have been added to the Sphero driver to help with this.</p>
+                <p>Call `startCalibration()` to put the Sphero into 'calibration mode' by turning on the tail LED and turning off the auto-stablization. You can now manually turn the Sphero to so the tail LED is pointed to the rear of the direction in which you want the Sphero to go.</p>
+                <p>Call `finishCalibration()` to turn off 'calibration mode' by turning off the tail LED and turning back on the auto-stablization. Whichever direction that the tail LED was pointed, is now the rear direction for the Sphero.</p>
               </section><section class="drivers"><h2>Drivers</h2>
                 <p>There is only one driver for the Sphero.</p>
                 <div class="hardware">

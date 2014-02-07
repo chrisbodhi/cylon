@@ -13,9 +13,13 @@
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
 
-  _gaq.push(['_setAccount', "UA-46433484-2"]);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46433484-2', {"cookieDomain":"cylonjs.com"});
 
 
 
@@ -23,15 +27,13 @@
 
 
 
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+   ga('send', 'pageview');
+
+
 </script></head>
 <body>
     
@@ -58,7 +60,7 @@
         <div class="w">
           <h1 class="title">Digispark</h1>
           <h2 class="subtitle">
-<a href="https://github.com/hybridgroup/Cylon.js-digispark" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/Cylon.js-digispark/issues">Issues</a>
+<a href="https://github.com/hybridgroup/cylon-digispark" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/cylon-digispark/issues">Issues</a>
 </h2>
         </div>
       </div>
@@ -71,70 +73,111 @@
                   <a target="blank" href="http://digistump.com/category/1">here</a>.
                 </p>
               </section><section class="how-to"><h2>How to install</h2>
-                <p>Installing Cylon.js with digispark support is pretty easy using ruby gems.</p>
-                <pre class="CodeRay">gem install Cylon.js-digispark
+                <p>Installing Cylon.js with digispark support is pretty easy.</p>
+                <pre class="CodeRay">npm install cylon-digispark
 </pre>
                 <h2>How to use</h2>
                 <p>This small program lets you toggle an LED on and off.</p>
-                <pre class="CodeRay">...
+                <h3>JavaScript</h3>
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span> },
+
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    every((<span class="integer">1</span>).seconds(), <span class="keyword">function</span>() { my.led.toggle() });
+  }
+}).start();
+</pre>
+                <h3>CoffeeScript</h3>
+                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>}
+  device: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span> }
+
+  work: (my) -&gt;
+    every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
+
+.start()
 </pre>
                 <h2>How to connect</h2>
                 <p>
-                  If your Digispark (
-                  <a href="http://www.kickstarter.com/projects/digistump/digispark-the-tiny-arduino-enabled-usb-dev-board">http://www.kickstarter.com/projects/digistump/digispark-the-tiny-arduino-enabled-usb-dev-board</a>
-                  ) ATTiny-based USB development board already has the Little Wire (
-                  <a href="http://littlewire.cc/">http://littlewire.cc/</a>
-                  ) protocol firmware installed, you can connect right away with Cylon.js.
+                  It is very easy to setup and connect to the Digispark using cylon CLI commands.
                 </p>
                 <p>
-                  Otherwise, for instructions on how to install Little Wire on a Digispark check out
-                  <a href="http://digistump.com/board/index.php/topic,160.0.html">http://digistump.com/board/index.php/topic,160.0.html </a>
+                  Connecting to the Digispark
+                  <a href="http://www.kickstarter.com/projects/digistump/digispark-the-tiny-arduino-enabled-usb-dev-board">(Kickstarter Campaign)</a>
+                  ATTiny-based USB development board is very easy using Cylon, first we need to install the littlewire
+                  <a href="http://littlewire.cc/">(http://littlewire.cc)</a>
+                  protocol to communicate with the digispark, Cylon includes CLI commands to make the process of uploading littlewire to the
+                  digispark as simple as possible, after littlewire has been uploaded you can connect and communicate using Cylon.
                 </p>
                 <h3>OSX</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>Plug in the Digispark to the USB port</li>
-                  <li>Connect to the device via Cylon.js</li>
+<li>Install the cylon-digispark npm module</li>
+                  <li>Upload the Littlewire protocol to the digispark</li>
+                  <li>Connect to the device using Cylon</li>
                 </ul>
-<p>First plug the Digispark into your computer via the USB port. Then... (directions go here)</p>
+<h4>DO NOT plug in the Digispark to your computer's USB port until prompted.</h4>
+                <p>Install the cylon-digispark module:</p>
+                <pre class="CodeRay">$ npm install cylon-digispark
+</pre>
+                <p>
+                  After installing the cylon-digispark npm module run the following command to
+                  upload littlewire to the digispark, plug it to a USB port when prompted:
+                </p>
+                <pre class="CodeRay">$ cylon littlewire upload
+</pre>
+                <p>Once plugged in, use the `cylon scan usb` command to verify your connection info:</p>
+                <pre class="CodeRay">$ cylon scan usb
+</pre>
+                <p>
+                  Now use the `ID` info returned to find the `product` and `vendor` ID's required
+                  to establish a connection with the Digispark in your Cylon code.
+                </p>
+                <p>That is it, you are set to start running Cylon digispark examples.</p>
                 <h3>Ubuntu</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>Add a udev rule to allow access to the Digispark device</li>
+<li>Install the cylon-digispark npm module</li>
+                  <li>
+                    Add a udev rule to allow access to the Digispark device (Do not worry
+                    about this, the `cylon littlewire upload` command does it for you if none is detected)
+                  </li>
                   <li>Plug in the Digispark to the USB port</li>
-                  <li>Connect to the device via Cylon.js</li>
+                  <li>Connect to the device using Cylon</li>
                 </ul>
-<p>First, you must add a udev rule, so that Cylon.js can communicate with the USB device. Ubuntu and other modern Linux distibutions use udev to manage device files when USB devices are added and removed. By default, udev will create a device with read-only permission which will not allow to you download code. You must place the udev rules below into a file named /etc/udev/rules.d/49-micronucleus.rules.</p>
-                <pre class="CodeRay"># UDEV Rules for Micronucleus boards including the Digispark.
-# This file must be placed at:
-#
-# /etc/udev/rules.d/49-micronucleus.rules    (preferred location)
-#   or
-# /lib/udev/rules.d/49-micronucleus.rules    (req'd on some broken systems)
-#
-# After this file is copied, physically unplug and reconnect the board.
-#
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1781", ATTRS{idProduct}=="0c9f", MODE:="0666"
-KERNEL=="ttyACM*", ATTRS{idVendor}=="1781", ATTRS{idProduct}=="0c9f", MODE:="0666", ENV{ID_MM_DEVICE_IGNORE}="1"
-
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="0753", MODE:="0666"
-KERNEL=="ttyACM*", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="0753", MODE:="0666", ENV{ID_MM_DEVICE_IGNORE}="1"
-#
-# If you share your linux system with other users, or just don't like the
-# idea of write permission for everybody, you can replace MODE:="0666" with
-# OWNER:="yourusername" to create the device owned by you, or with
-# GROUP:="somegroupname" and mange access using standard unix groups.
+<h4>DO NOT plug in the Digispark to your computer's USB port until prompted.</h4>
+                <p>Install the cylon-digispark npm module:</p>
+                <pre class="CodeRay">$ npm install cylon-digispark
 </pre>
                 <p>
-                  Thanks to @bluebie for these instructions! (
-                  <a href="https://github.com/Bluebie/micronucleus-t85/wiki/Ubuntu-Linux">https://github.com/Bluebie/micronucleus-t85/wiki/Ubuntu-Linux</a>
-                  )
+                  After installing the cylon-digispark module run the following command to
+                  upload littlewire to the digispark, plug it to a USB port when
+                  prompted. You might be asked to enter your sudo password, since
+                  uploading littlewire to the digispark requires some new udev rules, you
+                  can check and review them in `/etc/udev/rules.d/49-micronucleus.rules`
+                  after running the `cylon littlewire upload` command:
                 </p>
-                <p>Now plug the Digispark into your computer via the USB port.</p>
-                <p>Once plugged in, use the Cylon.js connect scan command with the -t usb option to verify your connection info:</p>
-                <pre class="CodeRay">$ Cylon.js connect scan -t usb
+                <pre class="CodeRay">$ cylon littlewire upload
 </pre>
-                <p>Now use the ID info returned to find the product and vendor ID's for the connection info Digispark in your Cylon.js code.</p>
+                <p>Once plugged in, use the `cylon scan usb` command to verify your connection info:</p>
+                <pre class="CodeRay">$ cylon scan usb
+</pre>
+                <p>
+                  Now use the `ID` info returned to find the `product` and `vendor` ID's required to
+                  establish a connection with the Digispark in your cylon code.
+                </p>
+                <p>That is it, you are set to start running Cylon digispark examples.</p>
+                <p>
+                  Thanks to [@bluebie]
+                  <a href="https://github.com/Bluebie">https://github.com/Bluebie</a>
+                  for the help with udev rules used when uploading littlewire to the digispark!
+                  <a href="https://github.com/Bluebie/micronucleus-t85/wiki/Ubuntu-Linux">(https://github.com/Bluebie/micronucleus-t85/wiki/Ubuntu-Linux)</a>
+                </p>
               </section><section class="drivers"><h2>Drivers</h2>
                 <p>
                   Thanks to
@@ -154,18 +197,12 @@ KERNEL=="ttyACM*", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="0753", MODE:="066
                   <h2>GPIO Drivers</h2>
                   <div class="devices">
                     <!-- /Drivers all -->
-                    <!-- // Analog Sensor -->
-                    <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
-                      <img src="/images/devices/analog-sensor.jpg"></a>
-                    <!-- // Button -->
-                    <a class="device" href="/documentation/drivers/button" title="Button">
-                      <img src="/images/devices/button.jpg"></a>
                     <!-- // LED -->
                     <a class="device" href="/documentation/drivers/led" title="LED">
                       <img src="/images/devices/LED.jpg"></a>
-                    <!-- // Motor -->
-                    <a class="device" href="/documentation/drivers/motor" title="Motor">
-                      <img src="/images/devices/motor.jpg"></a>
+                    <!-- // Makey Button -->
+                    <a class="device" href="/documentation/drivers/makey-button" title="Maxbotix Range Finder">
+                      <img src="/images/devices/makey-button.jpg"></a>
                     <!-- // Servo -->
                     <a class="device" href="/documentation/drivers/servo" title="Servo">
                       <img src="/images/devices/servo.jpg"></a>
@@ -175,6 +212,12 @@ KERNEL=="ttyACM*", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="0753", MODE:="066
                     <!-- // Blinkm -->
                     <a class="device" href="/documentation/drivers/blinkm" title="Blinkm">
                       <img src="/images/devices/blinkm.jpg"></a>
+                    <!-- // mpl115a2 -->
+                    <a class="device" href="/documentation/drivers/mpl115a2" title="Digital Barometer/Thermometer">
+                      <img src="/images/devices/mpl115a2.jpg"></a>
+                    <!-- // LCD -->
+                    <a class="device" href="/documentation/drivers/lcd" title="LCD">
+                      <img src="/images/devices/lcd.jpg"></a>
                   </div>
                 </div>
               </section>

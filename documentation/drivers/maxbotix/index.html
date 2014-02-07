@@ -13,9 +13,13 @@
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
 
-  _gaq.push(['_setAccount', "UA-46433484-2"]);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46433484-2', {"cookieDomain":"cylonjs.com"});
 
 
 
@@ -23,15 +27,13 @@
 
 
 
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+   ga('send', 'pageview');
+
+
 </script></head>
 <body>
     
@@ -68,36 +70,56 @@
                 </p>
               </section><section class="how-to"><h2>How to stablish a connection and setup the driver</h2>
                 <h3>JavaScript</h3>
-                <pre class="CodeRay">comming soon
+                <pre class="CodeRay">coming soon
 </pre>
                 <h3>CoffeeScript</h3>
-                <pre class="CodeRay">comming soon
+                <pre class="CodeRay">coming soon
 </pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>analogValue</dt>
-                  <dd></dd>
-                  <dt>range</dt>
-                  <dd>Returns the distance measured by the sonar in inches.</dd>
-                  <dt>rangeCm</dt>
-                  <dd>Returns the distance measured by the sonar in cm.</dd>
-                </dl></section><section class="public-events"><h2>Events:</h2>
-                <p>
-                  The events will be triggered when the amount of time specified by the param :interval, when setting up the driver, passes.
-                </p>
-                <dl class="methods">
-<dt>start</dt>
-                  <dd>Sent when the device has been started and is ready to use.</dd>
-                  <dt>stop</dt>
-                  <dd>Sent when the device has been stopped.</dd>
-                </dl>
-<h3>How to use events and call them on your drivers</h3>
+                <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">comming soon
 </pre>
               </section><section class="how-to"><h2>Examples</h2>
                 <pre class="CodeRay">comming soon
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="analogvalue">analogValue()</h2>
+                  
+                  <p>Text here.</p>
+                  
+                  <h5 id="returns">Returns</h5>
+                  
+                  <p><code>integer</code></p>
+                  
+                  <h2 id="range">range()</h2>
+                  
+                  <p>Returns the distance measured by the sonar in inches.</p>
+                  
+                  <h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>integer</code></p>
+                  
+                  <h2 id="rangecm">rangeCm()</h2>
+                  
+                  <p>Returns the distance measured by the sonar in cm.</p>
+                  
+                  <h5 id="returns-2">Returns</h5>
+                  
+                  <p><code>integer</code></p>
+                </div>
+                <div class="commands_api">
+                  <h1 id="events">Events</h1>
+                  
+                  <h2 id="start">start</h2>
+                  
+                  <p>Sent when the device has been started and is ready to use.</p>
+                  
+                  <h2 id="stop">stop</h2>
+                  
+                  <p>Sent when the device has been stopped.</p>
+                </div>
               </section><section class="circuit"><h2>Circuit and Schematic</h2>
                 <p>
                   <a href="http://www.electrojoystick.com/tutorial/?page_id=285">http://www.electrojoystick.com/tutorial/?page_id=285</a>

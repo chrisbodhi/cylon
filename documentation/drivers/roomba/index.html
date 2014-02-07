@@ -13,9 +13,13 @@
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
 
-  _gaq.push(['_setAccount', "UA-46433484-2"]);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46433484-2', {"cookieDomain":"cylonjs.com"});
 
 
 
@@ -23,15 +27,13 @@
 
 
 
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+   ga('send', 'pageview');
+
+
 </script></head>
 <body>
     
@@ -69,44 +71,16 @@
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <pre class="CodeRay">...
 </pre>
-              </section><section class="public-methods"><h2>Commands</h2>
-                <dl class="methods">
-<dt>start</dt>
-                  <dd>Puts roomba in start mode.</dd>
-                  <dt>safe_mode</dt>
-                  <dd>Puts roomba in safe mode.</dd>
-                  <dt>full_mode</dt>
-                  <dd>Puts roomba in full mode.</dd>
-                  <dt>forward(seconds, speed=slow) → nil</dt>
-                  <dd>Moves roomba forward for &lt;seconds&gt; amount of time at &lt;speed&gt; (speed(int) between 0 and 500).</dd>
-                  <dt>fast_forward(seconds) → nil</dt>
-                  <dd>Moves roomba forward for &lt;seconds&gt; amount of time at max speed.</dd>
-                  <dt>stop</dt>
-                  <dd>Stops the roomba.</dd>
-                  <dt>backwards(seconds) → nil</dt>
-                  <dd>Moves roomba backwards for &lt;seconds&gt; amount of time at default speed.</dd>
-                  <dt>nudge_left</dt>
-                  <dd>Turns roomba a little bit to the left.</dd>
-                  <dt>nudge_right</dt>
-                  <dd>Turns roomba a little bit to the right.</dd>
-                  <dt>turn_left(seconds=1) → nil</dt>
-                  <dd>Turns roomba to the left the specefied amount of seconds.</dd>
-                  <dt>turn_right(seconds=1) → nil</dt>
-                  <dd>Turns roomba to the right the specefied amount of seconds.</dd>
-                  <dt>turn_around</dt>
-                  <dd>Turns roomba 180 degrees.</dd>
-                  <dt>drive(speed, direction, seconds = 0)  → nil</dt>
-                  <dd>Drives the roomba at speed (from 0 to 500) and direction (straight=32768, clockwise=65535, counterclockwise=1) for the specefied amount of time (seconds).</dd>
-                  <dt>play(song_number)  → nil</dt>
-                  <dd>Plays the song specified by song_numer.</dd>
-                  <dt>song(notes[Collection], song_number[Integer])  → nil</dt>
-                  <dd>Stores a song in the roomba.</dd>
-                  <dt>beep</dt>
-                  <dd>Makes roomba beep.</dd>
-                </dl></section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to"><h2>How to use</h2>
                 <h3>Example controlling a Roomba.</h3>
                 <pre class="CodeRay">...
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  
+                </div>
+                <div class="commands_api">
+                  
+                </div>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">
                   <!-- /Platforms All -->

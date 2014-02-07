@@ -13,9 +13,13 @@
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
 
-  _gaq.push(['_setAccount', "UA-46433484-2"]);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46433484-2', {"cookieDomain":"cylonjs.com"});
 
 
 
@@ -23,15 +27,13 @@
 
 
 
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+   ga('send', 'pageview');
+
+
 </script></head>
 <body>
     
@@ -176,7 +178,7 @@ Cylon.robot
                       <li>Click File -&gt; New -&gt; Apex Class and the following code to that:</li>
                       <li>
                         We've created a Salesforce package that installs the Sphero_Message Object and the apexRest class for you to speed things up. Install it
-                        <a href="https://login.salesforce.com/?ec=302&amp;startURL=%2Fpackaging%2FinstallPackage.apexp%3Fp0%3D04ti00000004IoN">here</a>
+                        <a href="https://login.salesforce.com/?ec=302&amp;amp;startURL=%2Fpackaging%2FinstallPackage.apexp%3Fp0%3D04ti00000004IoN">here</a>
                       </li>
                       </ul>
 <pre class="CodeRay">@RestResource(urlMapping='/SpheroController/*')
