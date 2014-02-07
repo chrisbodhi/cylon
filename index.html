@@ -234,6 +234,7 @@ robot.start()
                     <li>Button</li>
                     <li>Continuous Servo</li>
                     <li>LED</li>
+                    <li>MakeyButton (high-resistance switch inspired by the MakeyMakey)</li>
                     <li>Motor</li>
                     <li>Maxbotix Ultrasonic Range Finder</li>
                     <li>Servo</li>
@@ -249,6 +250,8 @@ robot.start()
                   <ul>
 <li>BlinkM</li>
                     <li>HMC6352 Digital Compass</li>
+                    <li>LCD</li>
+                    <li>MPL115A2 Barometer/Thermometer</li>
                   </ul>
 </li>
               </ul>
@@ -260,6 +263,8 @@ robot.start()
 Commands:
 
   generate &lt;name&gt;        Generates a new adaptor
+  scan &lt;type&gt;            Scans serial, bluetooth or usb (pass param &lt;serial&gt; | &lt;bluetooth&gt; | &lt;usb&gt;) for connected devices
+  bluetooth &lt;subcmd&gt; &lt;address&gt; [option] Connect bluetooth device to PC (pairs) or establishes serial to bluetooth connection
 
 Options:
 
