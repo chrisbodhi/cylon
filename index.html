@@ -109,7 +109,11 @@
               <h2>Examples</h2>
               <p>The example below connects to an Arduino, and every second turns the LED either on, or off.</p>
               <p>The example requires that the Arduino has the Firmata sketch installed, and that it is connected on the port <code>/dev/ttyACM0</code>. You need to install Firmata on your Arduino, and to change the <code>port</code> parameter to match the port that your system is actually using.</p>
-              <p>Make sure to upload the "Standard Firmata" sketch or an equivalent Firmata sketch to your Arduino first. Without that code running on the Arduino, Firmata can't communicate with Cylon. You can find the example sketch in your Arduino software under "Examples &gt; Firmata &gt; StandardFirmata".</p>
+              <p>Make sure to upload the "Standard Firmata" sketch or an equivalent Firmata sketch to your Arduino first. Without Firmata running on the Arduino, the Aruduino board can't communicate with Cylon running on your computer. You can do this by running these 2 commands:</p>
+              <pre class="CodeRay">cylon firmata install
+cylon firmata upload ttyACM0
+</pre>
+              <p>Now here is the Cylon.js code:</p>
               <h3>JavaScript:</h3>
               <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>);
 
