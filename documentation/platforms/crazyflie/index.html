@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Crazyflie with Cylon.js</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -64,7 +64,15 @@
 </h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToInstall">How To Install</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#HowToConnect">How To Connect</a>
+            <a href="#Drivers">Drivers</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/crazyflie.jpg"><p>You can use Cylon.js with the Crazyflie micro-quadcopter.</p>
@@ -75,7 +83,7 @@
                   <a target="blanck" href="https://github.com/ceejbot/aerogel">(https://github.com/ceejbot/aerogel)</a>
                   created by @ceejbot thank you!
                 </p>
-              </section><section class="how_to"><h2>How to install</h2>
+              </section><section class="how_to" id="HowToInstall"><h2>How To Install</h2>
                 <p>Install the module with:</p>
                 <pre class="CodeRay">npm install cylon-crazyflie
 </pre>
@@ -92,7 +100,7 @@
                 <p>
                   before you will be able to run `npm install cylon-crazyflie'
                 </p>
-                <h2>How to use</h2>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <p>This small program causes the Crazyflie to takeoff for 10 seconds.</p>
                 <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
@@ -146,7 +154,7 @@ Cylon.robot
                   If you are have a USB 3.0 port, you might run into this issue
                   <br><a href="http://stackoverflow.com/questions/17204253/crazyflie-usb-3-0-incompability">http://stackoverflow.com/questions/17204253/crazyflie-usb-3-0-incompability</a>
                 </p>
-              </section><section class="drivers"><h2>Drivers</h2>
+              </section><section class="drivers" id="Drivers"><h2>Drivers</h2>
                 <p>There is currently only one driver for the Crazyflie, as listed below.</p>
                 <div class="hardware">
                   <div class="devices">

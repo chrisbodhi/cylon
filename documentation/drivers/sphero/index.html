@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Cylon.js - Sphero Driver</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -62,11 +62,21 @@
           <h2 class="subtitle">Driver</h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToConnect">How to Connect</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#Commands">Commands</a>
+            <a href="#Events">Events</a>
+            <a href="#SpheroColors">Sphero Colors</a>
+            <a href="#Compatability">Compatibility</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/sphero.jpg"><p>Allows user to interact with the Sphero robotic sphero using Cylon.js.</p>
-              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
+              </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
                 <p>
                   That is pretty simple once the Sphero is ready (connected and listening), you just need three lines of code and you are set,
                   Cylon.js and the Sphero driver take care of the rest.
@@ -92,7 +102,7 @@ Cylon.robot
   ...
 </pre>
                 
-              </section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <p>
                   This example rolls the sphero in a random direction and change direction every second.
                   </p>
@@ -128,7 +138,7 @@ Cylon.robot
 .start()
 </pre>
                 
-              </section><section class="public-methods"><div class="commands_api">
+              </section><section class="public-methods"><div class="commands_api" id="Commands">
                   <h1 id="commands">Commands</h1>
                   
                   <h2 id="abortmacro">abortMacro()</h2>
@@ -744,7 +754,7 @@ Cylon.robot
                     <a href="https://github.com/orbotix/DeveloperResources/blob/master/docs/Sphero_API_1.50.pdf">here.</a>
                   </h5>
                 </div>
-                <div class="commands_api">
+                <div class="commands_api" id="Events">
                   <h1 id="events">Events</h1>
                   
                   <h2 id="update">update</h2>
@@ -774,7 +784,7 @@ Cylon.robot
                   
                   <p>Gets triggered when the Sphero is started and ready to be used.</p>
                 </div>
-              </section><section><h2>Sphero Colors</h2>
+              </section><section id="SpheroColors"><h2>Sphero Colors</h2>
                 <table class="commands">
 <tr>
 <th>Example</th>
@@ -1904,7 +1914,7 @@ Cylon.robot
                     </td>
                     <td>0x9ACD32</td>
                   </tr>
-</table></section><section class="compatability hardware"><h2>Works with:</h2>
+</table></section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                 
                 <div class="devices">
                   <!-- /Platforms All -->

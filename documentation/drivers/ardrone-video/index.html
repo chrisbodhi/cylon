@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Cylon.js - ARDrone Video Driver</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -62,24 +62,33 @@
           <h2 class="subtitle">Driver</h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToConnect">How to Connect</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#Commands">Commands</a>
+            <a href="#Events">Events</a>
+            <a href="#Compatability">Compatibility</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/ardrone-video.jpg"><p>
                   Allows user to receive in-flight video data from an ARDrone. Video data from the ARDrone is returned from either the front-facing, or the bottom-facing cameras.
                 </p>
-                <h2>How to establish a connection and setup the driver</h2>
+              </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
                 <p>
                   Communication with the ARDrone's video interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
                 </p>
                 <pre class="CodeRay">comming soon
 </pre>
-              </section><section class="public-methods"><h2>Events</h2>
+              </section><section class="public-methods" id="Events"><h2>Events</h2>
                 We're working on the documentation for the events. Stay tuned.
               </section><section class="example"><h2>Example of receiving video data from an ARDrone.</h2>
                 <pre class="CodeRay">comming soon
 </pre>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+              </section><section class="compatability hardware"><h2>Compatibility</h2>
                 <div class="devices">
                   <!-- /Platforms All -->
                   <!-- /Platforms Parts -->

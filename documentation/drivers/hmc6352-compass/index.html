@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Cylon.js - HMC6352 Digital Compass Driver</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -62,28 +62,37 @@
           <h2 class="subtitle">Driver</h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToConnect">How to Connect</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#Commands">Commands</a>
+            <a href="#Events">Events</a>
+            <a href="#Circuit">Circuit</a>
+            <a href="#Compatability">Compatibility</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/hmc6352-compass.jpg"><p>
                   Allows user to read heading from HMC6352 Digital Compass via i2c interface
                 </p>
-              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
+              </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
                 <h3>JavaScript</h3>
                 <pre class="CodeRay">coming soon
 </pre>
                 <h3>CoffeeScript</h3>
                 <pre class="CodeRay">coming soon
 </pre>
-              </section><section class="how-to"><h2>How to use</h2>
-                <h3>How to use events and call them on your drivers</h3>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">coming soon
 </pre>
                 <h3>Example using a HMC6352 Digital Compass.</h3>
                 <pre class="CodeRay">coming soon
 </pre>
-              </section><section class="public-methods"><div class="commands_api">
+              </section><section class="public-methods"><div class="commands_api" id="Commands">
                   <h1 id="commands">Commands</h1>
                   
                   <h2 id="authenticatecreds">authenticate(creds)</h2>
@@ -134,7 +143,7 @@
                   
                   <p><code>null</code></p>
                 </div>
-                <div class="commands_api">
+                <div class="commands_api" id="Events">
                   <h1 id="events">Events</h1>
                   
                   <h2 id="connect">connect</h2>
@@ -157,7 +166,7 @@
                   
                   <p>Sent when the device has been started and is ready to use.</p>
                 </div>
-              </section><section class="circuit"><h2>Circuit</h2>
+              </section><section class="circuit" id="Circuit"><h2>Circuit</h2>
                 <div class="description_circuit">
                   <p></p>
                 </div>
@@ -165,7 +174,7 @@
                   <img alt="" src="/documentation/drivers/breadboards/i2c/hmc6352_bb.png">
 </div>
                 <div class="clear"></div>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+              </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                 <div class="devices">
                   <!-- /Platforms All -->
                   <!-- /Platforms Parts -->
