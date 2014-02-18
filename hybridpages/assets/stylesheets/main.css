@@ -1993,7 +1993,16 @@ a:hover, a:focus {
 .repository {
   margin-right: 10px; }
 
-/* line 6, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 7, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+.documentation .intro .info_intro {
+  float: left;
+  width: 60%;
+  margin: 0; }
+  @media only screen and (max-width: 767px) {
+    /* line 7, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    .documentation .intro .info_intro {
+      width: 100%; } }
+/* line 16, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .documentation .index {
   *zoom: 1;
   max-width: 68em;
@@ -2007,7 +2016,7 @@ a:hover, a:focus {
   /* line 23, ../../../../../.rvm/gems/ruby-2.0.0-p247@cylon/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
   .documentation .index:after {
     clear: both; }
-  /* line 10, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 20, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .index section {
     margin: 0 auto;
     float: left;
@@ -2022,7 +2031,7 @@ a:hover, a:focus {
     .documentation .index section:last-child {
       margin-right: 0; }
     @media only screen and (max-width: 767px) {
-      /* line 10, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+      /* line 20, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
       .documentation .index section {
         float: left;
         display: block;
@@ -2031,24 +2040,24 @@ a:hover, a:focus {
         /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
         .documentation .index section:last-child {
           margin-right: 0; } }
-    /* line 20, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 30, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .documentation .index section a {
       width: 100%;
       height: 100%;
       padding: 10px;
       display: block; }
-    /* line 27, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 37, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .documentation .index section:hover {
       background: #490018; }
-    /* line 31, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 41, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .documentation .index section .title {
       color: #EFECE5;
       font-weight: bold; }
-    /* line 36, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 46, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .documentation .index section .description {
       color: #b39f89; }
 
-/* line 44, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 54, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .documentation {
   float: left;
   display: block;
@@ -2057,82 +2066,86 @@ a:hover, a:focus {
   /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
   .documentation:last-child {
     margin-right: 0; }
-  /* line 46, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 56, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .index {
     padding: 0 0 0 8px; }
-    /* line 48, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 58, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .documentation .index li {
       margin: 8px 0; }
-  /* line 52, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 62, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .link {
     font-size: 20px; }
-  /* line 55, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 65, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .description {
     color: gray;
     font-size: 14px;
     line-height: 21px;
     margin: 10px; }
-  /* line 61, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 71, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .display {
-    width: 300px;
+    width: 35%;
     float: right;
     border: 1px solid rgba(88, 10, 37, 0.14);
     margin: 0 0 19px 20px; }
+    @media only screen and (max-width: 767px) {
+      /* line 71, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+      .documentation .display {
+        width: 100%; } }
 
-/* line 69, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 82, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .clear {
   clear: both; }
 
-/* line 74, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 87, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .circuit .image_circuit {
   width: 50%;
   float: left; }
-  /* line 77, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 90, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .circuit .image_circuit img {
     height: 300px; }
-/* line 81, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 94, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .circuit .description_circuit {
   width: 50%;
   float: right; }
 
-/* line 87, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 100, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .image-size-300 {
   width: 200px; }
 
-/* line 92, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 105, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands_api h2 {
   background: #971542;
   color: white !important;
   padding: 5px 10px;
   font-size: 12pt;
   margin: 20px 0 0 0; }
-/* line 100, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 113, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands_api h4 {
   background: transparent;
   font-size: 11pt;
   font-weight: normal; }
-/* line 105, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 118, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands_api h5 {
   background: white;
   padding: 10px;
   margin: 0;
   font-size: 11pt; }
-/* line 111, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 124, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands_api p, .commands_api ul {
   background: white;
   font-size: 10.5pt;
   margin: 0;
   padding: 10px;
   font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace; }
-/* line 118, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 131, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands_api li {
   margin-left: 20px; }
 
-/* line 123, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 136, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands {
   background: white;
   font-size: 10.5pt; }
-  /* line 126, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 139, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands span {
     font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace;
     font-size: 14px;
@@ -2141,25 +2154,25 @@ a:hover, a:focus {
     border: 1px solid #ccc;
     color: #444;
     padding: 5px; }
-  /* line 135, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 148, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands th {
     background: #971542;
     color: white; }
-  /* line 139, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 152, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands td {
     border-bottom: 1px solid #d4d4d4; }
-  /* line 142, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 155, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands .command {
     font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
     font-weight: bold;
     font-size: 11pt; }
-  /* line 149, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 162, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands .param .markdown span {
     background: none;
     border: none;
     padding: 0; }
 
-/* line 159, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 172, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .methods dt {
   font-weight: bold;
   background: white;
@@ -2169,15 +2182,15 @@ a:hover, a:focus {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
   font-size: 17px;
   border: aliceblue; }
-/* line 169, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 182, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .methods dd {
   margin-bottom: 29px;
   padding-left: 10px; }
-/* line 173, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 186, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .methods li {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
 
-/* line 178, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 191, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .colors {
   float: left;
   display: block;
@@ -2187,7 +2200,7 @@ a:hover, a:focus {
   .colors:last-child {
     margin-right: 0; }
   @media only screen and (min-width: 767px) and (max-width: 964px) {
-    /* line 178, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 191, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .colors {
       float: left;
       display: block;
@@ -2196,11 +2209,11 @@ a:hover, a:focus {
       /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
       .colors:last-child {
         margin-right: 0; }
-      /* line 182, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+      /* line 195, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
       .colors p {
         font-size: 10px; } }
   @media only screen and (max-width: 767px) {
-    /* line 178, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 191, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .colors {
       float: left;
       display: block;
@@ -2209,7 +2222,7 @@ a:hover, a:focus {
       /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
       .colors:last-child {
         margin-right: 0; } }
-  /* line 191, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 204, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .colors dt {
     font-weight: bold;
     padding: 5px;
@@ -2218,11 +2231,11 @@ a:hover, a:focus {
     font-size: 15px;
     border: aliceblue;
     margin-top: 15px; }
-  /* line 200, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 213, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .colors dd {
     margin-bottom: 20px;
     display: block; }
-    /* line 203, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 216, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .colors dd p {
       margin: 0;
       line-height: 50px; }

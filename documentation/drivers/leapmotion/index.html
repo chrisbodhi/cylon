@@ -74,9 +74,12 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/leap_motion.jpg"><p>
-                  Allows user to interact with Cylon.js devices using a Leap Motion controller. The Leap Motion uses its built in cameras to track the user's hand motions, and translations those to events that Cylon.js can use to trigger actions or control hardware.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/leap_motion.jpg"><div class="info_intro">
+                  <p>
+                    Allows user to interact with Cylon.js devices using a Leap Motion controller. The Leap Motion uses its built in cameras to track the user's hand motions, and translations those to events that Cylon.js can use to trigger actions or control hardware.
+                  </p>
+                </div>
+                <div class="clear"></div>
               </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
                 <h3>JavaScript</h3>
                 <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
@@ -161,7 +164,6 @@ Cylon.robot
                 </div>
               </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                 <div class="devices">
-                  <!-- /Platforms All -->
                   <!-- /Platforms Parts -->
                   <!-- // Leap Motion -->
                   <a class="device" href="/documentation/platforms/leapmotion" title="Leap Motion">

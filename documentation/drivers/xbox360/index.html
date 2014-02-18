@@ -74,18 +74,21 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/xbox360.jpg"><p>Allows user to interact with Cylon.js devices using a XBox360 game controller.</p>
-                <section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
-                  <h3>JavaScript</h3>
-                  <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+              <section class="intro"><img class="display" src="/images/devices/xbox360.jpg"><div class="info_intro">
+                  <p>Allows user to interact with Cylon.js devices using a XBox360 game controller.</p>
+                </div>
+                <div class="clear"></div>
+              </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
+                <h3>JavaScript</h3>
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span> },
   <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">xbox360</span><span class="delimiter">'</span></span>}
 ..
 </pre>
-                  <h3>CoffeeScript</h3>
-                  <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+                <h3>CoffeeScript</h3>
+                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 
 Cylon.robot
   connection:
@@ -95,7 +98,7 @@ Cylon.robot
     name: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">xbox360</span><span class="delimiter">'</span></span>
 ...
 </pre>
-                </section></section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <p>Example receiving button events from XBox360 controller joystick.</p>
                 <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
@@ -287,7 +290,6 @@ Cylon.robot
                 </div>
               </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                 <div class="devices">
-                  <!-- /Platforms All -->
                   <!-- /Platforms Parts -->
                   <!-- //Joystick -->
                   <a class="device" href="/documentation/platforms/joystick" title="AR Drone">

@@ -75,7 +75,10 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/mpl115a2.jpg"><p>Used for measuring barometric pressure.</p>
+              <section class="intro"><img class="display" src="/images/devices/mpl115a2.jpg"><div class="info_intro">
+                  <p>Used for measuring barometric pressure.</p>
+                </div>
+                <div class="clear"></div>
               </section><section class="how_to" id="HowToConnect"><h2>How To Connect</h2>
                 <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
@@ -106,10 +109,30 @@ Cylon.robot
                 <pre class="CodeRay">coming soon
 </pre>
               </section><section class="public-methods"><div class="commands_api" id="Commands">
+                  <h1 id="commands">Commands</h1>
                   
+                  <h2 id="getpressure">getPressure</h2>
+                  
+                  <p>Gets the value of the pressure.</p>
+                  
+                  <h5 id="return">Return</h5>
+                  
+                  <p><code>integer</code></p>
+                  
+                  <h2 id="gettemperature">getTemperature</h2>
+                  
+                  <p>Gets the value of the temperature.</p>
+                  
+                  <h5 id="return-1">Return</h5>
+                  
+                  <p><code>integer</code></p>
                 </div>
                 <div class="commands_api" id="Events">
+                  <h1 id="events">Events</h1>
                   
+                  <h2 id="start">start</h2>
+                  
+                  <p>Sent when the device has been started and is ready to use.</p>
                 </div>
               </section><section class="circuit" id="Circuit"><h2>Circuit</h2>
                 <div class="description_circuit">
@@ -122,7 +145,6 @@ Cylon.robot
               </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                 
                 <div class="devices">
-                  <!-- /Platforms All -->
                   <!-- /Platforms Parts -->
                   <!-- // Arduino -->
                   <a class="device" href="/documentation/platforms/arduino" title="Arduino">

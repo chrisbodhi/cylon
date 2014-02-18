@@ -75,7 +75,15 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/joystick.jpg"><p>You can use Cylon.js with an Xbox 360 game controller. The goal is to also support any other joysticks and game controllers that are HID devices.</p>
+              <section class="intro"><img class="display" src="/images/devices/joystick.jpg"><div class="info_intro">
+                  <p>A joystick is an input device consisting of a stick that pivots on a base and reports its angle or direction to the device it is controlling.</p>
+                  <p>You can use Cylon.js with an Xbox 360 game controller. The goal is to also support any other joysticks and game controllers that are HID devices.</p>
+                  <p>
+                    For more info about the Joystick platform click
+                    <a target="blank" href="http://en.wikipedia.org/wiki/Joystick">here</a>.
+                  </p>
+                </div>
+                <div class="clear"></div>
               </section><section class="how_to" id="HowToInstall"><h2>How To Install</h2>
                 <p>Installing Cylon.js with Joystick support is pretty easy.</p>
                 <pre class="CodeRay">npm install cylon-joystick
@@ -124,6 +132,9 @@ Cylon.robot
                 <p>Available drivers for the joystick platform are listed below:</p>
                 <div class="hardware">
                   <div class="devices">
+                    <!-- // PS3 -->
+                    <a class="device" href="/documentation/drivers/dualshock" title="PS3 Controller">
+                      <img src="/images/devices/dualshock.jpg"></a>
                     <!-- // Xbox 360 -->
                     <a class="device" href="/documentation/drivers/xbox360" title="XBox360 Controller">
                       <img src="/images/devices/xbox360.jpg"></a>
