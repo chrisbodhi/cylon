@@ -70,15 +70,19 @@
                 <p>Here is an example using Mocha, Sinon, &amp; Chai:</p>
                 <h2>JavaScript</h2>
                 <pre class="CodeRay"><span class="string"><span class="delimiter">"</span><span class="content">use strict</span><span class="delimiter">"</span></span>;
+
+<span class="comment">// tell Cylon.js to stub connections to adaptors/devices</span>
 process.env[<span class="string"><span class="delimiter">'</span><span class="content">CYLON_TEST</span><span class="delimiter">'</span></span>] = <span class="predefined-constant">true</span>;
 
+<span class="comment">// setup tests</span>
 <span class="keyword">var</span> chai = require(<span class="string"><span class="delimiter">"</span><span class="content">chai</span><span class="delimiter">"</span></span>);
 <span class="keyword">var</span> sinon = require(<span class="string"><span class="delimiter">"</span><span class="content">sinon</span><span class="delimiter">"</span></span>);
 <span class="keyword">var</span> sinonChai = require(<span class="string"><span class="delimiter">"</span><span class="content">sinon-chai</span><span class="delimiter">"</span></span>);
 chai.should();
 chai.use(sinonChai);
-
 <span class="keyword">var</span> clock = sinon.useFakeTimers();
+
+<span class="comment">// load robot in test mode</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 require(<span class="string"><span class="delimiter">"</span><span class="content">./robot.js</span><span class="delimiter">"</span></span>);
 
@@ -118,15 +122,19 @@ robot.start();
                 <p>Here is the same example using CoffeeScript:</p>
                 <h2>CoffeeScript</h2>
                 <pre class="CodeRay"><span class="string"><span class="delimiter">"</span><span class="content">use strict</span><span class="delimiter">"</span></span>;
+
+<span class="error">#</span> tell Cylon.js to stub connections to adaptors/devices
 process.env[<span class="string"><span class="delimiter">'</span><span class="content">CYLON_TEST</span><span class="delimiter">'</span></span>] = <span class="predefined-constant">true</span>
 
+<span class="error">#</span> setup tests
 chai = require <span class="string"><span class="delimiter">"</span><span class="content">chai</span><span class="delimiter">"</span></span>
 sinon = require <span class="string"><span class="delimiter">"</span><span class="content">sinon</span><span class="delimiter">"</span></span>
 sinonChai = require <span class="string"><span class="delimiter">"</span><span class="content">sinon-chai</span><span class="delimiter">"</span></span>
 chai.should()
 chai.use(sinonChai)
-
 clock = sinon.useFakeTimers()
+
+<span class="error">#</span> load robot <span class="keyword">in</span> test mode
 Cylon = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
 require <span class="string"><span class="delimiter">"</span><span class="content">./robot</span><span class="delimiter">"</span></span>
 
