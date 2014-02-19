@@ -99,7 +99,7 @@ describe(<span class="string"><span class="delimiter">"</span><span class="conte
     clock.tick((<span class="integer">1</span>).second());
     toggle.should.have.been.called;
     done();
-  });  
+  });
 });
 </pre>
                 <p>to test the following robot code:</p>
@@ -123,10 +123,10 @@ robot.start();
                 <h2>CoffeeScript</h2>
                 <pre class="CodeRay"><span class="string"><span class="delimiter">"</span><span class="content">use strict</span><span class="delimiter">"</span></span>;
 
-<span class="error">#</span> tell Cylon.js to stub connections to adaptors/devices
+<span class="comment"># tell Cylon.js to stub connections to adaptors/devices</span>
 process.env[<span class="string"><span class="delimiter">'</span><span class="content">CYLON_TEST</span><span class="delimiter">'</span></span>] = <span class="predefined-constant">true</span>
 
-<span class="error">#</span> setup tests
+<span class="comment"># setup tests</span>
 chai = require <span class="string"><span class="delimiter">"</span><span class="content">chai</span><span class="delimiter">"</span></span>
 sinon = require <span class="string"><span class="delimiter">"</span><span class="content">sinon</span><span class="delimiter">"</span></span>
 sinonChai = require <span class="string"><span class="delimiter">"</span><span class="content">sinon-chai</span><span class="delimiter">"</span></span>
@@ -134,12 +134,12 @@ chai.should()
 chai.use(sinonChai)
 clock = sinon.useFakeTimers()
 
-<span class="error">#</span> load robot <span class="keyword">in</span> test mode
-Cylon = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
+<span class="comment"># load robot in test mode</span>
+<span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
 require <span class="string"><span class="delimiter">"</span><span class="content">./robot</span><span class="delimiter">"</span></span>
 
 describe <span class="string"><span class="delimiter">"</span><span class="content">robot</span><span class="delimiter">"</span></span>, -&gt;
-  robot = Cylon.findRobot(<span class="string"><span class="delimiter">"</span><span class="content">testor</span><span class="delimiter">"</span></span>)
+  robot = <span class="constant">Cylon</span>.findRobot(<span class="string"><span class="delimiter">"</span><span class="content">testor</span><span class="delimiter">"</span></span>)
 
   it <span class="string"><span class="delimiter">"</span><span class="content">should have work</span><span class="delimiter">"</span></span>, -&gt;
     robot.work.should.be.a <span class="string"><span class="delimiter">'</span><span class="content">function</span><span class="delimiter">'</span></span>
@@ -152,20 +152,20 @@ describe <span class="string"><span class="delimiter">"</span><span class="conte
     done()
 </pre>
                 <p>to test the following robot code:</p>
-                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
+                <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
 
-<span class="error">#</span> Initialize the robot
-robot = Cylon.robot
-  name: <span class="string"><span class="delimiter">'</span><span class="content">testor</span><span class="delimiter">'</span></span>
-  
-  connection:
-    name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+<span class="comment"># Initialize the robot</span>
+robot = <span class="constant">Cylon</span>.robot
+  <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">testor</span><span class="delimiter">'</span></span>
 
-  device:
-    name: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>
+  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
 
-  work: (my) -&gt;
-    <span class="error">#</span> we <span class="keyword">do</span> our thing here
+  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>
+
+  <span class="key">work</span>: (my) -&gt;
+    <span class="comment"># we do our thing here</span>
     every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
 
 robot.start()
