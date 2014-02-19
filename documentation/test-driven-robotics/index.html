@@ -155,9 +155,7 @@ describe <span class="string"><span class="delimiter">"</span><span class="conte
                 <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
 
 <span class="comment"># Initialize the robot</span>
-robot = <span class="constant">Cylon</span>.robot
-  <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">testor</span><span class="delimiter">'</span></span>
-
+robot = <span class="constant">Cylon</span>.robot 
   <span class="key">connection</span>:
     <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
 
@@ -167,6 +165,8 @@ robot = <span class="constant">Cylon</span>.robot
   <span class="key">work</span>: (my) -&gt;
     <span class="comment"># we do our thing here</span>
     every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
+
+  <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">testor</span><span class="delimiter">'</span></span>
 
 robot.start()
 </pre>
