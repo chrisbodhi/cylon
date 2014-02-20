@@ -49,7 +49,7 @@
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
-            <a href="/hardware" class="item">Hardware</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
             <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
@@ -88,14 +88,14 @@ Cylon.robot({
 ..
 </pre>
                 <h3>CoffeeScript</h3>
-                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+                <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 
-Cylon.robot
-  connection:
-    name: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>
+<span class="constant">Cylon</span>.robot
+  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>
 
-  device:
-    name: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">xbox360</span><span class="delimiter">'</span></span>
+  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">xbox360</span><span class="delimiter">'</span></span>
 ...
 </pre>
               </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
@@ -115,16 +115,16 @@ Cylon.robot({
 }).start();
 </pre>
                 <h3>CoffeeScript</h3>
-                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+                <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 
-Cylon.robot
-  connection:
-    name: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>
+<span class="constant">Cylon</span>.robot
+  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>
 
-  device:
-    name: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">xbox360</span><span class="delimiter">'</span></span>
+  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">xbox360</span><span class="delimiter">'</span></span>
 
-  work: (my) -&gt;
+  <span class="key">work</span>: (my) -&gt;
     my.joystick.on <span class="string"><span class="delimiter">"</span><span class="content">left:move</span><span class="delimiter">"</span></span>, (position) -&gt;
       console.log position
 
@@ -148,21 +148,21 @@ Cylon.robot
                 <div class="commands_api" id="Events">
                   <h1 id="events">Events</h1>
                   
-                  <h2 id="dupbuttonpress">dupbutton:press</h2>
+                  <h2 id="dpaduppress">dpad:up:press</h2>
                   
-                  <p>Gets triggered every interval amount of time if the dup button is pressed.</p>
+                  <p>Gets triggered every interval amount of time if the dpad up button is pressed.</p>
                   
-                  <h2 id="ddownpress">ddown:press</h2>
+                  <h2 id="dpaddownpress">dpad:down:press</h2>
                   
-                  <p>Gets triggered every interval amount of time if the ddown button is pressed.</p>
+                  <p>Gets triggered every interval amount of time if the dpad down button is pressed.</p>
                   
-                  <h2 id="dleftpress">dleft:press</h2>
+                  <h2 id="dpadleftpress">dpad:left:press</h2>
                   
-                  <p>Gets triggered every interval amount of time if the dleft button is pressed.</p>
+                  <p>Gets triggered every interval amount of time if the dpad left button is pressed.</p>
                   
-                  <h2 id="drightpress">dright:press</h2>
+                  <h2 id="dpadrightpress">dpad:right:press</h2>
                   
-                  <p>Gets triggered every interval amount of time if the dright button is pressed.</p>
+                  <p>Gets triggered every interval amount of time if the dpad right button is pressed.</p>
                   
                   <h2 id="xboxbuttonpress">xboxbutton:press</h2>
                   
@@ -176,13 +176,13 @@ Cylon.robot
                   
                   <p>Gets triggered every interval amount of time if the back button is pressed.</p>
                   
-                  <h2 id="leftstickpress">leftstick:press</h2>
+                  <h2 id="leftpress">left:press</h2>
                   
-                  <p>Gets triggered every interval amount of time if the leftstick button is pressed.</p>
+                  <p>Gets triggered every interval amount of time if the left stick button is pressed.</p>
                   
-                  <h2 id="rightstickpress">rightstick:press</h2>
+                  <h2 id="rightpress">right:press</h2>
                   
-                  <p>Gets triggered every interval amount of time if the rightstick button is pressed.</p>
+                  <p>Gets triggered every interval amount of time if the righ tstick button is pressed.</p>
                   
                   <h2 id="leftshoulderpress">leftshoulder:press</h2>
                   
@@ -208,21 +208,21 @@ Cylon.robot
                   
                   <p>Gets triggered every interval amount of time if the y button is pressed.</p>
                   
-                  <h2 id="dupbuttonrelease">dupbutton:release</h2>
+                  <h2 id="dpaduprelease">dpad:up:release</h2>
                   
-                  <p>Gets triggered every interval amount of time if the dupbutton button is released.</p>
+                  <p>Gets triggered every interval amount of time if the dpad up button is released.</p>
                   
-                  <h2 id="ddownrelease">ddown:release</h2>
+                  <h2 id="dpaddownrelease">dpad:down:release</h2>
                   
-                  <p>Gets triggered every interval amount of time if the ddown button is released.</p>
+                  <p>Gets triggered every interval amount of time if the dpad down button is released.</p>
                   
-                  <h2 id="dleftrelease">dleft:release</h2>
+                  <h2 id="dpadleftrelease">dpad:left:release</h2>
                   
-                  <p>Gets triggered every interval amount of time if the dleft button is released.</p>
+                  <p>Gets triggered every interval amount of time if the dpad left button is released.</p>
                   
-                  <h2 id="drightrelease">dright:release</h2>
+                  <h2 id="dpadrightrelease">dpad:right:release</h2>
                   
-                  <p>Gets triggered every interval amount of time if the dright button is released.</p>
+                  <p>Gets triggered every interval amount of time if the dpad right button is released.</p>
                   
                   <h2 id="xboxbuttonrelease">xboxbutton:release</h2>
                   
@@ -236,11 +236,11 @@ Cylon.robot
                   
                   <p>Gets triggered every interval amount of time if the back button is released.</p>
                   
-                  <h2 id="leftstickrelease">leftstick:release</h2>
+                  <h2 id="leftrelease">left:release</h2>
                   
                   <p>Gets triggered every interval amount of time if the leftstick button is released.</p>
                   
-                  <h2 id="rightstickrelease">rightstick:release</h2>
+                  <h2 id="rightrelease">right:release</h2>
                   
                   <p>Gets triggered every interval amount of time if the rightstick button is released.</p>
                   
