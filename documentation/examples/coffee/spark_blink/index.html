@@ -74,30 +74,30 @@
               
               <p>First, let's make sure to load the Cylon module:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>After we've got that done, we can start defining our robot:</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>We'll have a singular connection to a Spark Core, using the
               previously-mentioned <code>cylon-spark</code> module. We'll also have one device, the LED
               on pin D7.</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'spark', adaptor: 'spark', deviceId: '', accessToken: ''
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">spark</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">spark</span><span class="delimiter">'</span></span>, <span class="key">deviceId</span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>, <span class="key">accessToken</span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>
 
-  device:
-    name: 'led', driver: 'led', pin: 'D7'
+  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="string"><span class="delimiter">'</span><span class="content">D7</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Those are all the components for our robot, so next we'll define the work. All
               we're going to do for this example is tell the LED to toggle every second.</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    every 1.second(), -&gt; my.led.toggle()
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
 </pre>
               
               <p>And with all those pieces in place, we can tell the robot to get started:</p>

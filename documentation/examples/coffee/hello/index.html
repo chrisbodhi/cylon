@@ -74,23 +74,23 @@
               
               <p>Let's start by importing Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now we can define our robot:</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>For work, it's going to print a message to the console every second, and another
               message after ten seconds have elapsed.</p>
               
-              <pre class="CodeRay">  work: -&gt;
-    every 1.second(), -&gt;
-      console.log("Hello, human!")
+              <pre class="CodeRay">  <span class="key">work</span>: -&gt;
+    every <span class="integer">1</span>.second(), -&gt;
+      console.log(<span class="string"><span class="delimiter">"</span><span class="content">Hello, human!</span><span class="delimiter">"</span></span>)
 
-    after 10.seconds(), -&gt;
-      console.log "Impressive."
+    after <span class="integer">10</span>.seconds(), -&gt;
+      console.log <span class="string"><span class="delimiter">"</span><span class="content">Impressive.</span><span class="delimiter">"</span></span>
 </pre>
               
               <p>Simple as can be. Now that we're done, let's start the robot:</p>

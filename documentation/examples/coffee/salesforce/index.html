@@ -70,46 +70,46 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'sfcon'
-    adaptor: 'force'
-    sfuser: process.env.SF_USERNAME
-    sfpass: process.env.SF_SECURITY_TOKEN
-    orgCreds:
-      clientId: process.env.SF_CLIENT_ID
-      clientSecret: process.env.SF_CLIENT_SECRET
-      redirectUri: 'http://localhost:3000/oauth/_callback'
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sfcon</span><span class="delimiter">'</span></span>
+    <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">force</span><span class="delimiter">'</span></span>
+    <span class="key">sfuser</span>: process.env.SF_USERNAME
+    <span class="key">sfpass</span>: process.env.SF_SECURITY_TOKEN
+    <span class="key">orgCreds</span>:
+      <span class="key">clientId</span>: process.env.SF_CLIENT_ID
+      <span class="key">clientSecret</span>: process.env.SF_CLIENT_SECRET
+      <span class="key">redirectUri</span>: <span class="string"><span class="delimiter">'</span><span class="content">http://localhost:3000/oauth/_callback</span><span class="delimiter">'</span></span>
 
-  device: { name: 'salesforce', driver: 'force' }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">salesforce</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">force</span><span class="delimiter">'</span></span> }
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (me) -&gt;
-    me.salesforce.on 'start', () -&gt;
-      me.salesforce.subscribe '/topic/SpheroMsgOutbound', (data) -&gt;
-        msg = "Sphero: #{data.sobject.Sphero_Name__c},"
-        msg += "Bucks: #{data.sobject.Bucks__c},"
-        msg += "SM_Id: #{data.sobject.Id}"
+              <pre class="CodeRay">  <span class="key">work</span>: (me) -&gt;
+    me.salesforce.on <span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, () -&gt;
+      me.salesforce.subscribe <span class="string"><span class="delimiter">'</span><span class="content">/topic/SpheroMsgOutbound</span><span class="delimiter">'</span></span>, (data) -&gt;
+        msg = <span class="string"><span class="delimiter">"</span><span class="content">Sphero: </span><span class="inline"><span class="inline-delimiter">#{</span>data.sobject.Sphero_Name__c<span class="inline-delimiter">}</span></span><span class="content">,</span><span class="delimiter">"</span></span>
+        msg += <span class="string"><span class="delimiter">"</span><span class="content">Bucks: </span><span class="inline"><span class="inline-delimiter">#{</span>data.sobject.Bucks__c<span class="inline-delimiter">}</span></span><span class="content">,</span><span class="delimiter">"</span></span>
+        msg += <span class="string"><span class="delimiter">"</span><span class="content">SM_Id: </span><span class="inline"><span class="inline-delimiter">#{</span>data.sobject.Id<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 
         console.log msg
 
-    i = 0
+    i = <span class="integer">0</span>
 
-    every 2.seconds(), () -&gt;
-      data = JSON.stringify { spheroName: "#{me.name}", bucks: "#{i}" }
-      me.salesforce.push 'SpheroController', 'POST', data
+    every <span class="integer">2</span>.seconds(), () -&gt;
+      data = <span class="constant">JSON</span>.stringify { <span class="key">spheroName</span>: <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>me.name<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>, <span class="key">bucks</span>: <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>i<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span> }
+      me.salesforce.push <span class="string"><span class="delimiter">'</span><span class="content">SpheroController</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">POST</span><span class="delimiter">'</span></span>, data
 </pre>
               
               <p>Now that our robot knows what work to do, and the work it will be doing that

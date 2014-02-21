@@ -70,50 +70,50 @@
               
               <p>First, let's import Cylon:      </p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">  connection: { name: 'beaglebone', adaptor: 'beaglebone' }
-  device: { name: 'servo', driver: 'servo', pin: 'P9_14' }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">beaglebone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">beaglebone</span><span class="delimiter">'</span></span> }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="string"><span class="delimiter">'</span><span class="content">P9_14</span><span class="delimiter">'</span></span> }
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
 
-    # Be carefull with your servo angles or you might DAMAGE the servo!
-    # Cylon uses a 50hz/s (20ms period) frequency and a Duty Cycle
-    # of 0.5ms to 2.5ms to control the servo angle movement.
-    #
-    # This means:
-    # 1. 0.5ms == 0 degrees
-    # 2. 1.5ms == 90 degrees
-    # 3. 2.5ms == 180 degrees
-    # (It is usually safe to start with a 90 degree angle, 1.5ms duty
-    # cycle in most servos)
-    #
-    # Please review your servo datasheet to make sure of correct
-    # angle range and the Freq/MS Duty cycle it requires.
-    # If more servo support is needed leave us a comment, raise an
-    # issue or help us add more support.
-    angle = 30
-    increment = 40
+    <span class="comment"># Be carefull with your servo angles or you might DAMAGE the servo!</span>
+    <span class="comment"># Cylon uses a 50hz/s (20ms period) frequency and a Duty Cycle</span>
+    <span class="comment"># of 0.5ms to 2.5ms to control the servo angle movement.</span>
+    <span class="comment">#</span>
+    <span class="comment"># This means:</span>
+    <span class="comment"># 1. 0.5ms == 0 degrees</span>
+    <span class="comment"># 2. 1.5ms == 90 degrees</span>
+    <span class="comment"># 3. 2.5ms == 180 degrees</span>
+    <span class="comment"># (It is usually safe to start with a 90 degree angle, 1.5ms duty</span>
+    <span class="comment"># cycle in most servos)</span>
+    <span class="comment">#</span>
+    <span class="comment"># Please review your servo datasheet to make sure of correct</span>
+    <span class="comment"># angle range and the Freq/MS Duty cycle it requires.</span>
+    <span class="comment"># If more servo support is needed leave us a comment, raise an</span>
+    <span class="comment"># issue or help us add more support.</span>
+    angle = <span class="integer">30</span>
+    increment = <span class="integer">40</span>
 
-    every 1.seconds(), -&gt;
+    every <span class="integer">1</span>.seconds(), -&gt;
       angle += increment
       my.servo.angle angle
 
-      console.log "Current Angle: #{my.servo.currentAngle()}"
+      console.log <span class="string"><span class="delimiter">"</span><span class="content">Current Angle: </span><span class="inline"><span class="inline-delimiter">#{</span>my.servo.currentAngle()<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 
-      increment = -increment if (angle is 30) or (angle is 150)
+      increment = -increment <span class="keyword">if</span> (angle is <span class="integer">30</span>) <span class="keyword">or</span> (angle is <span class="integer">150</span>)
 </pre>
               
               <p>Now that our robot knows what work to do, and the work it will be doing that

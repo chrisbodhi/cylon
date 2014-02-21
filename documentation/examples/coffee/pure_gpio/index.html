@@ -73,32 +73,32 @@
               
               <p>First, we need to require the <code>digital-pin</code> class inside of Cylon:</p>
               
-              <pre class="CodeRay">require 'cylon/dist/digital-pin'
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">cylon/dist/digital-pin</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Then we'll instantiate a new instance of it, with write permissions and using
               pin 4.</p>
               
-              <pre class="CodeRay">pin4 = new Cylon.IO.DigitalPin(pin: 4, mode: 'w')
+              <pre class="CodeRay">pin4 = new <span class="constant">Cylon</span>.IO.DigitalPin(<span class="key">pin</span>: <span class="integer">4</span>, <span class="key">mode</span>: <span class="string"><span class="delimiter">'</span><span class="content">w</span><span class="delimiter">'</span></span>)
 </pre>
               
               <p>Once the pin's been opened, we'll write to the console to indicate so:</p>
               
-              <pre class="CodeRay">pin4.on 'open', (data) -&gt;
-  console.log "Pin files have been created"
+              <pre class="CodeRay">pin4.on <span class="string"><span class="delimiter">'</span><span class="content">open</span><span class="delimiter">'</span></span>, (data) -&gt;
+  console.log <span class="string"><span class="delimiter">"</span><span class="content">Pin files have been created</span><span class="delimiter">"</span></span>
 </pre>
               
               <p>And on the 'digitalWrite' event for the pin, we'll log the value that's been
               written:</p>
               
-              <pre class="CodeRay">pin4.on 'digitalWrite', (value) -&gt;
-  console.log "Value written to pin: #{value}"
+              <pre class="CodeRay">pin4.on <span class="string"><span class="delimiter">'</span><span class="content">digitalWrite</span><span class="delimiter">'</span></span>, (value) -&gt;
+  console.log <span class="string"><span class="delimiter">"</span><span class="content">Value written to pin: </span><span class="inline"><span class="inline-delimiter">#{</span>value<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 </pre>
               
               <p>When the pin's been connected, we'll set it to high (1)</p>
               
-              <pre class="CodeRay">pin4.on 'connect', (data) -&gt;
-  console.log "Pin mode has been setup!"
+              <pre class="CodeRay">pin4.on <span class="string"><span class="delimiter">'</span><span class="content">connect</span><span class="delimiter">'</span></span>, (data) -&gt;
+  console.log <span class="string"><span class="delimiter">"</span><span class="content">Pin mode has been setup!</span><span class="delimiter">"</span></span>
   pin4.setHigh()
 </pre>
               

@@ -70,33 +70,33 @@
               
               <p>First, let's import Cylon:       </p>
               
-              <pre class="CodeRay">Cylon = require('cylon')
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'opencv', adaptor: 'opencv'
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">opencv</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">opencv</span><span class="delimiter">'</span></span>
 
-  devices: [
-    { name: 'window', driver: 'window' }
-    { name: 'camera', driver: 'camera', camera: 1 }
+  <span class="key">devices</span>: [
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">window</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">window</span><span class="delimiter">'</span></span> }
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">camera</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">camera</span><span class="delimiter">'</span></span>, <span class="key">camera</span>: <span class="integer">1</span> }
   ]
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    my.camera.on('cameraReady', -&gt;
-      console.log('THE CAMERA IS READY!')
-      my.camera.on('frameReady', (err, im) -&gt;
-        my.window.show(im, 5000)
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    my.camera.on(<span class="string"><span class="delimiter">'</span><span class="content">cameraReady</span><span class="delimiter">'</span></span>, -&gt;
+      console.log(<span class="string"><span class="delimiter">'</span><span class="content">THE CAMERA IS READY!</span><span class="delimiter">'</span></span>)
+      my.camera.on(<span class="string"><span class="delimiter">'</span><span class="content">frameReady</span><span class="delimiter">'</span></span>, (err, im) -&gt;
+        my.window.show(im, <span class="integer">5000</span>)
       )
       my.camera.readFrame()
     )

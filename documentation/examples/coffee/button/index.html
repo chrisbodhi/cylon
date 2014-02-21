@@ -76,33 +76,33 @@
               
               <p>We'll get started by importing the Cylon module:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that we have Cylon imported, let's start making our robot:</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Our robot will have a connection to an Arduino, and communicate with it via the
               Firmata protocol:</p>
               
-              <pre class="CodeRay">  connection: { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> }
 </pre>
               
               <p>This time, our robot will have two devices, an LED and a button:</p>
               
-              <pre class="CodeRay">  devices: [
-    { name: 'led', driver: 'led', pin: 13 },
-    { name: 'button', driver: 'button', pin: 2 }
+              <pre class="CodeRay">  <span class="key">devices</span>: [
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span> }
   ]
 </pre>
               
               <p>Our robot has very simple work, it will just toggle the LED whenever the button
               sends the 'push' event:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    my.button.on 'push', -&gt; my.led.toggle()
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    my.button.on <span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, -&gt; my.led.toggle()
 </pre>
               
               <p>And with all that done, we can start our robot:</p>

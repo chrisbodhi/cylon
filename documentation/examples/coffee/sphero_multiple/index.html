@@ -77,35 +77,35 @@ install cylon-sphero</code>)</p>
               <p>First, load up Cylon. Since we're in the Cylon repo, we can use the version
               already here:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Since both of our Spheros are going to have faily similar behaviour, we can
               define a class to hold their attributes:</p>
               
-              <pre class="CodeRay">class SpheroRobot
+              <pre class="CodeRay"><span class="keyword">class</span> <span class="class">SpheroRobot</span>
 </pre>
               
               <p>We'll define the Sphero's connection sans port, which we'll add later.</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'Sphero', adaptor: 'sphero'
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Both Spheros have the same device configuration</p>
               
-              <pre class="CodeRay">  device:
-    name: 'sphero', driver: 'sphero'
+              <pre class="CodeRay">  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now we can define the work for the Spheros. Every second, they'll print their
               name, change to a random color, and roll in a random direction.</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    every 1.seconds(), -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    every <span class="integer">1</span>.seconds(), -&gt;
       console.log my.name
       my.sphero.setRandomColor()
-      my.sphero.roll 60, Math.floor(Math.random() * 360)
+      my.sphero.roll <span class="integer">60</span>, <span class="constant">Math</span>.floor(<span class="constant">Math</span>.random() * <span class="integer">360</span>)
 </pre>
               
               <p>Next up, let's define what's different about our bots so we can tell them apart
@@ -113,19 +113,19 @@ install cylon-sphero</code>)</p>
               ports.</p>
               
               <pre class="CodeRay">bots = [
-  { name: "Thelma", port: "/dev/rfcomm0" },
-  { name: "Louise", port: "/dev/rfcomm1" }
+  { <span class="key">name</span>: <span class="string"><span class="delimiter">"</span><span class="content">Thelma</span><span class="delimiter">"</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm0</span><span class="delimiter">"</span></span> },
+  { <span class="key">name</span>: <span class="string"><span class="delimiter">"</span><span class="content">Louise</span><span class="delimiter">"</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm1</span><span class="delimiter">"</span></span> }
 ]
 </pre>
               
               <p>Now that the pieces are in place, we can start making our robots.</p>
               
-              <pre class="CodeRay">for bot in bots
+              <pre class="CodeRay"><span class="keyword">for</span> bot <span class="keyword">in</span> bots
 </pre>
               
               <p>We'll make a new instance of <code>SpheroRobot</code>, and modify it.</p>
               
-              <pre class="CodeRay">  robot = new SpheroRobot
+              <pre class="CodeRay">  robot = new <span class="constant">SpheroRobot</span>
 </pre>
               
               <p>Now we'll tell the robot what it's name is, and what it's connection port should
@@ -137,12 +137,12 @@ install cylon-sphero</code>)</p>
               
               <p>Now our robot's ready, and we can add it to Cylon's collection of robots.</p>
               
-              <pre class="CodeRay">  Cylon.robot robot
+              <pre class="CodeRay">  <span class="constant">Cylon</span>.robot robot
 </pre>
               
               <p>And now that our robots have all been set up, we can start them all at once:</p>
               
-              <pre class="CodeRay">Cylon.start()
+              <pre class="CodeRay"><span class="constant">Cylon</span>.start()
 </pre>
             </div>
           </section>

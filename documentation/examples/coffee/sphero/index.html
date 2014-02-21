@@ -74,26 +74,26 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>With that done, we can now start defining our robot:</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>We'll be using one connection and one device, both the Sphero.</p>
               
-              <pre class="CodeRay">  connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/rfcomm0' }
-  device: { name: 'sphero', driver: 'sphero' }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span> }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> }
 </pre>
               
               <p>The work for this robot is pretty straight-forward. Every second, we're going to
               tell the Sphero to roll at speed <code>60</code>, in a random direction.</p>
               
-              <pre class="CodeRay">  work: (me) -&gt;
-    every 1.second(), -&gt;
-      me.sphero.roll 60, Math.floor(Math.random() * 360)
+              <pre class="CodeRay">  <span class="key">work</span>: (me) -&gt;
+    every <span class="integer">1</span>.second(), -&gt;
+      me.sphero.roll <span class="integer">60</span>, <span class="constant">Math</span>.floor(<span class="constant">Math</span>.random() * <span class="integer">360</span>)
 </pre>
               
               <p>Simple enough. And with that done, we can now tell the robot to start working:</p>

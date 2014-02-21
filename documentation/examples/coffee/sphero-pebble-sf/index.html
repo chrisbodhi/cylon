@@ -70,69 +70,69 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Next up, we'll configure the API Cylon will serve, telling it to serve on port
               <code>8080</code>.    </p>
               
-              <pre class="CodeRay">Cylon.api host: '0.0.0.0', port: '8080'
+              <pre class="CodeRay"><span class="constant">Cylon</span>.api <span class="key">host</span>: <span class="string"><span class="delimiter">'</span><span class="content">0.0.0.0</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">8080</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our pebble robot</p>
               
-              <pre class="CodeRay">class PebbleRobot
+              <pre class="CodeRay"><span class="keyword">class</span> <span class="class">PebbleRobot</span>
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">  connection: { name: 'pebble', adaptor: 'pebble' }
-  device: { name: 'pebble', driver: 'pebble' }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span> }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span> }
 
-  message: (robot, msg) =&gt;
+  <span class="key">message</span>: (robot, msg) =&gt;
     robot.message_queue().push(msg)
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (me) -&gt;
-    me.pebble.on 'connect', -&gt; console.log "Connected!"
+              <pre class="CodeRay">  <span class="key">work</span>: (me) -&gt;
+    me.pebble.on <span class="string"><span class="delimiter">'</span><span class="content">connect</span><span class="delimiter">'</span></span>, -&gt; console.log <span class="string"><span class="delimiter">"</span><span class="content">Connected!</span><span class="delimiter">"</span></span>
 </pre>
               
               <p>Let's define our Sales Force robot</p>
               
-              <pre class="CodeRay">class SalesforceRobot
+              <pre class="CodeRay"><span class="keyword">class</span> <span class="class">SalesforceRobot</span>
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'sfcon'
-    adaptor: 'force'
-    sfuser: process.env.SF_USERNAME
-    sfpass: process.env.SF_SECURITY_TOKEN
-    orgCreds:
-      clientId: process.env.SF_CLIENT_ID
-      clientSecret: process.env.SF_CLIENT_SECRET
-      redirectUri: 'http://localhost:3000/oauth/_callback'
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sfcon</span><span class="delimiter">'</span></span>
+    <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">force</span><span class="delimiter">'</span></span>
+    <span class="key">sfuser</span>: process.env.SF_USERNAME
+    <span class="key">sfpass</span>: process.env.SF_SECURITY_TOKEN
+    <span class="key">orgCreds</span>:
+      <span class="key">clientId</span>: process.env.SF_CLIENT_ID
+      <span class="key">clientSecret</span>: process.env.SF_CLIENT_SECRET
+      <span class="key">redirectUri</span>: <span class="string"><span class="delimiter">'</span><span class="content">http://localhost:3000/oauth/_callback</span><span class="delimiter">'</span></span>
 
-  device: { name: 'salesforce', driver: 'force' }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">salesforce</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">force</span><span class="delimiter">'</span></span> }
 
-  spheroReport: {}
+  <span class="key">spheroReport</span>: {}
 </pre>
               
               <p>Tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (me) -&gt;
-    me.salesforce.on 'start', () -&gt;
-      me.salesforce.subscribe '/topic/SpheroMsgOutbound', (data) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (me) -&gt;
+    me.salesforce.on <span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, () -&gt;
+      me.salesforce.subscribe <span class="string"><span class="delimiter">'</span><span class="content">/topic/SpheroMsgOutbound</span><span class="delimiter">'</span></span>, (data) -&gt;
         name = data.sobject.Sphero_Name__c
         bucks = data.sobject.Bucks__c
 
-        msg = "Sphero: #{name},"
-        msg += "data Bucks: #{bucks},"
-        msg += "SM_Id: #{data.sobject.Id}"
+        msg = <span class="string"><span class="delimiter">"</span><span class="content">Sphero: </span><span class="inline"><span class="inline-delimiter">#{</span>name<span class="inline-delimiter">}</span></span><span class="content">,</span><span class="delimiter">"</span></span>
+        msg += <span class="string"><span class="delimiter">"</span><span class="content">data Bucks: </span><span class="inline"><span class="inline-delimiter">#{</span>bucks<span class="inline-delimiter">}</span></span><span class="content">,</span><span class="delimiter">"</span></span>
+        msg += <span class="string"><span class="delimiter">"</span><span class="content">SM_Id: </span><span class="inline"><span class="inline-delimiter">#{</span>data.sobject.Id<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 
         console.log msg
 
@@ -141,91 +141,91 @@
 
         me.spheroReport[name] = bucks
 
-        toPebble = ""
-        toPebble += "#{key}: $#{val}\n" for key, val of me.spheroReport
+        toPebble = <span class="string"><span class="delimiter">"</span><span class="delimiter">"</span></span>
+        toPebble += <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>key<span class="inline-delimiter">}</span></span><span class="content">: $</span><span class="inline"><span class="inline-delimiter">#{</span>val<span class="inline-delimiter">}</span></span><span class="char">\n</span><span class="delimiter">"</span></span> <span class="keyword">for</span> key, val of me.spheroReport
 
-        me.master.findRobot 'pebble', (error, pebbleBot) -&gt;
+        me.master.findRobot <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>, (error, pebbleBot) -&gt;
           pebbleBot.message pebbleBot.devices.pebble, toPebble
 </pre>
               
               <p>Let's define our Sphero robot</p>
               
-              <pre class="CodeRay">class SpheroRobot
-  totalBucks: 1
-  payingPower: true
+              <pre class="CodeRay"><span class="keyword">class</span> <span class="class">SpheroRobot</span>
+  <span class="key">totalBucks</span>: <span class="integer">1</span>
+  <span class="key">payingPower</span>: <span class="predefined-constant">true</span>
 
-  connection: { name: 'sphero', adaptor: 'sphero' }
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> }
 
-  device: { name: 'sphero', driver: 'sphero' }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> }
 
-  react: (device) -&gt;
-    device.setRGB 0x00FF00
-    device.roll 90, Math.floor(Math.random() * 360)
-    @payingPower = true
+  <span class="key">react</span>: (device) -&gt;
+    device.setRGB <span class="integer">0x00FF00</span>
+    device.roll <span class="integer">90</span>, <span class="constant">Math</span>.floor(<span class="constant">Math</span>.random() * <span class="integer">360</span>)
+    <span class="instance-variable">@payingPower</span> = <span class="predefined-constant">true</span>
 
-  bankrupt: () -&gt;
-    every 3.seconds(), () =&gt;
-      if @payingPower and @totalBucks &gt; 0
-        @totalBucks += -1
-        if @totalBucks is 0
-          @sphero.setRGB 0xFF000
-          @sphero.stop()
+  <span class="key">bankrupt</span>: () -&gt;
+    every <span class="integer">3</span>.seconds(), () =&gt;
+      <span class="keyword">if</span> <span class="instance-variable">@payingPower</span> <span class="keyword">and</span> <span class="instance-variable">@totalBucks</span> &gt; <span class="integer">0</span>
+        <span class="instance-variable">@totalBucks</span> += <span class="integer">-1</span>
+        <span class="keyword">if</span> <span class="instance-variable">@totalBucks</span> is <span class="integer">0</span>
+          <span class="instance-variable">@sphero</span>.setRGB <span class="integer">0xFF000</span>
+          <span class="instance-variable">@sphero</span>.stop()
 
-  changeDirection: () -&gt;
-    every 1.seconds(), () =&gt;
-      @sphero.roll 90, Math.floor(Math.random() * 360) if @payingPower
+  <span class="key">changeDirection</span>: () -&gt;
+    every <span class="integer">1</span>.seconds(), () =&gt;
+      <span class="instance-variable">@sphero</span>.roll <span class="integer">90</span>, <span class="constant">Math</span>.floor(<span class="constant">Math</span>.random() * <span class="integer">360</span>) <span class="keyword">if</span> <span class="instance-variable">@payingPower</span>
 </pre>
               
               <p>Tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (me) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (me) -&gt;
 
-    me.sphero.on 'connect', -&gt;
-      console.log 'Setting up Collision Detection...'
+    me.sphero.on <span class="string"><span class="delimiter">'</span><span class="content">connect</span><span class="delimiter">'</span></span>, -&gt;
+      console.log <span class="string"><span class="delimiter">'</span><span class="content">Setting up Collision Detection...</span><span class="delimiter">'</span></span>
       me.sphero.detectCollisions()
       me.sphero.stop()
-      me.sphero.setRGB 0x00FF00
-      me.sphero.roll 90, Math.floor(Math.random() * 360)
+      me.sphero.setRGB <span class="integer">0x00FF00</span>
+      me.sphero.roll <span class="integer">90</span>, <span class="constant">Math</span>.floor(<span class="constant">Math</span>.random() * <span class="integer">360</span>)
       me.bankrupt()
       me.changeDirection()
 
-    me.sphero.on 'collision', (data) -&gt;
-      me.sphero.setRGB 0x0000FF
+    me.sphero.on <span class="string"><span class="delimiter">'</span><span class="content">collision</span><span class="delimiter">'</span></span>, (data) -&gt;
+      me.sphero.setRGB <span class="integer">0x0000FF</span>
       me.sphero.stop()
-      me.payingPower = false
+      me.payingPower = <span class="predefined-constant">false</span>
 
-      data = JSON.stringify
-        spheroName: "#{me.name}",
-        bucks: "#{me.totalBucks++}"
+      data = <span class="constant">JSON</span>.stringify
+        <span class="key">spheroName</span>: <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>me.name<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>,
+        <span class="key">bucks</span>: <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>me.totalBucks++<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 
-      me.master.findRobot 'salesforce', (err, sf) -&gt;
-        sf.devices.salesforce.push "SpheroController", "POST", data
+      me.master.findRobot <span class="string"><span class="delimiter">'</span><span class="content">salesforce</span><span class="delimiter">'</span></span>, (err, sf) -&gt;
+        sf.devices.salesforce.push <span class="string"><span class="delimiter">"</span><span class="content">SpheroController</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">POST</span><span class="delimiter">"</span></span>, data
 
 salesforceRobot = new SalesforceRobot()
-salesforceRobot.name = "salesforce"
-Cylon.robot salesforceRobot
+salesforceRobot.name = <span class="string"><span class="delimiter">"</span><span class="content">salesforce</span><span class="delimiter">"</span></span>
+<span class="constant">Cylon</span>.robot salesforceRobot
 
 pebbleRobot = new PebbleRobot()
-pebbleRobot.name = "pebble"
-Cylon.robot pebbleRobot
+pebbleRobot.name = <span class="string"><span class="delimiter">"</span><span class="content">pebble</span><span class="delimiter">"</span></span>
+<span class="constant">Cylon</span>.robot pebbleRobot
 
 bots = [
-  { port: '/dev/tty.Sphero-ROY-AMP-SPP', name: 'ROY' },
-  { port: '/dev/tty.Sphero-GBO-AMP-SPP', name: 'GBO'},
-  { port: '/dev/tty.Sphero-RRY-AMP-SPP', name: 'RRY'}
+  { <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/tty.Sphero-ROY-AMP-SPP</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">ROY</span><span class="delimiter">'</span></span> },
+  { <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/tty.Sphero-GBO-AMP-SPP</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">GBO</span><span class="delimiter">'</span></span>},
+  { <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/tty.Sphero-RRY-AMP-SPP</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">RRY</span><span class="delimiter">'</span></span>}
 ]
 
-for bot in bots
-  robot = new SpheroRobot
+<span class="keyword">for</span> bot <span class="keyword">in</span> bots
+  robot = new <span class="constant">SpheroRobot</span>
   robot.connection.port = bot.port
   robot.name = bot.name
-  Cylon.robot robot
+  <span class="constant">Cylon</span>.robot robot
 </pre>
               
               <p>Now that our robot knows what work to do, and the work it will be doing that
               hardware with, we can start it:</p>
               
-              <pre class="CodeRay">Cylon.start()
+              <pre class="CodeRay"><span class="constant">Cylon</span>.start()
 </pre>
             </div>
           </section>

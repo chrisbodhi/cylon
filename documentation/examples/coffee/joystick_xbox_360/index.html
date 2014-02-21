@@ -76,41 +76,41 @@
               
               <p>First, let's load up Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>With that done, we can start defining our new robot.</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>We'll be setting up a connection to our 360 controller, and also setting the
               controller up as a device the robot can talk to:</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'joystick'
-    adaptor: 'joystick'
-    controller: 'xbox360'
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>
+    <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>
+    <span class="key">controller</span>: <span class="string"><span class="delimiter">'</span><span class="content">xbox360</span><span class="delimiter">'</span></span>
 
-  device:
-    name: 'controller'
-    driver: 'xbox360'
+  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">controller</span><span class="delimiter">'</span></span>
+    <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">xbox360</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>With our connection to the controller established, we'll tell it what to do:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
 </pre>
               
               <p>Let's ask our robot to tell us when the face buttons on the controller (A, B, X,
               Y) are pressed and released:</p>
               
-              <pre class="CodeRay">    ["a", "b", "x", "y"].forEach (button) -&gt;
-      my.controller.on "#{button}:press", -&gt;
-        console.log "Button #{button} pressed."
+              <pre class="CodeRay">    [<span class="string"><span class="delimiter">"</span><span class="content">a</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">b</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">x</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">y</span><span class="delimiter">"</span></span>].forEach (button) -&gt;
+      my.controller.on <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>button<span class="inline-delimiter">}</span></span><span class="content">:press</span><span class="delimiter">"</span></span>, -&gt;
+        console.log <span class="string"><span class="delimiter">"</span><span class="content">Button </span><span class="inline"><span class="inline-delimiter">#{</span>button<span class="inline-delimiter">}</span></span><span class="content"> pressed.</span><span class="delimiter">"</span></span>
 
-      my.controller.on "#{button}:release", -&gt;
-        console.log "Button #{button} released."
+      my.controller.on <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>button<span class="inline-delimiter">}</span></span><span class="content">:release</span><span class="delimiter">"</span></span>, -&gt;
+        console.log <span class="string"><span class="delimiter">"</span><span class="content">Button </span><span class="inline"><span class="inline-delimiter">#{</span>button<span class="inline-delimiter">}</span></span><span class="content"> released.</span><span class="delimiter">"</span></span>
 </pre>
               
               <p>Next up, when someone moves the left and right analog sticks, lets' print their
@@ -121,23 +121,23 @@
               emitting duplicate events, too:</p>
               
               <pre class="CodeRay">    lastPosition =
-      left: { x: 0, y: 0 }
-      right: { x: 0, y: 0 }
+      <span class="key">left</span>: { <span class="key">x</span>: <span class="integer">0</span>, <span class="key">y</span>: <span class="integer">0</span> }
+      <span class="key">right</span>: { <span class="key">x</span>: <span class="integer">0</span>, <span class="key">y</span>: <span class="integer">0</span> }
 
-    my.controller.on "left:move", (pos) -&gt;
+    my.controller.on <span class="string"><span class="delimiter">"</span><span class="content">left:move</span><span class="delimiter">"</span></span>, (pos) -&gt;
       last = lastPosition.left
-      unless pos.x is last.x and pos.y is last.y
-        console.log "Left Stick:", pos
+      <span class="keyword">unless</span> pos.x is last.x <span class="keyword">and</span> pos.y is last.y
+        console.log <span class="string"><span class="delimiter">"</span><span class="content">Left Stick:</span><span class="delimiter">"</span></span>, pos
 
-    my.controller.on "right:move", (pos) -&gt;
+    my.controller.on <span class="string"><span class="delimiter">"</span><span class="content">right:move</span><span class="delimiter">"</span></span>, (pos) -&gt;
       last = lastPosition.right
-      unless pos.x is last.x and pos.y is last.y
-        console.log "Right Stick:", pos
+      <span class="keyword">unless</span> pos.x is last.x <span class="keyword">and</span> pos.y is last.y
+        console.log <span class="string"><span class="delimiter">"</span><span class="content">Right Stick:</span><span class="delimiter">"</span></span>, pos
 </pre>
               
               <p>And with our work defined, we can tell Cylon to start up our Robot:</p>
               
-              <pre class="CodeRay">Cylon.start()
+              <pre class="CodeRay"><span class="constant">Cylon</span>.start()
 </pre>
             </div>
           </section>

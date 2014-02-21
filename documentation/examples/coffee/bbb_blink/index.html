@@ -70,30 +70,30 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">        Cylon = require('cylon')
+              <pre class="CodeRay">        <span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay">        # Initialize the robot
-        Cylon.robot
+              <pre class="CodeRay">        <span class="comment"># Initialize the robot</span>
+        <span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">          connection:
-            name: 'beaglebone', adaptor: 'beaglebone'
+              <pre class="CodeRay">          <span class="key">connection</span>:
+            <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">beaglebone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">beaglebone</span><span class="delimiter">'</span></span>
 
-          device:
-            name: 'led', driver: 'led', pin: 'P9_12'
+          <span class="key">device</span>:
+            <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="string"><span class="delimiter">'</span><span class="content">P9_12</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">          work: (my) -&gt;
-            # we do our thing here
-            every 1.second(), -&gt; my.led.toggle()
+              <pre class="CodeRay">          <span class="key">work</span>: (my) -&gt;
+            <span class="comment"># we do our thing here</span>
+            every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
 </pre>
               
               <p>Now that our robot knows what work to do, and the work it will be doing that

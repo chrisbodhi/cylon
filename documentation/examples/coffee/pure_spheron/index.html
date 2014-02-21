@@ -73,47 +73,47 @@
               
               <p>First, let's make sure we've got Spheron loaded:</p>
               
-              <pre class="CodeRay">spheron = require 'spheron'
+              <pre class="CodeRay">spheron = require <span class="string"><span class="delimiter">'</span><span class="content">spheron</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Next, we'll get our colors from Spheron's toolbelt:</p>
               
-              <pre class="CodeRay">COLORS = spheron.toolbelt.COLORS
+              <pre class="CodeRay"><span class="constant">COLORS</span> = spheron.toolbelt.COLORS
 </pre>
               
               <p>Let's also keep a reference to the port we'll be using to talk to the Sphero, as
               well as the Sphero connection itself:</p>
               
               <pre class="CodeRay">sphero = spheron.sphero()
-spheroPort = "/dev/rfcomm0"
+spheroPort = <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm0</span><span class="delimiter">"</span></span>
 </pre>
               
               <p>Now let's define the event listeners for our Sphero. When the connection is
               opened, the sphero will let us know about it, and change it's color to green,
               along with enabling collision detection.</p>
               
-              <pre class="CodeRay">sphero.on 'open', -&gt;
-  console.log 'EVENT OPEN!'
-  sphero.configureCollisionDetection 0x01, 0x20, 0x20, 0x20, 0x20, 0x50
-  sphero.setRGB COLORS.GREEN, false
+              <pre class="CodeRay">sphero.on <span class="string"><span class="delimiter">'</span><span class="content">open</span><span class="delimiter">'</span></span>, -&gt;
+  console.log <span class="string"><span class="delimiter">'</span><span class="content">EVENT OPEN!</span><span class="delimiter">'</span></span>
+  sphero.configureCollisionDetection <span class="integer">0x01</span>, <span class="integer">0x20</span>, <span class="integer">0x20</span>, <span class="integer">0x20</span>, <span class="integer">0x20</span>, <span class="integer">0x50</span>
+  sphero.setRGB <span class="constant">COLORS</span>.GREEN, <span class="predefined-constant">false</span>
 </pre>
               
               <p>The rest are basic events, logging that a <code>close</code>, <code>error</code>, or <code>end</code> event has
               been fired:</p>
               
-              <pre class="CodeRay">sphero.on 'close', -&gt; console.log 'EVENT CLOSE!'
-sphero.on 'end', -&gt; console.log 'EVENT END!'
-sphero.on 'error', -&gt; console.log 'EVENT ERROR!'
+              <pre class="CodeRay">sphero.on <span class="string"><span class="delimiter">'</span><span class="content">close</span><span class="delimiter">'</span></span>, -&gt; console.log <span class="string"><span class="delimiter">'</span><span class="content">EVENT CLOSE!</span><span class="delimiter">'</span></span>
+sphero.on <span class="string"><span class="delimiter">'</span><span class="content">end</span><span class="delimiter">'</span></span>, -&gt; console.log <span class="string"><span class="delimiter">'</span><span class="content">EVENT END!</span><span class="delimiter">'</span></span>
+sphero.on <span class="string"><span class="delimiter">'</span><span class="content">error</span><span class="delimiter">'</span></span>, -&gt; console.log <span class="string"><span class="delimiter">'</span><span class="content">EVENT ERROR!</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>For the <code>notification</code> and <code>message</code> events, though, we're going to log their
               accompanying data to the console as well:</p>
               
-              <pre class="CodeRay">sphero.on 'notification', (packet) -&gt;
-  console.log "Packet contents: #{packet}"
+              <pre class="CodeRay">sphero.on <span class="string"><span class="delimiter">'</span><span class="content">notification</span><span class="delimiter">'</span></span>, (packet) -&gt;
+  console.log <span class="string"><span class="delimiter">"</span><span class="content">Packet contents: </span><span class="inline"><span class="inline-delimiter">#{</span>packet<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 
-sphero.on 'message', (packet) -&gt;
-  console.log "Packet contents: #{packet}"
+sphero.on <span class="string"><span class="delimiter">'</span><span class="content">message</span><span class="delimiter">'</span></span>, (packet) -&gt;
+  console.log <span class="string"><span class="delimiter">"</span><span class="content">Packet contents: </span><span class="inline"><span class="inline-delimiter">#{</span>packet<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 </pre>
               
               <p>And that wraps up our event listeners. All that's left to do is open

@@ -76,31 +76,31 @@
               
               <p>First, let's require Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now we can start defining our robot:</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>We'll be connecting to an Ardunio, using the Firmata protocol, and a motor
               attached to the Arduino on pin 3.</p>
               
-              <pre class="CodeRay">  connection: { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' }
-  device: { name: 'motor', driver: 'motor', pin: 3 }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span> }
 </pre>
               
               <p>We'll start defining the work for our robot next:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
 </pre>
               
               <p>We'll define variables to hold our motor's speed, and the rate at which that
               speed will change:</p>
               
-              <pre class="CodeRay">    speed = 0
-    increment = 5
+              <pre class="CodeRay">    speed = <span class="integer">0</span>
+    increment = <span class="integer">5</span>
 </pre>
               
               <p>Every fifty milliseconds, we'll increment the <code>speed</code>, set the motor to run at
@@ -108,11 +108,11 @@
               sure to change the increment if the speed is at the upper/lower bounds of the
               values supported:</p>
               
-              <pre class="CodeRay">    every 0.05.seconds(), -&gt;
+              <pre class="CodeRay">    every <span class="float">0.05</span>.seconds(), -&gt;
       speed += increment
       my.motor.speed(speed)
-      console.log "Current Speed: #{my.motor.currentSpeed() }"
-      increment = -increment if (speed is 0) or (speed is 255)
+      console.log <span class="string"><span class="delimiter">"</span><span class="content">Current Speed: </span><span class="inline"><span class="inline-delimiter">#{</span>my.motor.currentSpeed() <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+      increment = -increment <span class="keyword">if</span> (speed is <span class="integer">0</span>) <span class="keyword">or</span> (speed is <span class="integer">255</span>)
 </pre>
               
               <p>And with all that done, we can now start our robot:</p>

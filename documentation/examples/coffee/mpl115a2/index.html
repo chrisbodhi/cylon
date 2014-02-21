@@ -70,30 +70,30 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">        Cylon = require 'cylon'
+              <pre class="CodeRay">        <span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay">        Cylon.robot
+              <pre class="CodeRay">        <span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">          connection:
-            name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0'
+              <pre class="CodeRay">          <span class="key">connection</span>:
+            <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
 
-          device:
-            name: 'mpl115a2', driver: 'mpl115a2'
+          <span class="key">device</span>:
+            <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">mpl115a2</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">mpl115a2</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">          work: (my) -&gt;
-            my.mpl115a2.on 'start', -&gt;
+              <pre class="CodeRay">          <span class="key">work</span>: (my) -&gt;
+            my.mpl115a2.on <span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, -&gt;
               my.mpl115a2.getTemperature((data) -&gt;
-                Logger.info "temperature #{data['temperature']}, pressure #{data['pressure']}"
+                <span class="constant">Logger</span>.info <span class="string"><span class="delimiter">"</span><span class="content">temperature </span><span class="inline"><span class="inline-delimiter">#{</span>data[<span class="string"><span class="delimiter">'</span><span class="content">temperature</span><span class="delimiter">'</span></span>]<span class="inline-delimiter">}</span></span><span class="content">, pressure </span><span class="inline"><span class="inline-delimiter">#{</span>data[<span class="string"><span class="delimiter">'</span><span class="content">pressure</span><span class="delimiter">'</span></span>]<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
               )
 </pre>
               

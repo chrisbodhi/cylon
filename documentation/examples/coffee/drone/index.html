@@ -74,29 +74,29 @@
               
               <p>First, we need to load up Cylon.</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>And now that we have that taken care of, we can define our robot.</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Our robot will communicate with an ARDrone over an IP address, and controls the
               drone using a device we're going to call "drone":</p>
               
-              <pre class="CodeRay">  connection: { name: 'ardrone', adaptor: 'ardrone', port: '192.168.1.1' }
-  device: { name: 'drone', driver: 'ardrone' }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1</span><span class="delimiter">'</span></span> }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span> }
 </pre>
               
               <p>The work for this robot is pretty straightforward. It's going to take off, and
               then land after ten seconds. Five seconds later, after it's safely on the
               ground, it will fully stop.</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
     my.drone.takeoff()
-    after 10.seconds(), -&gt; my.drone.land()
-    after 15.seconds(), -&gt; my.drone.stop()
+    after <span class="integer">10</span>.seconds(), -&gt; my.drone.land()
+    after <span class="integer">15</span>.seconds(), -&gt; my.drone.stop()
 </pre>
               
               <p>Simple as can be. And now that we've got all that set up, we can get started!</p>

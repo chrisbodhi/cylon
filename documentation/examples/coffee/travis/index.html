@@ -82,57 +82,57 @@
 <p>First of all, let's load up Cylon. We're going to load the version directly from
               the repo, since we're here already:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Next, we'll set up Travis. We're going to be using the very useful <a href="https://github.com/pwmckenna/node-travis-ci">travis-ci</a>
               module.</p>
               
-              <pre class="CodeRay">Travis = require 'travis-ci'
+              <pre class="CodeRay"><span class="constant">Travis</span> = require <span class="string"><span class="delimiter">'</span><span class="content">travis-ci</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that we've got our Travis module imported, let's set it up:</p>
               
-              <pre class="CodeRay">travis = new Travis
-  version: '2.0.0'
+              <pre class="CodeRay">travis = new <span class="constant">Travis</span>
+  <span class="key">version</span>: <span class="string"><span class="delimiter">'</span><span class="content">2.0.0</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now we have a working interface to the Travis-CI API. Let's set up a username
               and repo to query Travis about later, as long as we're here. Feel free to change
               these if you want to try with your own repositories.</p>
               
-              <pre class="CodeRay">user = "hybridgroup"
-name = "cylon"
+              <pre class="CodeRay">user = <span class="string"><span class="delimiter">"</span><span class="content">hybridgroup</span><span class="delimiter">"</span></span>
+name = <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
 </pre>
               
               <h2 id="robot">Robot</h2>
               
               <p>And with that last bit of setup done, let's start setting up our robot!</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>We use a connection to tell Cylon what port it can use to communicate with our
               Sphero, along with what adaptor it should require (<code>cylon-sphero</code>) to connect to
               it. We give it a name to make it easier to reference later on.</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'sphero', adaptor: 'sphero', port: '/dev/rfcomm0'
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Devices are set up in a similar fashion, but allow us to directly issue commands
               to the sphero. These are added to the robot's namespace directly to make them
               easy to access.</p>
               
-              <pre class="CodeRay">  device:
-    name: 'sphero', driver: 'sphero'
+              <pre class="CodeRay">  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that we've told our robot what hardware it has access to, we can start
               telling it what it should do. The work function passes along one argument,
               a reference to the robot so we can access it's state and hardware.</p>
               
-              <pre class="CodeRay">  work: (me) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (me) -&gt;
 </pre>
               
               <p>We'll define a function to check Travis and change the Sphero's color depending
@@ -143,60 +143,60 @@ name = "cylon"
               
               <p>First, it will log that it's checking Travis to the logger:</p>
               
-              <pre class="CodeRay">      console.log "Checking last build status for #{user}/#{name}"
+              <pre class="CodeRay">      console.log <span class="string"><span class="delimiter">"</span><span class="content">Checking last build status for </span><span class="inline"><span class="inline-delimiter">#{</span>user<span class="inline-delimiter">}</span></span><span class="content">/</span><span class="inline"><span class="inline-delimiter">#{</span>name<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 </pre>
               
               <p>Let's set the default color of the Sphero to blue until we know what the build
               status is:</p>
               
-              <pre class="CodeRay">      me.sphero.setColor 'blue', true
+              <pre class="CodeRay">      me.sphero.setColor <span class="string"><span class="delimiter">'</span><span class="content">blue</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>
 </pre>
               
               <p>Now we'll fetch the Travis build status:</p>
               
               <pre class="CodeRay">      travis.repos {
-        owner_name: user
-        name: name
+        <span class="key">owner_name</span>: user
+        <span class="key">name</span>: name
       }, (err, res) -&gt;
 </pre>
               
               <p>If we were returned a response, we'll check the status of the build and use that
               to determine what color we should make the Sphero.</p>
               
-              <pre class="CodeRay">        if res.repo
+              <pre class="CodeRay">        <span class="keyword">if</span> res.repo
           switch res.repo.last_build_state
 </pre>
               
               <p>When the build state is passed, then we'll set the Sphero's color to green:</p>
               
-              <pre class="CodeRay">            when 'passed' then me.sphero.setColor 'green', true
+              <pre class="CodeRay">            <span class="keyword">when</span> <span class="string"><span class="delimiter">'</span><span class="content">passed</span><span class="delimiter">'</span></span> <span class="keyword">then</span> me.sphero.setColor <span class="string"><span class="delimiter">'</span><span class="content">green</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>
 </pre>
               
               <p>And if the build has failed, let's set the Sphero's color to red:</p>
               
-              <pre class="CodeRay">            when 'failed' then me.sphero.setColor 'red', true
+              <pre class="CodeRay">            <span class="keyword">when</span> <span class="string"><span class="delimiter">'</span><span class="content">failed</span><span class="delimiter">'</span></span> <span class="keyword">then</span> me.sphero.setColor <span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>
 </pre>
               
               <p>Otherwise, we'll just set it to blue:</p>
               
-              <pre class="CodeRay">            else me.sphero.setColor 'blue', true
+              <pre class="CodeRay">            <span class="keyword">else</span> me.sphero.setColor <span class="string"><span class="delimiter">'</span><span class="content">blue</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>
 </pre>
               
               <p>And if we didn't get a response from the server, let's just set it to blue.</p>
               
-              <pre class="CodeRay">        else me.sphero.setColor 'blue', true
+              <pre class="CodeRay">        <span class="keyword">else</span> me.sphero.setColor <span class="string"><span class="delimiter">'</span><span class="content">blue</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>
 </pre>
               
               <p>Now that we've got that function defined, let's call it to set the initial color
               of the Sphero:</p>
               
-              <pre class="CodeRay">    do checkTravis
+              <pre class="CodeRay">    <span class="keyword">do</span> checkTravis
 </pre>
               
               <p>And every ten seconds, let's keep checking Travis:</p>
               
-              <pre class="CodeRay">    every 10.seconds(), -&gt;
-      do checkTravis
+              <pre class="CodeRay">    every <span class="integer">10</span>.seconds(), -&gt;
+      <span class="keyword">do</span> checkTravis
 </pre>
               
               <p>And now that we've got our work defined, let's start the robot!</p>

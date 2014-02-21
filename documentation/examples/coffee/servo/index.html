@@ -76,12 +76,12 @@
               
               <p>First, let's require Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now we can start defining our robot:</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>We'll be connecting to an Ardunio, using the Firmata protocol, and a servo
@@ -90,23 +90,23 @@
               this is set to min: 30, max: 150 to prevent damaging the servo when giving it
               an angle outside the range it can cover.</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0'
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
 
-  device:
-    name: 'servo', driver: 'servo', pin: 3, range: { min: 30, max: 150}
+  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>, <span class="key">range</span>: { <span class="key">min</span>: <span class="integer">30</span>, <span class="key">max</span>: <span class="integer">150</span>}
 </pre>
               
               <p>We'll start defining the work for our robot next:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
 </pre>
               
               <p>We'll define variables to hold our servo's angle, and the rate at which that
               angle will change:</p>
               
-              <pre class="CodeRay">    angle = 30
-    increment = 40
+              <pre class="CodeRay">    angle = <span class="integer">30</span>
+    increment = <span class="integer">40</span>
 </pre>
               
               <p>Every second, we'll increment the <code>angle</code>, set the servo to run at that angle,
@@ -114,11 +114,11 @@
               change the increment if the angle is at the upper/lower bounds of the values
               supported:</p>
               
-              <pre class="CodeRay">    every 1.seconds(), -&gt;
+              <pre class="CodeRay">    every <span class="integer">1</span>.seconds(), -&gt;
       angle += increment
       my.servo.angle(angle)
-      console.log "Current angle: #{my.servo.currentAngle() }"
-      increment = -increment if (angle is 30) or (angle is 150)
+      console.log <span class="string"><span class="delimiter">"</span><span class="content">Current angle: </span><span class="inline"><span class="inline-delimiter">#{</span>my.servo.currentAngle() <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+      increment = -increment <span class="keyword">if</span> (angle is <span class="integer">30</span>) <span class="keyword">or</span> (angle is <span class="integer">150</span>)
 </pre>
               
               <p>And with all that done, we can now start our robot:</p>

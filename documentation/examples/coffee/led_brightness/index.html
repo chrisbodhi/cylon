@@ -74,42 +74,42 @@
               
               <p>Let's start by importing Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Once we've got that, we can start defining our robot:</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>We'll be using an Arduino, and communicating over the Firmata protocol. As well,
               we'll let our robot know about the LED we'll be modifying, on pin #3 of the
               Arduino.</p>
               
-              <pre class="CodeRay">  connection: { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' }
-  device: { name: 'led', driver: 'led', pin: 3 }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span> }
 </pre>
               
               <p>Next up, we'll define our robot's work:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
 </pre>
               
               <p>We'll set some variables here: brightness will represent the LED's brightness,
               from 1-255, and 'fade' will be the brightness change on each tick.</p>
               
-              <pre class="CodeRay">    brightness = 0
-    fade = 5
+              <pre class="CodeRay">    brightness = <span class="integer">0</span>
+    fade = <span class="integer">5</span>
 </pre>
               
               <p>Every 50 milliseconds, we'll be incrementing the brightness by <code>fade</code>'s value,
               setting the LED to that brightness, and reversing <code>fade</code>'s value if brightness
               hits 0 or 255.</p>
               
-              <pre class="CodeRay">    every 0.05.seconds(), -&gt;
+              <pre class="CodeRay">    every <span class="float">0.05</span>.seconds(), -&gt;
       brightness += fade
       my.led.brightness(brightness)
-      fade = -fade if (brightness is 0) or (brightness is 255)
+      fade = -fade <span class="keyword">if</span> (brightness is <span class="integer">0</span>) <span class="keyword">or</span> (brightness is <span class="integer">255</span>)
 </pre>
               
               <p>And with that done, we can now start our robot.</p>

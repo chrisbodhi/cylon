@@ -70,14 +70,14 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">        Cylon = require 'cylon'
+              <pre class="CodeRay">        <span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 
-        Cylon.robot
-          device: { name: 'keyboard', driver: 'keyboard' }
-          connection: { name: 'keyboard', adaptor: 'keyboard' }
-          work: (my) -&gt;
-            my.keyboard.on 'a', (key) -&gt;
-              console.log "A PRESSED!"
+        <span class="constant">Cylon</span>.robot
+          <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span> }
+          <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span> }
+          <span class="key">work</span>: (my) -&gt;
+            my.keyboard.on <span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>, (key) -&gt;
+              console.log <span class="string"><span class="delimiter">"</span><span class="content">A PRESSED!</span><span class="delimiter">"</span></span>
 
         .start()
 </pre>

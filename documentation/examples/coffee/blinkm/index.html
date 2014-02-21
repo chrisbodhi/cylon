@@ -75,34 +75,34 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>With Cylon imported, we can start defining our robot.</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Our robot will be using an Arduino, and communicating over the Firmata protocol</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0'
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>And we'll have one device, a BlinkM led.</p>
               
-              <pre class="CodeRay">  device:
-    name: 'blinkm', driver: 'blinkm'
+              <pre class="CodeRay">  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">blinkm</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">blinkm</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>We'll now set up our robot's work.</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
 </pre>
               
               <p>When the BlinkM sends the 'start' event, we'll set up our events</p>
               
-              <pre class="CodeRay">    my.blinkm.on 'start', -&gt;
+              <pre class="CodeRay">    my.blinkm.on <span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, -&gt;
 </pre>
               
               <p>We stop the default BlinkM's light script</p>
@@ -113,29 +113,29 @@
               <p>We'll request the BlinkM's version, and print that to the console</p>
               
               <pre class="CodeRay">      my.blinkm.getFirmware((version) -&gt;
-        Logger.info "Started BlinkM version #{version}"
+        <span class="constant">Logger</span>.info <span class="string"><span class="delimiter">"</span><span class="content">Started BlinkM version </span><span class="inline"><span class="inline-delimiter">#{</span>version<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
       )
 </pre>
               
               <p>By default, we'll turn the LED off</p>
               
-              <pre class="CodeRay">      my.blinkm.goToRGB(0,0,0)
+              <pre class="CodeRay">      my.blinkm.goToRGB(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">0</span>)
 </pre>
               
               <p>We print the default starting color (in this case 0,0,0 since we turned the led off)</p>
               
               <pre class="CodeRay">      my.blinkm.getRGBColor((data) -&gt;
-        console.log("Starting Color: #{ data }")
+        console.log(<span class="string"><span class="delimiter">"</span><span class="content">Starting Color: </span><span class="inline"><span class="inline-delimiter">#{</span> data <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>)
       )
 </pre>
               
               <p>Now, every 2 seconds, we'll change the LED color to a random value:</p>
               
-              <pre class="CodeRay">      every 2.second(), -&gt;
+              <pre class="CodeRay">      every <span class="integer">2</span>.second(), -&gt;
         my.blinkm.getRGBColor((data) -&gt;
-          console.log("Current Color: #{ data }")
+          console.log(<span class="string"><span class="delimiter">"</span><span class="content">Current Color: </span><span class="inline"><span class="inline-delimiter">#{</span> data <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>)
         )
-        my.blinkm.fadeToRandomRGB(128, 128, 128)
+        my.blinkm.fadeToRandomRGB(<span class="integer">128</span>, <span class="integer">128</span>, <span class="integer">128</span>)
 </pre>
               
               <p>Now that our robot knows what to do, let's get started:</p>

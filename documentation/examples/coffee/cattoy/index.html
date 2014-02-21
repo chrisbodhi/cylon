@@ -70,44 +70,44 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">  connections: [
-    {name: 'digispark', adaptor: 'digispark'},
-    {name: 'leapmotion', adaptor: 'leapmotion', port: '127.0.0.1:6437'}
+              <pre class="CodeRay">  <span class="key">connections</span>: [
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>},
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>}
   ]
 
-  devices: [
-    {name: 'servo1', driver: 'servo', pin: 0, connection: 'digispark'},
-    {name: 'servo2', driver: 'servo', pin: 1, connection: 'digispark'},
-    {name: 'leapmotion', driver: 'leapmotion', connection: 'leapmotion'}
+  <span class="key">devices</span>: [
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo1</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">0</span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>},
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo2</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">1</span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>},
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>}
   ]
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    my['x'] = 90
-    my['z'] = 90
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    my[<span class="string"><span class="delimiter">'</span><span class="content">x</span><span class="delimiter">'</span></span>] = <span class="integer">90</span>
+    my[<span class="string"><span class="delimiter">'</span><span class="content">z</span><span class="delimiter">'</span></span>] = <span class="integer">90</span>
 
-    my.leapmotion.on 'hand', (hand) -&gt;
-      my['x'] = hand.palmX.fromScale(-300, 300).toScale(30, 150)
-      my['z'] = hand.palmZ.fromScale(-300, 300).toScale(30, 150)
+    my.leapmotion.on <span class="string"><span class="delimiter">'</span><span class="content">hand</span><span class="delimiter">'</span></span>, (hand) -&gt;
+      my[<span class="string"><span class="delimiter">'</span><span class="content">x</span><span class="delimiter">'</span></span>] = hand.palmX.fromScale(<span class="integer">-300</span>, <span class="integer">300</span>).toScale(<span class="integer">30</span>, <span class="integer">150</span>)
+      my[<span class="string"><span class="delimiter">'</span><span class="content">z</span><span class="delimiter">'</span></span>] = hand.palmZ.fromScale(<span class="integer">-300</span>, <span class="integer">300</span>).toScale(<span class="integer">30</span>, <span class="integer">150</span>)
 
-    every 100, -&gt;
-      my.servo1.angle my['x']
-      my.servo2.angle my['z']
+    every <span class="integer">100</span>, -&gt;
+      my.servo1.angle my[<span class="string"><span class="delimiter">'</span><span class="content">x</span><span class="delimiter">'</span></span>]
+      my.servo2.angle my[<span class="string"><span class="delimiter">'</span><span class="content">z</span><span class="delimiter">'</span></span>]
 
-      console.log "Current Angle: #{my.servo1.currentAngle()}, #{my.servo2.currentAngle()}"
+      console.log <span class="string"><span class="delimiter">"</span><span class="content">Current Angle: </span><span class="inline"><span class="inline-delimiter">#{</span>my.servo1.currentAngle()<span class="inline-delimiter">}</span></span><span class="content">, </span><span class="inline"><span class="inline-delimiter">#{</span>my.servo2.currentAngle()<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 </pre>
               
               <p>Now that our robot knows what work to do, and the work it will be doing that

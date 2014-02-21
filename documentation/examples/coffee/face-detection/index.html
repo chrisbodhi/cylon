@@ -70,72 +70,72 @@
               
               <p>First, let's import Cylon:     </p>
               
-              <pre class="CodeRay">Cylon = require('cylon')
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'opencv', adaptor: 'opencv'
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">opencv</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">opencv</span><span class="delimiter">'</span></span>
 
-  devices: [
-    { name: 'window', driver: 'window' }
+  <span class="key">devices</span>: [
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">window</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">window</span><span class="delimiter">'</span></span> }
     {
-      name: 'camera',
-      driver: 'camera',
-      camera: 1,
-      haarcascade: "#{ __dirname }/haarcascade_frontalface_alt.xml"
-    } # Default camera is 0
+      <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">camera</span><span class="delimiter">'</span></span>,
+      <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">camera</span><span class="delimiter">'</span></span>,
+      <span class="key">camera</span>: <span class="integer">1</span>,
+      <span class="key">haarcascade</span>: <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span> __dirname <span class="inline-delimiter">}</span></span><span class="content">/haarcascade_frontalface_alt.xml</span><span class="delimiter">"</span></span>
+    } <span class="comment"># Default camera is 0</span>
   ]
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    # We setup our face detection once the camera is ready to
-    # siplays images, we used once to make sure the event listeners
-    # are only registered once.
-    my.camera.once('cameraReady', -&gt;
-      console.log('The camera is ready!')
-      # We add a listener for the facesDetected event
-      # here we will get (err, image/frame, faces) params.
-      # The faces param is an array conaining any face detected
-      # in the frame (im).
-      my.camera.on('facesDetected', (err, im, faces) -&gt;
-        # We loop trhough the faces and manipulate the image
-        # to display a square in the coordinates for the detected
-        # faces.
-        for face in faces
-          im.rectangle([face.x, face.y], [face.x + face.width, face.y + face.height], [0,255,0], 2)
-        # Once the image has been updated with rectangles around
-        # detected faces we display it in our window.
-        my.window.show(im, 40)
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    <span class="comment"># We setup our face detection once the camera is ready to</span>
+    <span class="comment"># siplays images, we used once to make sure the event listeners</span>
+    <span class="comment"># are only registered once.</span>
+    my.camera.once(<span class="string"><span class="delimiter">'</span><span class="content">cameraReady</span><span class="delimiter">'</span></span>, -&gt;
+      console.log(<span class="string"><span class="delimiter">'</span><span class="content">The camera is ready!</span><span class="delimiter">'</span></span>)
+      <span class="comment"># We add a listener for the facesDetected event</span>
+      <span class="comment"># here we will get (err, image/frame, faces) params.</span>
+      <span class="comment"># The faces param is an array conaining any face detected</span>
+      <span class="comment"># in the frame (im).</span>
+      my.camera.on(<span class="string"><span class="delimiter">'</span><span class="content">facesDetected</span><span class="delimiter">'</span></span>, (err, im, faces) -&gt;
+        <span class="comment"># We loop trhough the faces and manipulate the image</span>
+        <span class="comment"># to display a square in the coordinates for the detected</span>
+        <span class="comment"># faces.</span>
+        <span class="keyword">for</span> face <span class="keyword">in</span> faces
+          im.rectangle([face.x, face.y], [face.x + face.width, face.y + face.height], [<span class="integer">0</span>,<span class="integer">255</span>,<span class="integer">0</span>], <span class="integer">2</span>)
+        <span class="comment"># Once the image has been updated with rectangles around</span>
+        <span class="comment"># detected faces we display it in our window.</span>
+        my.window.show(im, <span class="integer">40</span>)
 
-        # After displaying the updated image we trigger another
-        # frame read to ensure the fastest processing possible.
-        # We could also use an interval to try and get a set
-        # amount of processed frames per second, see below.
+        <span class="comment"># After displaying the updated image we trigger another</span>
+        <span class="comment"># frame read to ensure the fastest processing possible.</span>
+        <span class="comment"># We could also use an interval to try and get a set</span>
+        <span class="comment"># amount of processed frames per second, see below.</span>
         my.camera.readFrame()
       )
-      # We listen for frameReady event, when triggered
-      # we start the face detection passsing the frame
-      # that we jsut got.
-      my.camera.on('frameReady', (err, im) -&gt;
+      <span class="comment"># We listen for frameReady event, when triggered</span>
+      <span class="comment"># we start the face detection passsing the frame</span>
+      <span class="comment"># that we jsut got.</span>
+      my.camera.on(<span class="string"><span class="delimiter">'</span><span class="content">frameReady</span><span class="delimiter">'</span></span>, (err, im) -&gt;
         my.camera.detectFaces(im)
       )
 
-      # Here we could also try to get a set amount of processed FPS
-      # by setting an interval and reading frames every set amount
-      # of time. We could just uncomment the next line and commenting
-      # out the my.camera.readFrame() in the facesDetected listener
-      # as well as the one two lines below.
-      #every 150, my.camera.readFrame
+      <span class="comment"># Here we could also try to get a set amount of processed FPS</span>
+      <span class="comment"># by setting an interval and reading frames every set amount</span>
+      <span class="comment"># of time. We could just uncomment the next line and commenting</span>
+      <span class="comment"># out the my.camera.readFrame() in the facesDetected listener</span>
+      <span class="comment"># as well as the one two lines below.</span>
+      <span class="comment">#every 150, my.camera.readFrame</span>
       my.camera.readFrame()
     )
 </pre>

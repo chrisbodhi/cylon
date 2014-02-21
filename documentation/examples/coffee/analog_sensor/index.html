@@ -76,42 +76,42 @@
               
               <p>First, let's load up Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connection to our Arduino:</p>
               
-              <pre class="CodeRay">  connection:
-    name: "arduino"
-    adaptor: "firmata"
-    port: "/dev/ttyACM0"
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">"</span><span class="content">arduino</span><span class="delimiter">"</span></span>
+    <span class="key">adaptor</span>: <span class="string"><span class="delimiter">"</span><span class="content">firmata</span><span class="delimiter">"</span></span>
+    <span class="key">port</span>: <span class="string"><span class="delimiter">"</span><span class="content">/dev/ttyACM0</span><span class="delimiter">"</span></span>
 </pre>
               
               <p>Now we can define the analog sensor we're going to use, along with it's upper
               and lower limits:</p>
               
-              <pre class="CodeRay">  device:
-    name: 'sensor'
-    driver: 'analogSensor'
-    pin: 0
-    upperLimit: 900
-    lowerLimit: 100
+              <pre class="CodeRay">  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sensor</span><span class="delimiter">'</span></span>
+    <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">analogSensor</span><span class="delimiter">'</span></span>
+    <span class="key">pin</span>: <span class="integer">0</span>
+    <span class="key">upperLimit</span>: <span class="integer">900</span>
+    <span class="key">lowerLimit</span>: <span class="integer">100</span>
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    my.sensor.on 'upperLimit', (val) -&gt;
-      console.log "Upper limit reached: #{val}"
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    my.sensor.on <span class="string"><span class="delimiter">'</span><span class="content">upperLimit</span><span class="delimiter">'</span></span>, (val) -&gt;
+      console.log <span class="string"><span class="delimiter">"</span><span class="content">Upper limit reached: </span><span class="inline"><span class="inline-delimiter">#{</span>val<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 
-    my.sensor.on 'lowerLimit', (val) -&gt;
-      console.log "Lower limit reached: #{val}"
+    my.sensor.on <span class="string"><span class="delimiter">'</span><span class="content">lowerLimit</span><span class="delimiter">'</span></span>, (val) -&gt;
+      console.log <span class="string"><span class="delimiter">"</span><span class="content">Lower limit reached: </span><span class="inline"><span class="inline-delimiter">#{</span>val<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 </pre>
               
               <p>Now that our robot knows what work to do, and the work it will be doing that

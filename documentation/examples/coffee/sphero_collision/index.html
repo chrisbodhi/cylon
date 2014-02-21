@@ -75,39 +75,39 @@
               
               <p>First, let's load up Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>With that loaded, we can begin defining our robot.</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>We're going to have one connection, and one device for this robot, both the same
               Sphero.</p>
               
-              <pre class="CodeRay">  connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/rfcomm0' }
-  device: { name: 'sphero', driver: 'sphero' }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span> }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> }
 </pre>
               
               <p>With the necessary hardware defined, we can now start telling Cylon about the
               work our robot will be performing.</p>
               
-              <pre class="CodeRay">  work: (me) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (me) -&gt;
 </pre>
               
               <p>We'll assign some variables here for later, a basic color for our sphero and
               a variable we'll use for a bitwise math operation later.</p>
               
-              <pre class="CodeRay">    color = 0x00FF00
-    bitFilter = 0xFFFF00
+              <pre class="CodeRay">    color = <span class="integer">0x00FF00</span>
+    bitFilter = <span class="integer">0xFFFF00</span>
 </pre>
               
               <p>When our Sphero emits the 'connect' event, we're going to hook up collision
               detection, make sure it's not moving, and set a color.</p>
               
-              <pre class="CodeRay">    me.sphero.on 'connect', -&gt;
-      console.log "Setting up Collision Detection..."
+              <pre class="CodeRay">    me.sphero.on <span class="string"><span class="delimiter">'</span><span class="content">connect</span><span class="delimiter">'</span></span>, -&gt;
+      console.log <span class="string"><span class="delimiter">"</span><span class="content">Setting up Collision Detection...</span><span class="delimiter">"</span></span>
       me.sphero.detectCollisions()
       me.sphero.setRGB color
       me.sphero.stop()
@@ -116,8 +116,8 @@
               <p>And when our Sphero detects a collision, we want to notify the user of this via
               the console.</p>
               
-              <pre class="CodeRay">me.sphero.on 'collision', (data) -&gt;
-  console.log "Collision:"
+              <pre class="CodeRay">me.sphero.on <span class="string"><span class="delimiter">'</span><span class="content">collision</span><span class="delimiter">'</span></span>, (data) -&gt;
+  console.log <span class="string"><span class="delimiter">"</span><span class="content">Collision:</span><span class="delimiter">"</span></span>
 </pre>
               
               <p>We get the new color for a Sphero by doing a bitwise XOR operation on it, using
@@ -130,10 +130,10 @@
               and change the Sphero to that color. We'll also tell the Sphero to roll in
               a random direction, at speed 90.</p>
               
-              <pre class="CodeRay">  console.log "Color: #{color.toString(16)} "
+              <pre class="CodeRay">  console.log <span class="string"><span class="delimiter">"</span><span class="content">Color: </span><span class="inline"><span class="inline-delimiter">#{</span>color.toString(<span class="integer">16</span>)<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="delimiter">"</span></span>
   me.sphero.setRGB color
 
-  me.sphero.roll 90, Math.floor(Math.random() * 360)
+  me.sphero.roll <span class="integer">90</span>, <span class="constant">Math</span>.floor(<span class="constant">Math</span>.random() * <span class="integer">360</span>)
 </pre>
               
               <p>And with all that said and done, we can now start the robot.</p>

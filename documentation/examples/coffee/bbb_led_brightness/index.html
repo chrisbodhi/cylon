@@ -70,32 +70,32 @@
               
               <p>First, let's import Cylon:  </p>
               
-              <pre class="CodeRay">Cylon = require('cylon')
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay"># Initialize the robot
-Cylon.robot
+              <pre class="CodeRay"><span class="comment"># Initialize the robot</span>
+<span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">  connection: { name: 'beaglebone', adaptor: 'beaglebone' }
-  device: { name: 'led', driver: 'led', pin: 'P9_14' }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">beaglebone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">beaglebone</span><span class="delimiter">'</span></span> }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="string"><span class="delimiter">'</span><span class="content">P9_14</span><span class="delimiter">'</span></span> }
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    # we do our thing here
-    brightness = 0
-    fade = 5
-    every 0.05.seconds(), -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    <span class="comment"># we do our thing here</span>
+    brightness = <span class="integer">0</span>
+    fade = <span class="integer">5</span>
+    every <span class="float">0.05</span>.seconds(), -&gt;
       brightness += fade
       my.led.brightness(brightness)
-      fade = -fade if (brightness is 0) or (brightness is 255)
+      fade = -fade <span class="keyword">if</span> (brightness is <span class="integer">0</span>) <span class="keyword">or</span> (brightness is <span class="integer">255</span>)
 </pre>
               
               <p>Now that our robot knows what work to do, and the work it will be doing that

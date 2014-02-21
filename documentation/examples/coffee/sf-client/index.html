@@ -68,55 +68,55 @@
           <section class="content full"><div class="documentation">
               <h1 id="sales-force-client">Sales force Client</h1>
               
-              <pre class="CodeRay">'use strict'
+              <pre class="CodeRay"><span class="string"><span class="delimiter">'</span><span class="content">use strict</span><span class="delimiter">'</span></span>
 
-namespace = require 'node-namespace'
-nforce = require 'nforce'
-Faye = require 'faye'
+namespace = require <span class="string"><span class="delimiter">'</span><span class="content">node-namespace</span><span class="delimiter">'</span></span>
+nforce = require <span class="string"><span class="delimiter">'</span><span class="content">nforce</span><span class="delimiter">'</span></span>
+<span class="constant">Faye</span> = require <span class="string"><span class="delimiter">'</span><span class="content">faye</span><span class="delimiter">'</span></span>
 
-namespace 'SF', -&gt;
-  class @SFClient
-    constructor: (opts) -&gt;
-      @client = null
-      @outboundMessages = []
-      @sfuser = opts.sfuserjeje ok
+namespace <span class="string"><span class="delimiter">'</span><span class="content">SF</span><span class="delimiter">'</span></span>, -&gt;
+  <span class="keyword">class</span> <span class="instance-variable">@SFClient</span>
+    <span class="key">constructor</span>: (opts) -&gt;
+      <span class="instance-variable">@client</span> = null
+      <span class="instance-variable">@outboundMessages</span> = []
+      <span class="instance-variable">@sfuser</span> = opts.sfuserjeje ok
 
-      @sfpass = opts.sfpass
-      @orgCreds = opts.orgCredentials
-      @org = nforce.createConnection @orgCreds
+      <span class="instance-variable">@sfpass</span> = opts.sfpass
+      <span class="instance-variable">@orgCreds</span> = opts.orgCredentials
+      <span class="instance-variable">@org</span> = nforce.createConnection <span class="instance-variable">@orgCreds</span>
 
-    _processOutboundMessages: () -&gt;
-      # Do work here
+    <span class="key">_processOutboundMessages</span>: () -&gt;
+      <span class="comment"># Do work here</span>
 
-    _handleStreamingAPI: (outboundCB) -&gt;
-      client = new Faye.Client("#{@oauth.instance_url}/cometd/28.0")
-      client.setHeader "Authorization", "OAuth #{@oauth.access_token}"
+    <span class="key">_handleStreamingAPI</span>: (outboundCB) -&gt;
+      client = new <span class="constant">Faye</span>.Client(<span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span><span class="instance-variable">@oauth</span>.instance_url<span class="inline-delimiter">}</span></span><span class="content">/cometd/28.0</span><span class="delimiter">"</span></span>)
+      client.setHeader <span class="string"><span class="delimiter">"</span><span class="content">Authorization</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">OAuth </span><span class="inline"><span class="inline-delimiter">#{</span><span class="instance-variable">@oauth</span>.access_token<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 
-      subscription = client.subscribe '/topic/SpheroMsgOutbound', outboundCB
-      console.log "Streaming API Connected..."
+      subscription = client.subscribe <span class="string"><span class="delimiter">'</span><span class="content">/topic/SpheroMsgOutbound</span><span class="delimiter">'</span></span>, outboundCB
+      console.log <span class="string"><span class="delimiter">"</span><span class="content">Streaming API Connected...</span><span class="delimiter">"</span></span>
 
-    authenticate: (outboundCB) -&gt;
-      @org.authenticate {username: @sfuser, password: @sfpass}, (err, _oauth) =&gt;
-        if err
-          console.log 'unable to authenticate to sfdc'
+    <span class="key">authenticate</span>: (outboundCB) -&gt;
+      <span class="instance-variable">@org</span>.authenticate {<span class="key">username</span>: <span class="instance-variable">@sfuser</span>, <span class="key">password</span>: <span class="instance-variable">@sfpass</span>}, (err, _oauth) =&gt;
+        <span class="keyword">if</span> err
+          console.log <span class="string"><span class="delimiter">'</span><span class="content">unable to authenticate to sfdc</span><span class="delimiter">'</span></span>
           console.log err
-          process.exit 1
-        else
-          console.log "authenticated"
-          @oauth = _oauth
-          @_handleStreamingAPI outboundCB
-          @_processOutboundMessages()
+          process.exit <span class="integer">1</span>
+        <span class="keyword">else</span>
+          console.log <span class="string"><span class="delimiter">"</span><span class="content">authenticated</span><span class="delimiter">"</span></span>
+          <span class="instance-variable">@oauth</span> = _oauth
+          <span class="instance-variable">@_handleStreamingAPI</span> outboundCB
+          <span class="instance-variable">@_processOutboundMessages</span>()
 
-    push: (msg) -&gt;
+    <span class="key">push</span>: (msg) -&gt;
       jsonString = msg
 
-      console.log "SpheroController post msg:"
+      console.log <span class="string"><span class="delimiter">"</span><span class="content">SpheroController post msg:</span><span class="delimiter">"</span></span>
       console.log msg
 
-      methodData = {uri:'SpheroController', method: 'POST', body: jsonString}
+      methodData = {<span class="key">uri</span>:<span class="string"><span class="delimiter">'</span><span class="content">SpheroController</span><span class="delimiter">'</span></span>, <span class="key">method</span>: <span class="string"><span class="delimiter">'</span><span class="content">POST</span><span class="delimiter">'</span></span>, <span class="key">body</span>: jsonString}
 
-      @org.apexRest methodData, @oauth, (err, resp) =&gt;
-        console.log if err then err else resp
+      <span class="instance-variable">@org</span>.apexRest methodData, <span class="instance-variable">@oauth</span>, (err, resp) =&gt;
+        console.log <span class="keyword">if</span> err <span class="keyword">then</span> err <span class="keyword">else</span> resp
 </pre>
             </div>
           </section>

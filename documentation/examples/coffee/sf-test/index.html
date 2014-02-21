@@ -68,42 +68,42 @@
           <section class="content full"><div class="documentation">
               <h1 id="sales-force-test">Sales Force Test</h1>
               
-              <pre class="CodeRay">require '../examples/sf-client'
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">../examples/sf-client</span><span class="delimiter">'</span></span>
 
 sfuser = process.env.SF_USERNAME
 sfpass = process.env.SF_SECURITY_TOKEN
 
 orgCreds =
-  clientId: process.env.SF_CLIENT_ID
-  clientSecret: process.env.SF_CLIENT_SECRET
-  redirectUri: 'http://localhost:3000/oauth/_callback'
+  <span class="key">clientId</span>: process.env.SF_CLIENT_ID
+  <span class="key">clientSecret</span>: process.env.SF_CLIENT_SECRET
+  <span class="key">redirectUri</span>: <span class="string"><span class="delimiter">'</span><span class="content">http://localhost:3000/oauth/_callback</span><span class="delimiter">'</span></span>
 
-sf = new Cylon.SF.SFClient
-  sfuser: sfuser
-  sfpass: sfpass
-  orgCredentials: orgCreds
+sf = new <span class="constant">Cylon</span>.SF.SFClient
+  <span class="key">sfuser</span>: sfuser
+  <span class="key">sfpass</span>: sfpass
+  <span class="key">orgCredentials</span>: orgCreds
 
-cc = 0
+cc = <span class="integer">0</span>
 
 sf.authenticate (msg) -&gt;
-  string = "^ Sphero Name: #{msg.sobject.Sphero_Name__c},"
-  string += " Msg Content:#{ msg.sobject.Content__c }"
-  string += ", SM Id:#{ msg.sobject.Id }"
-  console.log "Printed from callback in client program.program"
-  console.log string + "\n"
+  string = <span class="string"><span class="delimiter">"</span><span class="content">^ Sphero Name: </span><span class="inline"><span class="inline-delimiter">#{</span>msg.sobject.Sphero_Name__c<span class="inline-delimiter">}</span></span><span class="content">,</span><span class="delimiter">"</span></span>
+  string += <span class="string"><span class="delimiter">"</span><span class="content"> Msg Content:</span><span class="inline"><span class="inline-delimiter">#{</span> msg.sobject.Content__c <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  string += <span class="string"><span class="delimiter">"</span><span class="content">, SM Id:</span><span class="inline"><span class="inline-delimiter">#{</span> msg.sobject.Id <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  console.log <span class="string"><span class="delimiter">"</span><span class="content">Printed from callback in client program.program</span><span class="delimiter">"</span></span>
+  console.log string + <span class="string"><span class="delimiter">"</span><span class="char">\n</span><span class="delimiter">"</span></span>
 
 myId = null
-message = "hello"
-detail = "Some Stuff for details"
+message = <span class="string"><span class="delimiter">"</span><span class="content">hello</span><span class="delimiter">"</span></span>
+detail = <span class="string"><span class="delimiter">"</span><span class="content">Some Stuff for details</span><span class="delimiter">"</span></span>
 
 setInterval () =&gt;
   cc++
   myId = cc
 
-  data = JSON.stringify { identifier: "run3#{myId}", msg: message }
+  data = <span class="constant">JSON</span>.stringify { <span class="key">identifier</span>: <span class="string"><span class="delimiter">"</span><span class="content">run3</span><span class="inline"><span class="inline-delimiter">#{</span>myId<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>, <span class="key">msg</span>: message }
 
   sf.push data
-, 1000
+, <span class="integer">1000</span>
 </pre>
             </div>
           </section>

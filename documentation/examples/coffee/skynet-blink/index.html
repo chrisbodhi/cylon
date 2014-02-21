@@ -70,38 +70,38 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">  connections: [
-    { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' },
-#    { name: 'skynet', adaptor: 'skynet', uuid: "742401f1-87a4-11e3-834d-670dadc0ddbf", token: "xjq9h3yzhemf5hfrme8y08fh0sm50zfr" }
-    { name: 'skynet', adaptor: 'skynet', host: 'localhost', portNumber: 3000, uuid: "18676eb1-9997-11e3-8c2a-f18a07a72684", token: "vbeo289aik65hfr1lns8vst273nmi" }
+              <pre class="CodeRay">  <span class="key">connections</span>: [
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
+<span class="comment">#    { name: 'skynet', adaptor: 'skynet', uuid: "742401f1-87a4-11e3-834d-670dadc0ddbf", token: "xjq9h3yzhemf5hfrme8y08fh0sm50zfr" }</span>
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">skynet</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">skynet</span><span class="delimiter">'</span></span>, <span class="key">host</span>: <span class="string"><span class="delimiter">'</span><span class="content">localhost</span><span class="delimiter">'</span></span>, <span class="key">portNumber</span>: <span class="integer">3000</span>, <span class="key">uuid</span>: <span class="string"><span class="delimiter">"</span><span class="content">18676eb1-9997-11e3-8c2a-f18a07a72684</span><span class="delimiter">"</span></span>, <span class="key">token</span>: <span class="string"><span class="delimiter">"</span><span class="content">vbeo289aik65hfr1lns8vst273nmi</span><span class="delimiter">"</span></span> }
   ]
 
-  device: { name: 'led', driver: 'led', pin: 13, connection: 'arduino' }
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span> }
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    Logger.info "connected..."
-    my.connections['skynet'].on 'message', (channel, data) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    <span class="constant">Logger</span>.info <span class="string"><span class="delimiter">"</span><span class="content">connected...</span><span class="delimiter">"</span></span>
+    my.connections[<span class="string"><span class="delimiter">'</span><span class="content">skynet</span><span class="delimiter">'</span></span>].on <span class="string"><span class="delimiter">'</span><span class="content">message</span><span class="delimiter">'</span></span>, (channel, data) -&gt;
       console.log(data)
-      data = JSON.parse(data)
-      if data.red is 'on'
-        console.log("red on request received from skynet");
+      data = <span class="constant">JSON</span>.parse(data)
+      <span class="keyword">if</span> data.red is <span class="string"><span class="delimiter">'</span><span class="content">on</span><span class="delimiter">'</span></span>
+        console.log(<span class="string"><span class="delimiter">"</span><span class="content">red on request received from skynet</span><span class="delimiter">"</span></span>);
         my.led.turnOn()
-      else if data.red is 'off'
-        console.log("red off request received from skynet");
+      <span class="keyword">else</span> <span class="keyword">if</span> data.red is <span class="string"><span class="delimiter">'</span><span class="content">off</span><span class="delimiter">'</span></span>
+        console.log(<span class="string"><span class="delimiter">"</span><span class="content">red off request received from skynet</span><span class="delimiter">"</span></span>);
         my.led.turnOff()
 </pre>
               

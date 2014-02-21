@@ -75,31 +75,31 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>With Cylon imported, we can now start defining our robot.</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Our robot has one connection, to the Raspberry Pi the hardware will be running
               on. For hardware, we're keeping it simple. A LED on pin 11, and a button on pin
               7.</p>
               
-              <pre class="CodeRay">  connection: { name: 'raspi', adaptor: 'raspi' }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">raspi</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">raspi</span><span class="delimiter">'</span></span> }
 
-  devices: [
-    {name: 'led', driver: 'led', pin: 11},
-    {name: 'button', driver: 'button', pin: 7}
+  <span class="key">devices</span>: [
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">11</span>},
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">7</span>}
   ]
 </pre>
               
               <p>With the hardware defined, we can get to the work our robot will perform. And as
               you can see, it's enormously complex:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    my.button.on 'push', -&gt; my.led.toggle()
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    my.button.on <span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, -&gt; my.led.toggle()
 </pre>
               
               <p>Essentially, when the robot's button emits the 'push' event (when it's pressed),

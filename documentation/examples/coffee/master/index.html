@@ -79,7 +79,7 @@
               
               <p>First, let's load up Cylon</p>
               
-              <pre class="CodeRay">Cylon = require 'cylon'
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>With that in place, now we can start defining our robots. They'll all behave
@@ -88,29 +88,29 @@
               a base robot and change it's attributes as needed.</p>
               
               <pre class="CodeRay">bots = [
-  { port: '/dev/cu.Sphero-RGB', name: 'Huey' },
-  { port: '/dev/cu.Sphero-GRB', name: 'Dewey' },
-  { port: '/dev/cu.Sphero-BRG', name: 'Louie' }
+  { <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/cu.Sphero-RGB</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Huey</span><span class="delimiter">'</span></span> },
+  { <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/cu.Sphero-GRB</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Dewey</span><span class="delimiter">'</span></span> },
+  { <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/cu.Sphero-BRG</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Louie</span><span class="delimiter">'</span></span> }
 ]
 </pre>
               
               <p>Now we can define our cleverly-named <code>SpheroRobot</code> class. This will be the base
               class for all three of the robots.</p>
               
-              <pre class="CodeRay">class SpheroRobot
+              <pre class="CodeRay"><span class="keyword">class</span> <span class="class">SpheroRobot</span>
 </pre>
               
               <p>Every robot needs to connect to a Sphero. We're doing this using the
               <code>cylon-sphero</code> adaptor.</p>
               
-              <pre class="CodeRay">  connection: { name: 'Sphero', adaptor: 'sphero' }
+              <pre class="CodeRay">  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> }
 </pre>
               
               <p>We'll just give our robots some basic work so we can tell they're actually
               working:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
-    console.log "Robot #{my.name} is now working!"
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
+    console.log <span class="string"><span class="delimiter">"</span><span class="content">Robot </span><span class="inline"><span class="inline-delimiter">#{</span>my.name<span class="inline-delimiter">}</span></span><span class="content"> is now working!</span><span class="delimiter">"</span></span>
 </pre>
               
               <p>And that's all we need for that.</p>
@@ -119,12 +119,12 @@
               class, and modifying the attributes that are unique to each robot. After the
               customized robot is ready, we'll feed it into Cylon.</p>
               
-              <pre class="CodeRay">for bot in bots
-  robot = new SpheroRobot
+              <pre class="CodeRay"><span class="keyword">for</span> bot <span class="keyword">in</span> bots
+  robot = new <span class="constant">SpheroRobot</span>
   robot.connection.port = bot.port
   robot.name = bot.name
 
-  Cylon.robot robot
+  <span class="constant">Cylon</span>.robot robot
 </pre>
               
               <p>And now Cylon knows about all the robots we care about for this example, and
@@ -132,7 +132,7 @@
               Cylon triggers the <code>.start()</code> command on all the robots we've told Cylon about,
               so all three robots will start at once.</p>
               
-              <pre class="CodeRay">Cylon.start()
+              <pre class="CodeRay"><span class="constant">Cylon</span>.start()
 </pre>
             </div>
           </section>

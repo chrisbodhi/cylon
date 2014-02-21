@@ -70,62 +70,62 @@
               
               <p>First, let's import Cylon:</p>
               
-              <pre class="CodeRay">Cylon = require('cylon')
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
 </pre>
               
               <p>Now that we have Cylon imported, we can start defining our robot</p>
               
-              <pre class="CodeRay">Cylon.robot
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
               <p>Let's define the connections and devices:</p>
               
-              <pre class="CodeRay">  connection:
-    name: 'raspi', adaptor: 'raspi'
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">raspi</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">raspi</span><span class="delimiter">'</span></span>
 
-  device:
-    name: 'pixel', driver: 'blinkm'
+  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pixel</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">blinkm</span><span class="delimiter">'</span></span>
 </pre>
               
               <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
               tell it what work we want to do:</p>
               
-              <pre class="CodeRay">  work: (my) -&gt;
+              <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
 
-    # Before you can use and work with I2C in the raspberry pi you
-    # need to configure it, follow the instructions to enable it here:
-    #
-    # http://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
+    <span class="comment"># Before you can use and work with I2C in the raspberry pi you</span>
+    <span class="comment"># need to configure it, follow the instructions to enable it here:</span>
+    <span class="comment">#</span>
+    <span class="comment"># http://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c</span>
 
-    # We first stop the BlinkM light script
+    <span class="comment"># We first stop the BlinkM light script</span>
     my.pixel.stopScript()
 
-    # You can pass a callback to all blinkm functions as the last param,
-    # If you do the command would be executed asynchronously.
-    # For write operations you get an (err) param passed back,
-    # null/undefined for success, and containing the error y any encountered.
+    <span class="comment"># You can pass a callback to all blinkm functions as the last param,</span>
+    <span class="comment"># If you do the command would be executed asynchronously.</span>
+    <span class="comment"># For write operations you get an (err) param passed back,</span>
+    <span class="comment"># null/undefined for success, and containing the error y any encountered.</span>
 
-    # BlimkM  Write Commands.
-    my.pixel.goToRGB(255, 0, 0)
-    my.pixel.fadeToRGB(0, 255, 0)
-    my.pixel.fadeToRGB(0, 0, 255)
-    #my.pixel.fadeToHSB(100, 180, 90)
-    #my.pixel.fadeToRandomRGB(0, 0, 255)
-    #my.pixel.fadeToRandomHSB(100, 180, 90)
-    #my.pixel.playLightScript(1, 0, 0)
-    #my.pixel.stopScript()
-    #my.pixel.setFadeSpeed(50)
-    #my.pixel.setTimeAdjust(50)
+    <span class="comment"># BlimkM  Write Commands.</span>
+    my.pixel.goToRGB(<span class="integer">255</span>, <span class="integer">0</span>, <span class="integer">0</span>)
+    my.pixel.fadeToRGB(<span class="integer">0</span>, <span class="integer">255</span>, <span class="integer">0</span>)
+    my.pixel.fadeToRGB(<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">255</span>)
+    <span class="comment">#my.pixel.fadeToHSB(100, 180, 90)</span>
+    <span class="comment">#my.pixel.fadeToRandomRGB(0, 0, 255)</span>
+    <span class="comment">#my.pixel.fadeToRandomHSB(100, 180, 90)</span>
+    <span class="comment">#my.pixel.playLightScript(1, 0, 0)</span>
+    <span class="comment">#my.pixel.stopScript()</span>
+    <span class="comment">#my.pixel.setFadeSpeed(50)</span>
+    <span class="comment">#my.pixel.setTimeAdjust(50)</span>
 
-    # For read commands you get (err, data) passed back to the callback,
-    # data contains the read data buffer, in case of Sync call (no callback)
-    # you get a regular return with the data buffer.
+    <span class="comment"># For read commands you get (err, data) passed back to the callback,</span>
+    <span class="comment"># data contains the read data buffer, in case of Sync call (no callback)</span>
+    <span class="comment"># you get a regular return with the data buffer.</span>
     color = my.pixel.getRGBColor()
     console.log(color)
 
-    # Example getting the color usinc async call and a callback
+    <span class="comment"># Example getting the color usinc async call and a callback</span>
     my.pixel.getRGBColor((err, data) -&gt;
-      console.log(data) unless err?
+      console.log(data) <span class="keyword">unless</span> err?
     )
 </pre>
               
