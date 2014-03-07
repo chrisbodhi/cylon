@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Cylon.JS code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Cylon.JS Example - Sales Force</title>
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script type="text/javascript">
+
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46433484-2', {"cookieDomain":"cylonjs.com"});
+
+
+
+
+
+
+
+
+
+
+
+   ga('send', 'pageview');
+
+
+</script></head>
+<body>
+    
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="app-logo">
+              <a href="/">Cylon</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main"></div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
+            
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: Sales Force</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="documentation">
+              <h1 id="sales-force">Sales Force</h1>
+              
+              <p>First, let's import Cylon:</p>
+              
+              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+</pre>
+              
+              <p>Now that we have Cylon imported, we can start defining our robot</p>
+              
+              <pre class="CodeRay"><span class="constant">Cylon</span>.robot
+</pre>
+              
+              <p>Let's define the connections and devices:</p>
+              
+              <pre class="CodeRay">  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sfcon</span><span class="delimiter">'</span></span>
+    <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">force</span><span class="delimiter">'</span></span>
+    <span class="key">sfuser</span>: process.env.SF_USERNAME
+    <span class="key">sfpass</span>: process.env.SF_SECURITY_TOKEN
+    <span class="key">orgCreds</span>:
+      <span class="key">clientId</span>: process.env.SF_CLIENT_ID
+      <span class="key">clientSecret</span>: process.env.SF_CLIENT_SECRET
+      <span class="key">redirectUri</span>: <span class="string"><span class="delimiter">'</span><span class="content">http://localhost:3000/oauth/_callback</span><span class="delimiter">'</span></span>
+
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">salesforce</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">force</span><span class="delimiter">'</span></span> }
+</pre>
+              
+              <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
+              tell it what work we want to do:</p>
+              
+              <pre class="CodeRay">  <span class="key">work</span>: (me) -&gt;
+    me.salesforce.on <span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, () -&gt;
+      me.salesforce.subscribe <span class="string"><span class="delimiter">'</span><span class="content">/topic/SpheroMsgOutbound</span><span class="delimiter">'</span></span>, (data) -&gt;
+        msg = <span class="string"><span class="delimiter">"</span><span class="content">Sphero: </span><span class="inline"><span class="inline-delimiter">#{</span>data.sobject.Sphero_Name__c<span class="inline-delimiter">}</span></span><span class="content">,</span><span class="delimiter">"</span></span>
+        msg += <span class="string"><span class="delimiter">"</span><span class="content">Bucks: </span><span class="inline"><span class="inline-delimiter">#{</span>data.sobject.Bucks__c<span class="inline-delimiter">}</span></span><span class="content">,</span><span class="delimiter">"</span></span>
+        msg += <span class="string"><span class="delimiter">"</span><span class="content">SM_Id: </span><span class="inline"><span class="inline-delimiter">#{</span>data.sobject.Id<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+
+        console.log msg
+
+    i = <span class="integer">0</span>
+
+    every <span class="integer">2</span>.seconds(), () -&gt;
+      data = <span class="constant">JSON</span>.stringify { <span class="key">spheroName</span>: <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>me.name<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>, <span class="key">bucks</span>: <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>i<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span> }
+      me.salesforce.push <span class="string"><span class="delimiter">'</span><span class="content">SpheroController</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">POST</span><span class="delimiter">'</span></span>, data
+</pre>
+              
+              <p>Now that our robot knows what work to do, and the work it will be doing that
+              hardware with, we can start it:</p>
+              
+              <pre class="CodeRay">.start()
+</pre>
+            </div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2014
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

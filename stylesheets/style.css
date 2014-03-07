@@ -2825,3 +2825,6 @@ a:hover, a:focus {
 /* line 14, /Users/stewart/dev/cylon/source/stylesheets/style.css.scss */
 .content .documentation .api img {
   width: 100%; }
+/* line 20, /Users/stewart/dev/cylon/source/stylesheets/style.css.scss */
+.content .documentation .examples table tbody tr td:first-child, .content .documentation .examples table thead tr th:first-child {
+  width: 580px; }
