@@ -116,6 +116,60 @@ Cylon.robot({
 
 .start()
 </pre>
+              </section><section class="public-methods" id="PublicMethods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="commandcommandname-args-callback">command(commandName, args, callback)</h2>
+                  
+                  <p>Calls a function on the Spark Core via the API.</p>
+                  
+                  <h5 id="params">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>commandName</strong> - string name of the function to call on the Spark</li>
+                    <li>
+<strong>args</strong> - array of arguments to pass to the function call</li>
+                    <li>
+<strong>callback</strong> - optional, callback to be triggered with the response_value from
+                  Spark's API</li>
+                  </ul>
+<h5 id="returns">Returns</h5>
+                  
+                  <p><code>null</code></p>
+                  
+                  <h2 id="variablevariablename-callback">variable(variableName, callback)</h2>
+                  
+                  <p>Requests the value of a variable from the Spark Core via the API</p>
+                  
+                  <h5 id="params-1">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>variableName</strong> - name of the variable to request from the Spark Core</li>
+                    <li>
+<strong>callback</strong> - callback to be triggered with the value from the Spark Core</li>
+                  </ul>
+<h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>null</code></p>
+                  
+                  <h2 id="listenforeventsevents">listenForEvents(events)</h2>
+                  
+                  <p>Listens to Server-Sent Events coming from the Spark Core, and emits the same
+                  events.</p>
+                  
+                  <h5 id="params-2">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>events</strong> - array of events to add listeners for</li>
+                  </ul>
+<h5 id="returns-2">Returns</h5>
+                  
+                  <p><code>null</code></p>
+                </div>
+                <br><strong>Note:</strong> In addition to the above methods, the Spark adaptor supports the full GPIO pin interface.
               </section><section class="drivers" id="Drivers"><h2>Drivers</h2>
                 <p>Available drivers for the spark platform are listed below, the drivers contain detailed documentation and examples of what kinds of physical computing (using Cylon.js and Node.js) you can be doing:</p>
                 <div class="hardware">
