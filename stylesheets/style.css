@@ -1670,15 +1670,41 @@ a:hover, a:focus {
       width: 100%; }
 
 /* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+.homepage_platform {
+  list-style: none !important;
+  margin: 0; }
+  /* line 4, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+  .homepage_platform li {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    text-align: center; }
+    /* line 9, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+    .homepage_platform li .title {
+      background: #971542;
+      padding: 10px;
+      color: #fafaf1; }
+      /* line 13, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+      .homepage_platform li .title a {
+        color: #fafaf1; }
+    /* line 17, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+    .homepage_platform li .repo {
+      background: #b39f89;
+      padding: 10px; }
+      /* line 20, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+      .homepage_platform li .repo a {
+        color: #fafaf1; }
+
+/* line 27, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
 .hero {
   margin: 15px 0 0 0;
   background: #580a25;
   padding: 25px 0; }
   @media only screen and (max-width: 767px) {
-    /* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+    /* line 27, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
     .hero {
       margin-top: -8px; } }
-  /* line 9, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+  /* line 35, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
   .hero .title {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -1690,20 +1716,20 @@ a:hover, a:focus {
     opacity: 0.94;
     margin: 0; }
     @media only screen and (max-width: 767px) {
-      /* line 9, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+      /* line 35, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
       .hero .title {
         font-size: 23px;
         line-height: 27px;
         padding: 0; }
-        /* line 20, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+        /* line 46, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
         .hero .title br {
           display: none; } }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 9, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+      /* line 35, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
       .hero .title {
         font-size: 33px;
         line-height: 42px; } }
-  /* line 30, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+  /* line 56, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
   .hero .subtitle {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -1715,61 +1741,61 @@ a:hover, a:focus {
     line-height: 36px;
     margin-top: 3px; }
     @media only screen and (max-width: 767px) {
-      /* line 30, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+      /* line 56, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
       .hero .subtitle {
         font-size: 18px;
         line-height: 22px;
         margin-top: 4px;
         padding: 0; } }
 
-/* line 49, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+/* line 75, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
 .social {
   line-height: 0;
   padding: 10px 0;
   background: #fdfcf5; }
-  /* line 53, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+  /* line 79, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
   .social .twitter-follow-button {
     vertical-align: top; }
-  /* line 56, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+  /* line 82, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
   .social .splitter {
     display: inline-block;
     height: 21px; }
   @media only screen and (max-width: 767px) {
-    /* line 61, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+    /* line 87, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
     .social .splitter {
       display: block;
       margin-bottom: 5px; } }
 
-/* line 68, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+/* line 94, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
 .cta, .hero a.cta {
   padding: 10px 20px;
   display: inline-block;
   margin: 17px 0 0 0;
   font-size: 19px;
   font-weight: bold; }
-  /* line 74, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+  /* line 100, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
   .cta, .hero a.cta, .cta:visited, .hero a.cta:visited, .cta:active, .hero a.cta:active {
     background: #c51f3c;
     color: #fffbda; }
-  /* line 78, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+  /* line 104, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
   .cta:hover, .hero a.cta:hover, .cta:focus, .hero a.cta:focus {
     background: #a7011e;
     color: white; }
   @media only screen and (max-width: 767px) {
-    /* line 68, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+    /* line 94, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
     .cta, .hero a.cta {
       font-size: 16px;
       padding: 8px 15px; } }
 
-/* line 94, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+/* line 120, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
 .catcher {
   margin: 0 0 38px 0;
   background: #fdfcf5;
   padding: 20px; }
-  /* line 98, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+  /* line 124, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
   .catcher .phrase {
     margin: 0; }
-  /* line 101, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
+  /* line 127, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_home.scss */
   .catcher .cta, .catcher .hero a.cta, .hero .catcher a.cta {
     margin-top: 8px; }
 
@@ -2828,3 +2854,11 @@ a:hover, a:focus {
 /* line 20, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/style.css.scss */
 .content .documentation .examples table tbody tr td:first-child, .content .documentation .examples table thead tr th:first-child {
   width: 580px; }
+
+/* line 31, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/style.css.scss */
+.makerland ul li p {
+  font-size: 16pt; }
+
+/* line 38, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/style.css.scss */
+.makerland-hide {
+  display: none; }

@@ -65,28 +65,100 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section><h2>Installation instructions</h2>
-                <p>
-                  You will need
-                  <a href="http://nodejs.org/download/">node.js</a>
-                  as well as satisfying the dependencies listed
-                  <a href="https://github.com/TooTallNate/node-gyp#installation">here</a>
-                </p>
-                <p>
-                  Once you have the required dependencies met, you can install the required node modules with
-                  </p>
-<p><code>$ npm install cylon cylon-gpio cylon-i2c cylon-firmata cylon-sphero cylon-leapmotion</code></p>
-                
-                <p>
-                  Install the
-                  <a href="https://www.leapmotion.com/setup">leap motion</a>
-                  software (and SDK too if you want, but the SDK is not needed for cylon.js)
-                </p>
-                <h2>Arduino blink</h2>
+              <section class="makerland"><h2>Installation</h2>
+                <ul>
+<li>
+                    <p>
+                      First, install
+                      <a href="http://nodejs.org/download/">Node.js</a>
+                    </p>
+                    <p>
+                      If you already have Node.js installed, you can skip to the next step.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Now, make sure you have all the dependencies listed
+                      <a href="https://github.com/TooTallNate/node-gyp#installation">here.</a>
+                    </p>
+                    <p>
+                      If you have already installed node-serialport, then you already have this, and can skip to the next step.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Next up, install Cylon.js globally, so you can make use of the CLI commands it provides:
+                      </p>
+<pre class="CodeRay">$ npm install -g cylon
+</pre>
+                    
+                    <p>
+                      Once that's finished, you should be able to check if it's working by
+                      opening another terminal window and entering this command, which should
+                      give you a similar result:
+                      </p>
+<pre class="CodeRay">$ which cylon
+/usr/local/bin/cylon
+</pre>
+                    
+                  </li>
+                  <li>
+                    <p>
+                      With that done, install the Cylon.js node modules into your working directory:
+                      </p>
+<pre class="CodeRay">$ npm install cylon cylon-gpio cylon-i2c cylon-firmata cylon-sphero cylon-leapmotion
+</pre>
+                    
+                  </li>
+                  <li>
+                    <p>
+                      Install the
+                      <a href="https://www.leapmotion.com/setup">Leap Motion</a>
+                      software.
+                    </p>
+                  </li>
+                  <li>
+                    <p>Install the Firmata software onto your Arduino board as follows:</p>
+                    <ul>
+<li>
+                        Use
+                        <code>cylon scan serial</code>
+                        to find your connection info and serial port address:
+                        <pre class="CodeRay">  $ cylon scan serial
+</pre>
+                      </li>
+                      <li>
+                        Use
+                        <code>cylon firmata install</code>
+                        to install
+                        <code>avrdude</code>
+                        , which will let you upload Firmata to the Arduino.
+                        <pre class="CodeRay">  $ cylon firmata install
+</pre>
+                      </li>
+                      <li>
+                        Once
+                        <code>avrdude</code>
+                        is installed, we can upload the Firmata protocol to the Arduino with
+                        <code>cylon firmata upload</code>
+                        . Use the Arduino serial port you found when running
+                        <code>cylon scan serial</code>
+                        . By default, it will attempt to upload to
+                        <code>/dev/ttyACM0</code>
+                        .
+                        <pre class="CodeRay">  $ cylon firmata upload /dev/ttyACM0
+</pre>
+                      </li>
+                    </ul>
+</li>
+                </ul>
+<h2>Test Your Install - Arduino Blink</h2>
+                <p>You can now test your installation. Plug in your Arduino, and run the following code, that makes the built-in LED on your Arduino turn on/off every second:</p>
                 <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
+  <span class="comment">// change the port below to match whatever your Arduino is actually plugged into</span>
   <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
   <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>},
 
@@ -95,18 +167,25 @@ Cylon.robot({
   }
 }).start();
 </pre>
-                <h2>Makey button</h2>
+                <p>Please note that you might need to change the value for port.</p>
+                <p>
+                  Use the same port you used earlier when uploading Firmata to your Arduino,
+                  or find it again with
+                  <code>cylon scan serial</code>
+                  .
+                </p>
+              </section><section class="makerland-hide"><h2>Makey button</h2>
                 <img alt="" src="/documentation/drivers/breadboards/gpio/makey_button_bb.png" style="width:50%"><h3>Javascript</h3>
                 <pre class="CodeRay"><span class="comment">//makey.js</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
- 
+
 Cylon.robot({
   <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
   <span class="key">devices</span>: [
     {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>},
     { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">makey</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">makey-button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span> }
   ],
- 
+
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
     my.makey.on(<span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
       my.led.toggle();
