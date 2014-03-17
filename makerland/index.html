@@ -89,7 +89,7 @@
                     <p>
                       Next up, install Cylon.js globally, so you can make use of the CLI commands it provides:
                       </p>
-<pre class="CodeRay">$ npm install -g cylon
+<pre class="CodeRay">$ npm install -g cylon cylon-gpio cylon-i2c cylon-firmata cylon-sphero cylon-leapmotion
 </pre>
                     
                     <p>
@@ -104,63 +104,22 @@
                   </li>
                   <li>
                     <p>
-                      With that done, install the Cylon.js node modules into your working directory:
-                      </p>
-<pre class="CodeRay">$ npm install cylon cylon-gpio cylon-i2c cylon-firmata cylon-sphero cylon-leapmotion
-</pre>
-                    
-                  </li>
-                  <li>
-                    <p>
-                      Install the
+                      Finally, install the
                       <a href="https://www.leapmotion.com/setup">Leap Motion</a>
                       software.
                     </p>
                   </li>
-                  <li>
-                    <p>Install the Firmata software onto your Arduino board as follows:</p>
-                    <ul>
-<li>
-                        Use
-                        <code>cylon scan serial</code>
-                        to find your connection info and serial port address:
-                        <pre class="CodeRay">  $ cylon scan serial
-</pre>
-                      </li>
-                      <li>
-                        Use
-                        <code>cylon firmata install</code>
-                        to install
-                        <code>avrdude</code>
-                        , which will let you upload Firmata to the Arduino.
-                        <pre class="CodeRay">  $ cylon firmata install
-</pre>
-                      </li>
-                      <li>
-                        Once
-                        <code>avrdude</code>
-                        is installed, we can upload the Firmata protocol to the Arduino with
-                        <code>cylon firmata upload</code>
-                        . Use the Arduino serial port you found when running
-                        <code>cylon scan serial</code>
-                        . By default, it will attempt to upload to
-                        <code>/dev/ttyACM0</code>
-                        .
-                        <pre class="CodeRay">  $ cylon firmata upload /dev/ttyACM0
-</pre>
-                      </li>
-                    </ul>
-</li>
                 </ul>
 <h2>Test Your Install - Arduino Blink</h2>
                 <p>You can now test your installation. Plug in your Arduino, and run the following code, that makes the built-in LED on your Arduino turn on/off every second:</p>
                 <h3>JavaScript</h3>
-                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+                <pre class="CodeRay"><span class="comment">//blink.js</span>
+<span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="comment">// change the port below to match whatever your Arduino is actually plugged into</span>
   <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
-  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>},
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span> },
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
     every((<span class="integer">1</span>).seconds(), <span class="keyword">function</span>() {my.led.toggle()});
@@ -169,12 +128,19 @@ Cylon.robot({
 </pre>
                 <p>Please note that you might need to change the value for port.</p>
                 <p>
-                  Use the same port you used earlier when uploading Firmata to your Arduino,
-                  or find it again with
+                  Use
                   <code>cylon scan serial</code>
-                  .
+                  to find your connection info and serial port address:
+                  </p>
+<pre class="CodeRay">  $ cylon scan serial
+</pre>
+                
+                <h2>Connect To Sphero</h2>
+                <p>
+                  Connect to your Sphero using Bluetooth. Here are instructions on
+                  <a href="https://github.com/hybridgroup/cylon-sphero#how-to-connect">how to connect</a>
                 </p>
-              </section><section class="makerland-hide"><h2>Makey button</h2>
+              </section><section class="makerland"><h2>Makey button</h2>
                 <img alt="" src="/documentation/drivers/breadboards/gpio/makey_button_bb.png" style="width:50%"><h3>Javascript</h3>
                 <pre class="CodeRay"><span class="comment">//makey.js</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
@@ -182,7 +148,7 @@ Cylon.robot({
 Cylon.robot({
   <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
   <span class="key">devices</span>: [
-    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>},
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span> },
     { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">makey</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">makey-button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span> }
   ],
 
@@ -209,7 +175,85 @@ Cylon.robot({
   }
 }).start();
 </pre>
-                <h2>Leap</h2>
+                <h2>Sphero Makey Button</h2>
+                <h3>Javascript</h3>
+                <pre class="CodeRay"><span class="comment">//sphero_makey_button.js</span>
+<span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+<span class="keyword">var</span> time = <span class="integer">0</span>;
+<span class="keyword">var</span> calibration = <span class="predefined-constant">false</span>;
+ 
+ 
+Cylon.robot({
+  <span class="key">connections</span>: [
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span> }
+  ],
+  <span class="key">devices</span>: [
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">forward</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">makey-button</span><span class="delimiter">'</span></span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">back</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">makey-button</span><span class="delimiter">'</span></span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">left</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">makey-button</span><span class="delimiter">'</span></span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">4</span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">right</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">makey-button</span><span class="delimiter">'</span></span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">5</span> }
+  ],
+  <span class="key">checkCalibration</span>: (<span class="keyword">function</span>(_this) {
+    <span class="keyword">return</span> <span class="keyword">function</span>(me) {
+      <span class="keyword">if</span> (calibration === <span class="predefined-constant">true</span>) {
+        me.sphero.finishCalibration();
+        calibration = <span class="predefined-constant">false</span>;
+      }
+    };
+  })(<span class="local-variable">this</span>),
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    my.checkCalibration(my);
+    my.sphero.setBackLED(<span class="integer">255</span>);
+ 
+    my.forward.on(<span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+      console.log(<span class="string"><span class="delimiter">"</span><span class="content">forward</span><span class="delimiter">"</span></span>);
+      my.checkCalibration(my);
+      my.sphero.roll(<span class="integer">90</span>, <span class="integer">0</span>);
+    });
+    my.forward.on(<span class="string"><span class="delimiter">'</span><span class="content">release</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+      my.sphero.stop();
+    });
+ 
+    my.back.on(<span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+      console.log(<span class="string"><span class="delimiter">"</span><span class="content">back</span><span class="delimiter">"</span></span>);
+      my.checkCalibration(my);
+      my.sphero.roll(<span class="integer">90</span>, <span class="integer">180</span>);
+    });
+    my.back.on(<span class="string"><span class="delimiter">'</span><span class="content">release</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+      my.sphero.stop();
+    });
+ 
+    my.right.on(<span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+      console.log(<span class="string"><span class="delimiter">"</span><span class="content">right</span><span class="delimiter">"</span></span>);
+      <span class="keyword">var</span> t = Date.now();
+      <span class="keyword">if</span> ((t - time) &lt; <span class="integer">400</span> ) {
+        console.log(<span class="string"><span class="delimiter">"</span><span class="content">Calibrating</span><span class="delimiter">"</span></span>);
+        my.sphero.startCalibration();
+        calibration = <span class="predefined-constant">true</span>;
+      } <span class="keyword">else</span> {
+        my.checkCalibration(my);
+        my.sphero.roll(<span class="integer">90</span>, <span class="integer">90</span>);
+      }
+      time = t;
+    });
+    my.right.on(<span class="string"><span class="delimiter">'</span><span class="content">release</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+      my.sphero.stop();
+    });
+ 
+    my.left.on(<span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+      console.log(<span class="string"><span class="delimiter">"</span><span class="content">left</span><span class="delimiter">"</span></span>);
+      my.checkCalibration(my);
+      my.sphero.roll(<span class="integer">90</span>, <span class="integer">270</span>);
+    });
+    my.left.on(<span class="string"><span class="delimiter">'</span><span class="content">release</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+      my.sphero.stop();
+    });
+  }
+}).start();
+</pre>
+                <h2>Leap Motion</h2>
                 <h3>Javascript</h3>
                 <pre class="CodeRay"><span class="comment">//leap.js</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
@@ -245,7 +289,7 @@ Cylon.robot({
   }
 }).start();
 </pre>
-                <h2>Leap sphero</h2>
+                <h2>Leap Motion Sphero</h2>
                 <h3>Javascript</h3>
                 <pre class="CodeRay"><span class="comment">//leap_sphero.js</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
@@ -257,7 +301,7 @@ Cylon.robot({
   ],
   <span class="key">devices</span>: [
     { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span> },
-    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>}
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> }
   ],
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
     my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">hand</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(hand) {
