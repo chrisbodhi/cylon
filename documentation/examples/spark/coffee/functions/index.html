@@ -7,7 +7,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta content="A Cylon.JS code example" name="description">
 <meta content="The Hybrid Group" name="author">
-<title>Cylon.JS Example - Spark - Blink</title>
+<title>Cylon.JS Example - Spark Core - Functions</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
@@ -58,47 +58,59 @@
 </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Example: Spark - Blink</h1>
+          <h1 class="title">Example: Spark Core - Functions</h1>
         </div>
       </div>
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <h1 id="spark---blink">Spark - Blink</h1>
+              <h1 id="spark-core---functions">Spark Core - Functions</h1>
               
-              <p>For this example, we're going to connect to a Spark Core and make the LED on
-              pin D7 blink on a 1-second interval. Before we start, make sure you've got the
-              <code>cylon-spark</code> module installed.</p>
+              <p>In this example, we're going to tell the Spark Core to run a function, and tell
+              us what it returns. To do this, we'll need to load some custom firmware onto the
+              Spark. You can do this via Spark's <a href="https://spark.io/build">Built tool</a>, or
+              using the <code>cylon spark upload</code> command that comes with cylon-spark.</p>
               
-              <p>First, let's make sure to load the Cylon module:</p>
+              <p>For more info on the <code>cylon spark upload</code> command, please see the <code>cylon-spark</code>
+              README: <a href="">https://github.com/hybridgroup/cylon-spark#upload</a></p>
+              
+              <p>Either way, upload <a href="https://github.com/hybridgroup/cylon-spark/blob/master/examples/functions/functions.cpp">this script</a> to your Spark Core before you get
+              started.</p>
+              
+              <p>To begin, let's load up Cylon:</p>
               
               <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 </pre>
               
-              <p>After we've got that done, we can start defining our robot:</p>
+              <p>With that done, we can begin to setup our robot:</p>
               
               <pre class="CodeRay"><span class="constant">Cylon</span>.robot
 </pre>
               
-              <p>We'll have a singular connection to a Spark Core, using the
-              previously-mentioned <code>cylon-spark</code> module. We'll also have one device, the LED
-              on pin D7.</p>
+              <p>Our robot has one connection, which we'll call <code>spark</code>. It uses the Spark
+              adaptor, and has our Spark access token and the device id from our core:</p>
               
               <pre class="CodeRay">  <span class="key">connection</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">spark</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">spark</span><span class="delimiter">'</span></span>, <span class="key">deviceId</span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>, <span class="key">accessToken</span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>
-
-  <span class="key">device</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="string"><span class="delimiter">'</span><span class="content">D7</span><span class="delimiter">'</span></span>
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">spark</span><span class="delimiter">'</span></span>
+    <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">spark</span><span class="delimiter">'</span></span>
+    <span class="key">accessToken</span>: <span class="string"><span class="delimiter">'</span><span class="content">[YOUR_ACCESS_TOKEN]</span><span class="delimiter">'</span></span>
+    <span class="key">deviceId</span>: <span class="string"><span class="delimiter">'</span><span class="content">[YOUR_DEVICE_ID]</span><span class="delimiter">'</span></span>
 </pre>
               
-              <p>Those are all the components for our robot, so next we'll define the work. All
-              we're going to do for this example is tell the LED to toggle every second.</p>
+              <p>For our robot's work, we're going to tell it to execute the <code>fortyTwo</code> function
+              on our Spark every five seconds, and print the return value the function returns.</p>
               
               <pre class="CodeRay">  <span class="key">work</span>: (my) -&gt;
-    every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
+    every <span class="integer">5</span>.seconds(), -&gt;
+      my.spark.command <span class="string"><span class="delimiter">'</span><span class="content">fortyTwo</span><span class="delimiter">'</span></span>, [], (err, data) -&gt;
+        <span class="keyword">if</span> err
+          console.log <span class="string"><span class="delimiter">"</span><span class="content">An error occured!</span><span class="delimiter">"</span></span>, err
+        <span class="keyword">else</span>
+          console.log <span class="string"><span class="delimiter">"</span><span class="content">The magic number is:</span><span class="delimiter">"</span></span>, data
 </pre>
               
-              <p>And with all those pieces in place, we can tell the robot to get started:</p>
+              <p>With our connection to the Spark and work defined, all that's left is to tell
+              the robot to start:</p>
               
               <pre class="CodeRay">.start()
 </pre>
