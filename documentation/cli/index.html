@@ -124,6 +124,17 @@ Options:
                   If you have only installed cylon, the list of available commands is the one printed in the section above,
                   let's review them one by one.
                 </p>
+                <h3>cylon generate &lt;name&gt;</h3>
+                <h4>Description</h4>
+                <p>
+                  Generates a wireframe for a new Cylon.js adaptor (adaptor, driver, etc).
+                  This way, it's easy to add Cylon.js support for new devices. Just create a
+                  new adaptor using this CLI command, and start adding your own adaptor code.
+                </p>
+                <pre class="CodeRay">$ cylon generate octobot
+Creating cylon-octobot adaptor.
+Compiling templates.
+</pre>
                 <h3>cylon scan &lt;type&gt;</h3>
                 <h4>Description</h4>
                 <p>
@@ -131,7 +142,6 @@ Options:
                   The available options for the type param are `serial`, `bluetooth` or `usb`.
                 </p>
                 <pre class="CodeRay">$ cylon scan usb
-$ ./node_modules/cylon/bin/cylon scan usb
 Bus 002 Device 002: ID 8087:8000 Intel Corp.
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
@@ -285,8 +295,7 @@ cylon littlewire argument not recognized, try:
                 <h4>cylon littlewire upload</h4>
                 <p>
                   <b>Description:</b>
-                  Uploads littlewire to the digispark (also installs the necessary udev-rules, only in linux systems).
-                  <b>Notes:</b>
+                  Uploads littlewire to the digispark (also installs the necessary udev-rules, only in linux systems).<br><b>Notes:</b>
                   Do not connect the digispark until prompted to do so.
                 </p>
                 <pre class="CodeRay">$ cylon littlewire upload
@@ -319,11 +328,25 @@ writing: 100% complete
                 </p>
                 <pre class="CodeRay">$ cylon littlewire set-udev-rules
 </pre>
-                <h2>Uploading cylon-spark</h2>
-                <h3>Uploading Code To Your Spark Core Using the Cylon CLI</h3>
-                <pre class="CodeRay">$ cylon spark upload [access_token] [device_id] new_firmware.cpp
+                <h2>cylon-spark CLI commands</h2>
+                <h3>cylon spark &lt;subcommand&gt; [arguments]</h3>
+                <p>
+                  Uploading Code To Your Spark Core Using the Cylon CLI is pretty straight forward, we have an upload command that makes
+                  pushing code to your spark a breeze.
+                </p>
+                <h4>cylon spark upload &lt;access_token&gt; &lt;device_id&gt; &lt;file_name.cpp&gt;</h4>
+                <p>
+                  <b>Description:</b>
+                  lets you upload new source code directly to your Spark Core.<br><b>Notes:</b>
+                  </p>
+<ul>
+<li>
+<code>access_token:</code> In the Build tool, click on the Settings cog in the bottom-left corner to find your access token.</li>
+                    <li>
+<code>device_id:</code> After you have your Spark Core registered to your account through the Tinker app, click on the Cores section (just above the Settings cog) on the Build tool. Then, click on the arrow next to your core's name to get its device ID.</li>
+                  </ul>
+<pre class="CodeRay">$ cylon spark upload [access_token] [device_id] new_firmware.cpp
 </pre>
-                <p>The <code>cylon spark upload</code> command can help if you want to upload new source code directly to your Spark Core.</p>
                 <p>
                   For more information on how to program your Spark, please see
                   <a target="blank" href="http://docs.spark.io/#/examples">Spark's examples</a>
@@ -332,13 +355,7 @@ writing: 100% complete
                   You'll need your <code>access_token</code> and <code>device_id</code> to push new software to your Spark, and you can get both of these from Spark's
                   <a target="blank" href="https://spark.io/build">Build tool</a>
                 </p>
-                <ul>
-<li>
-<code>access_token:</code> In the Build tool, click on the Settings cog in the bottom-left corner to find your access token.</li>
-                  <li>
-<code>device_id:</code> After you have your Spark Core registered to your account through the Tinker app, click on the Cores section (just above the Settings cog) on the Build tool. Then, click on the arrow next to your core's name to get its device ID.</li>
-                </ul>
-</div>
+              </div>
             </div>
           </section>
 </div>
