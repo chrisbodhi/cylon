@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Spark with Cylon.js</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascript/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -64,7 +64,7 @@
 </h2>
         </div>
       </div>
-      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+      <section class="subnav-drivers" id="mainsubnav"><div class="container">
           <nav><a href="#HowToInstall">How To Install</a>
             <a href="#HowToUse">How To Use</a>
             <a href="#HowToConnect">How To Connect</a>
@@ -75,7 +75,7 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/spark.jpg"><div class="info_intro">
+              <section class="intro"><img class="display" src="/images/devices/spark.jpg"><div class="info-intro">
                   <p>The Spark Core contains a Wi-Fi connected microcontroller. Once it connects to a Wi-Fi network, it automatically connects with a central server (the "Spark Cloud") and stays connected so it can be controlled from external systems, such as a Cylon.js program.</p>
                   <p>
                     For more info about the Spark platform go to
@@ -89,15 +89,15 @@
 </pre>
               </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <p>This small program lets you turn on or off a LED for every 1 sec.</p>
-                <h3>Javascript</h3>
+                <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">spark</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">spark</span><span class="delimiter">'</span></span>, <span class="key">accessToken</span>: <span class="string"><span class="delimiter">'</span><span class="content">XYZPDQ123</span><span class="delimiter">'</span></span>, <span class="key">deviceId</span>: <span class="string"><span class="delimiter">'</span><span class="content">123ABC456</span><span class="delimiter">'</span></span> },
-  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="string"><span class="delimiter">'</span><span class="content">D0</span><span class="delimiter">'</span></span>},
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="string"><span class="delimiter">'</span><span class="content">D7</span><span class="delimiter">'</span></span>},
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    every((<span class="integer">1</span>).second(), <span class="keyword">function</span>() {my.led.toggle()});
+    every((<span class="integer">3</span>).second(), <span class="keyword">function</span>() {my.led.toggle()});
   }
 }).start();
 </pre>
@@ -116,7 +116,7 @@ Cylon.robot({
 
 .start()
 </pre>
-              </section><section class="public-methods" id="PublicMethods"><div class="commands_api">
+              </section><section class="public-methods" id="PublicMethods"><div class="commands-api">
                   <h1 id="commands">Commands</h1>
                   
                   <h2 id="commandcommandname-args-callback">command(commandName, args, callback)</h2>
