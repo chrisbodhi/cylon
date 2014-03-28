@@ -52,13 +52,14 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Example: Beaglebone BlinkM</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon-beaglebone/tree/master/examples/blinkm" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
@@ -68,18 +69,18 @@
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
-  <span class="key">connection</span>: {
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">beaglebone</span><span class="delimiter">'</span></span>,
-    <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">beaglebone</span><span class="delimiter">'</span></span>
-  },
-  <span class="key">device</span>: {
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pixel</span><span class="delimiter">'</span></span>,
-    <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">blinkm</span><span class="delimiter">'</span></span>,
-    <span class="key">pin</span>: <span class="string"><span class="delimiter">'</span><span class="content">P9_20</span><span class="delimiter">'</span></span>
-  },
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">beaglebone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">beaglebone</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pixel</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">blinkm</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="string"><span class="delimiter">'</span><span class="content">P9_20</span><span class="delimiter">'</span></span> },
+
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    <span class="keyword">var</span> color;
     my.pixel.stopScript();
+
+    <span class="comment">// You can pass a callback to all blinkm functions as the last param,</span>
+    <span class="comment">// If you do the command would be executed asynchronously.</span>
+    <span class="comment">// For write operations you get an (err) param passed back,</span>
+    <span class="comment">// nucylondefined for success, and containing the error y any encountered.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Write BlimkM commands.</span>
     my.pixel.goToRGB(<span class="integer">255</span>, <span class="integer">0</span>, <span class="integer">0</span>);
     my.pixel.fadeToRGB(<span class="integer">0</span>, <span class="integer">255</span>, <span class="integer">0</span>);
     my.pixel.fadeToHSB(<span class="integer">100</span>, <span class="integer">180</span>, <span class="integer">90</span>);
@@ -89,14 +90,17 @@ Cylon.robot({
     my.pixel.stopScript();
     my.pixel.setFadeSpeed(<span class="integer">50</span>);
     my.pixel.setTimeAdjust(<span class="integer">50</span>);
-    color = my.pixel.getRGBColor();
-    <span class="keyword">if</span> (<span class="keyword">typeof</span> err === <span class="string"><span class="delimiter">"</span><span class="content">undefined</span><span class="delimiter">"</span></span> || err === <span class="predefined-constant">null</span>) {
-      console.log(color);
-    }
-    <span class="keyword">return</span> my.pixel.getRGBColor(<span class="keyword">function</span>(err, data) {
-      <span class="keyword">if</span> (err == <span class="predefined-constant">null</span>) {
-        <span class="keyword">return</span> console.log(data);
-      }
+
+    <span class="comment">// For read commands you get (err, data) passed back to the callback,</span>
+    <span class="comment">// data contains the read data buffer, in case of Sync call (no callback)</span>
+    <span class="comment">// you get a regular return.</span>
+    <span class="keyword">var</span> color = my.pixel.getRGBColor();
+
+    <span class="keyword">if</span> (<span class="keyword">typeof</span> err === <span class="string"><span class="delimiter">"</span><span class="content">undefined</span><span class="delimiter">"</span></span> || err === <span class="predefined-constant">null</span>) { console.log(color); }
+
+    <span class="comment">// Example getting the color using async call and a callback</span>
+    my.pixel.getRGBColor(<span class="keyword">function</span>(err, data) {
+      <span class="keyword">if</span> (err == <span class="predefined-constant">null</span>) { console.log(data); }
     });
   }
 }).start();

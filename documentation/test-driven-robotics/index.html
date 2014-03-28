@@ -52,7 +52,7 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -68,7 +68,6 @@
               <div class="test">
                 <p>Test-driven robotics is our name for applying the principles of test-driven development to hardware/software solutions. Cylon.js as an example of a modern robotics development framework has test-driven robotics built right in.</p>
                 <p>Here is an example using Mocha, Sinon, &amp; Chai:</p>
-                <h2>JavaScript</h2>
                 <pre class="CodeRay"><span class="string"><span class="delimiter">"</span><span class="content">use strict</span><span class="delimiter">"</span></span>;
 
 <span class="comment">// tell Cylon.js to stub connections to adaptors/devices</span>
@@ -118,57 +117,6 @@ describe(<span class="string"><span class="delimiter">"</span><span class="conte
 });
 
 robot.start();
-</pre>
-                <p>Here is the same example using CoffeeScript:</p>
-                <h2>CoffeeScript</h2>
-                <pre class="CodeRay"><span class="string"><span class="delimiter">"</span><span class="content">use strict</span><span class="delimiter">"</span></span>;
-
-<span class="comment"># tell Cylon.js to stub connections to adaptors/devices</span>
-process.env[<span class="string"><span class="delimiter">'</span><span class="content">CYLON_TEST</span><span class="delimiter">'</span></span>] = <span class="predefined-constant">true</span>
-
-<span class="comment"># setup tests</span>
-chai = require <span class="string"><span class="delimiter">"</span><span class="content">chai</span><span class="delimiter">"</span></span>
-sinon = require <span class="string"><span class="delimiter">"</span><span class="content">sinon</span><span class="delimiter">"</span></span>
-sinonChai = require <span class="string"><span class="delimiter">"</span><span class="content">sinon-chai</span><span class="delimiter">"</span></span>
-chai.should()
-chai.use(sinonChai)
-clock = sinon.useFakeTimers()
-
-<span class="comment"># load robot in test mode</span>
-<span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
-require <span class="string"><span class="delimiter">"</span><span class="content">./robot</span><span class="delimiter">"</span></span>
-
-describe <span class="string"><span class="delimiter">"</span><span class="content">robot</span><span class="delimiter">"</span></span>, -&gt;
-  robot = <span class="constant">Cylon</span>.findRobot(<span class="string"><span class="delimiter">"</span><span class="content">testor</span><span class="delimiter">"</span></span>)
-
-  it <span class="string"><span class="delimiter">"</span><span class="content">should have work</span><span class="delimiter">"</span></span>, -&gt;
-    robot.work.should.be.a <span class="string"><span class="delimiter">'</span><span class="content">function</span><span class="delimiter">'</span></span>
-
-  it <span class="string"><span class="delimiter">"</span><span class="content">should toggle the led after 1 second</span><span class="delimiter">"</span></span>, (done) -&gt;
-    led = robot.devices[<span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>]
-    toggle = sinon.stub(led, <span class="string"><span class="delimiter">'</span><span class="content">toggle</span><span class="delimiter">'</span></span>)
-    clock.tick(<span class="integer">1</span>.second())
-    toggle.should.have.been.called
-    done()
-</pre>
-                <p>to test the following robot code:</p>
-                <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
-
-<span class="comment"># Initialize the robot</span>
-robot = <span class="constant">Cylon</span>.robot 
-  <span class="key">connection</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
-
-  <span class="key">device</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>
-
-  <span class="key">work</span>: (my) -&gt;
-    <span class="comment"># we do our thing here</span>
-    every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
-
-  <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">testor</span><span class="delimiter">'</span></span>
-
-robot.start()
 </pre>
               </div>
             </div>

@@ -52,7 +52,7 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -108,12 +108,8 @@ npm install cylon-firmata
               <h3>Running your robot:</h3>
               <pre class="CodeRay">node robotfilename.js
 </pre>
-              <p>or</p>
-              <pre class="CodeRay">coffee robotfilename.coffee
-</pre>
             </section><section class="app-code"><h2>Cylon.js Code Examples</h2>
               <h3>Example: Hello</h3>
-              <h4>JavaScript</h4>
               <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -124,19 +120,8 @@ Cylon.robot({
   }
 }).start();
 </pre>
-              <h4>CoffeeScript</h4>
-              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
-
-<span class="constant">Cylon</span>.robot
-  <span class="key">work</span>: -&gt;
-    every <span class="integer">1</span>.second(), -&gt;
-      <span class="constant">Logger</span>.info(<span class="string"><span class="delimiter">"</span><span class="content">Hello, human!</span><span class="delimiter">"</span></span>)
-
-.start()
-</pre>
               <h3>Example: Arduino with LED and a button</h3>
               <p>To use this example, you must first run <code>npm install cylon-firmata</code></p>
-              <h4>JavaScript</h4>
               <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -149,27 +134,8 @@ Cylon.robot({
   }
 }).start();
 </pre>
-              <h4>CoffeeScript</h4>
-              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
-
-<span class="constant">Cylon</span>.robot
-  <span class="key">connection</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
-
-  <span class="key">devices</span>:
-    [
-      {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>},
-      {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span>}
-    ]
-
-  <span class="key">work</span>: (my) -&gt;
-    my.button.on <span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, -&gt; my.led.toggle()
-
-.start()
-</pre>
               <h3>Parrot ARDrone 2.0</h3>
               <p>To use this example, you must first run <code>npm install cylon-ardrone</code></p>
-              <h4>JavaScript</h4>
               <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -188,55 +154,31 @@ Cylon.robot({
   }
 }).start();
 </pre>
-              <h4>CoffeeScript</h4>
-              <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
-
-<span class="constant">Cylon</span>.robot
-  <span class="key">connection</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1</span><span class="delimiter">'</span></span>
-
-  <span class="key">device</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>
-
-  <span class="key">work</span>: (my) -&gt;
-    my.drone.takeoff()
-
-    after <span class="integer">10</span>.seconds(), -&gt;
-      my.drone.land()
-
-    after <span class="integer">15</span>.seconds(), -&gt;
-      my.drone.stop()
-
-.start()
-</pre>
             </section><h2>CLI</h2>
             <p>Cylon has a Command Line Interface (CLI) so you can access important features right from the command line.</p>
             <pre class="CodeRay">Usage: cylon [command] [options]
 
-Commands:
+  Commands: 
+     arduino [subcommand] [opts]
+        Install avrdude, and upload sketches to your Arduino
 
-  generate &lt;name&gt;        Generates a new adaptor
+     bluetooth [pair|unpair|connect]
+        Scan, pair, unpair bluetooth devices. Establishes serial to Bluetooth connection.
 
-Options:
+     crazyflie [subcommand] [opts]
+        Set udev rules for Crazyflie
 
-  -h, --help     output usage information
-  -V, --version  output the version number
-</pre>
-            <h2>Generator</h2>
-            <p>Want to integrate a hardware device we don't have Cylon support for yet? There's a generator for that!</p>
-            <p>You can easily generate a new skeleton Cylon adaptor to help you get started. Simply run the cylon generate command, and the generator will create a new directory with all of the files in place for your new adaptor module.</p>
-            <pre class="CodeRay">$ cylon generate awesome_device
-Creating cylon-awesome_device adaptor.
-Compiling templates.
+     digispark [subcommand]
+        Set udev rules, and upload the Littlewire protocol to your Digispark
 
-$ ls ./cylon-awesome_device
-Gruntfile.js
-LICENSE
-README.md
-dist/
-package.json
-src/
-test/
+     help
+        Prints help for using the Cylon-CLI commands.
+
+     scan [type]
+        Scans serial, Bluetooth, or USB for connected devices
+
+     spark upload [access_token] [device_id] [firmware_file]
+        Upload new firmare to your Spark Core
 </pre>
             <section class="contributing"><h2>Contributing</h2>
               <p>

@@ -52,7 +52,7 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -90,7 +90,6 @@
 </pre>
               </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <p>This small program causes an LED to blink.</p>
-                <h3>JavaScript</h3>
                 <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">..</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -109,21 +108,6 @@ Cylon.robot({
     });
   }
 }).start();
-</pre>
-                <h3>CoffeeScript</h3>
-                <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
-
-<span class="constant">Cylon</span>.robot
-  <span class="key">connection</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">raspi</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">raspi</span><span class="delimiter">'</span></span>
-
-  <span class="key">device</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">11</span>
-
-  <span class="key">work</span>: (my) -&gt;
-    every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
-
-.start()
 </pre>
               </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
                 <h3>Connecting to Raspberry Pi GPIO</h3>

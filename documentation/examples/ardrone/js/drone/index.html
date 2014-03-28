@@ -52,13 +52,14 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Example: Drone</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon-ardrone/tree/master/examples/drone" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
@@ -73,8 +74,8 @@ Cylon.robot({
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
     my.drone.takeoff();
-    after(<span class="integer">10</span>..seconds(), <span class="keyword">function</span>() { my.drone.land(); });
-    after(<span class="integer">15</span>..seconds(), <span class="keyword">function</span>() { my.drone.stop(); });
+    after((<span class="integer">10</span>).seconds(), my.drone.land);
+    after((<span class="integer">15</span>).seconds(), my.drone.stop);
   }
 }).start();
 </pre>

@@ -52,13 +52,14 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Example: Beaglebone Servo</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon-beaglebone/tree/master/examples/servo" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
@@ -72,17 +73,31 @@ Cylon.robot({
   <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="string"><span class="delimiter">'</span><span class="content">P9_14</span><span class="delimiter">'</span></span> },
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    <span class="keyword">var</span> angle, increment;
-    angle = <span class="integer">30</span>;
-    increment = <span class="integer">40</span>;
-    every(<span class="integer">1</span>..seconds(), <span class="keyword">function</span>() {
+    <span class="comment">// Be carefull with your servo angles or you might DAMAGE the servo!</span>
+    <span class="comment">// Cylon uses a 50hz/s (20ms period) frequency and a Duty Cycle</span>
+    <span class="comment">// of 0.5ms to 2.5ms to control the servo angle movement.</span>
+    <span class="comment">//</span>
+    <span class="comment">// This means:</span>
+    <span class="comment">// 1. 0.5ms == 0 degrees</span>
+    <span class="comment">// 2. 1.5ms == 90 degrees</span>
+    <span class="comment">// 3. 2.5ms == 180 degrees</span>
+    <span class="comment">// (It is usually safe to start with a 90 degree angle, 1.5ms duty</span>
+    <span class="comment">// cycle in most servos)</span>
+    <span class="comment">//</span>
+    <span class="comment">// Please review your servo datasheet to make sure of correct</span>
+    <span class="comment">// angle range and the Freq/MS Duty cycle it requires.</span>
+    <span class="comment">// If more servo support is needed leave us a comment, raise an</span>
+    <span class="comment">// issue or help us add more support.</span>
+
+    <span class="keyword">var</span> angle = <span class="integer">30</span>;
+    <span class="keyword">var</span> increment = <span class="integer">40</span>;
+
+    every((<span class="integer">1</span>).seconds(), <span class="keyword">function</span>() {
       angle += increment;
       my.servo.angle(angle);
-      console.log(<span class="string"><span class="delimiter">"</span><span class="content">Current Angle: </span><span class="delimiter">"</span></span> + (my.servo.currentAngle()));
+      console.log(<span class="string"><span class="delimiter">"</span><span class="content">Current Angle: </span><span class="delimiter">"</span></span> + my.servo.currentAngle());
 
-      <span class="keyword">if</span> ((angle === <span class="integer">30</span>) || (angle === <span class="integer">150</span>)) {
-        increment = -increment;
-      }
+      <span class="keyword">if</span> ((angle === <span class="integer">30</span>) || (angle === <span class="integer">150</span>)) { increment = -increment; }
     });
   }
 }).start();

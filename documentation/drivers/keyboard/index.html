@@ -52,7 +52,7 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -79,7 +79,6 @@
                 </div>
                 <div class="clear"></div>
               </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
-                <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -87,17 +86,8 @@ Cylon.robot({
   <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>}
 ...
 </pre>
-                <h3>CoffeeScript</h3>
-                <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
-
-<span class="constant">Cylon</span>.robot
-  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span> }
-  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span> }
-...
-</pre>
               </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <p>Example receiving button events from a generic joystick.</p>
-                <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -110,18 +100,6 @@ Cylon.robot({
     });
   }
 }).start();
-</pre>
-                <h3>CoffeeScript</h3>
-                <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
-
-<span class="constant">Cylon</span>.robot
-  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span> }
-  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span> }
-  <span class="key">work</span>: (my) -&gt;
-    my.keyboard.on <span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>, (key) -&gt;
-      console.log <span class="string"><span class="delimiter">"</span><span class="content">A PRESSED!</span><span class="delimiter">"</span></span>
-
-.start()
 </pre>
               </section><section class="public-methods"><div class="commands-api" id="Events">
                   <h1 id="events">Events</h1>

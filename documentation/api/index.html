@@ -52,7 +52,7 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -74,19 +74,11 @@
                 
                 <p>To run your script, use one of the following commands:</p>
                 
-                <h4 id="javascript">JavaScript</h4>
-                
                 <pre class="CodeRay">node robotfilename.js
-</pre>
-                
-                <h4 id="coffeescript">CoffeeScript</h4>
-                
-                <pre class="CodeRay">coffee robotfilename.coffee
 </pre>
                 
                 <p>Both of the following code examples will spin up an API server.</p>
                 
-                <h4 id="javascript-1">JavaScript</h4>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">..</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -100,19 +92,7 @@ Cylon.robot({
 Cylon.start();
 </pre>
                 
-                <h4 id="coffeescript-1">CoffeeScript</h4>
-                
-                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
-
-Cylon.robot
-  work: -&gt;
-    every <span class="integer">1</span>.second(), -&gt;
-      console.log <span class="string"><span class="delimiter">"</span><span class="content">Hello, human!</span><span class="delimiter">"</span></span>
-
-Cylon.start()
-</pre>
-                
-                <p><code>Cylon.start()</code> automatically starts up the API server.</p>
+                <p><code>Cylon.start();</code> automatically starts up the API server.</p>
                 
                 <h2 id="how-to-configure">How To Configure</h2>
                 

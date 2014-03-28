@@ -52,7 +52,7 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -79,7 +79,6 @@
                 </div>
                 <div class="clear"></div>
               </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
-                <h3>JavaScript</h3>
                 <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -95,18 +94,8 @@ Cylon.robot({
   }
 ...
 </pre>
-                <h3>CoffeeScript</h3>
-                <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
-
-<span class="constant">Cylon</span>.robot
-  <span class="key">name</span>: <span class="string"><span class="delimiter">"</span><span class="content">NewBot</span><span class="delimiter">"</span></span>
-  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">controller</span>: <span class="string"><span class="delimiter">'</span><span class="content">dualshock3</span><span class="delimiter">'</span></span> }
-  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">controller</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">dualshock3</span><span class="delimiter">'</span></span> }
-...
-</pre>
               </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <h3>Example receiving button events from Dualshock 3 joystick.</h3>
-                <h4>JavaScript</h4>
                 <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -141,56 +130,6 @@ Cylon.robot({
 });
 
 Cylon.start();
-</pre>
-                <h4>CoffeeScript</h4>
-                <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
-
-<span class="constant">Cylon</span>.robot
-  <span class="key">name</span>: <span class="string"><span class="delimiter">"</span><span class="content">NewBot</span><span class="delimiter">"</span></span>
-  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">joystick</span><span class="delimiter">'</span></span>, <span class="key">controller</span>: <span class="string"><span class="delimiter">'</span><span class="content">dualshock3</span><span class="delimiter">'</span></span> }
-  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">controller</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">dualshock3</span><span class="delimiter">'</span></span> }
-
-  <span class="key">work</span>: (my) -&gt;
-    button_states = [<span class="string"><span class="delimiter">"</span><span class="content">press</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">release</span><span class="delimiter">"</span></span>]
-
-    buttons = [
-      <span class="string"><span class="delimiter">"</span><span class="content">x</span><span class="delimiter">"</span></span>,
-      <span class="string"><span class="delimiter">"</span><span class="content">square</span><span class="delimiter">"</span></span>,
-      <span class="string"><span class="delimiter">"</span><span class="content">circle</span><span class="delimiter">"</span></span>,
-      <span class="string"><span class="delimiter">"</span><span class="content">triangle</span><span class="delimiter">"</span></span>,
-
-      <span class="string"><span class="delimiter">"</span><span class="content">l1</span><span class="delimiter">"</span></span>,
-      <span class="string"><span class="delimiter">"</span><span class="content">r1</span><span class="delimiter">"</span></span>,
-
-      <span class="string"><span class="delimiter">"</span><span class="content">l2</span><span class="delimiter">"</span></span>,
-      <span class="string"><span class="delimiter">"</span><span class="content">r2</span><span class="delimiter">"</span></span>,
-
-      <span class="string"><span class="delimiter">"</span><span class="content">left</span><span class="delimiter">"</span></span>,
-      <span class="string"><span class="delimiter">"</span><span class="content">right</span><span class="delimiter">"</span></span>,
-
-      <span class="string"><span class="delimiter">"</span><span class="content">select</span><span class="delimiter">"</span></span>,
-      <span class="string"><span class="delimiter">"</span><span class="content">start</span><span class="delimiter">"</span></span>,
-
-      <span class="string"><span class="delimiter">"</span><span class="content">dpad:left</span><span class="delimiter">"</span></span>,
-      <span class="string"><span class="delimiter">"</span><span class="content">dpad:right</span><span class="delimiter">"</span></span>,
-      <span class="string"><span class="delimiter">"</span><span class="content">dpad:up</span><span class="delimiter">"</span></span>,
-      <span class="string"><span class="delimiter">"</span><span class="content">dpad:down</span><span class="delimiter">"</span></span>,
-
-      <span class="string"><span class="delimiter">"</span><span class="content">psbutton</span><span class="delimiter">"</span></span>
-    ]
-
-    buttons.forEach (button) -&gt;
-      button_states.forEach (state) -&gt;
-        my.controller.on <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>button<span class="inline-delimiter">}</span></span><span class="content">:</span><span class="inline"><span class="inline-delimiter">#{</span>state<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>, -&gt;
-          console.log button, state
-
-    my.controller.on <span class="string"><span class="delimiter">"</span><span class="content">left:move</span><span class="delimiter">"</span></span>, (pos) -&gt;
-      console.log <span class="string"><span class="delimiter">"</span><span class="content">left:</span><span class="delimiter">"</span></span>, pos
-
-    my.controller.on <span class="string"><span class="delimiter">"</span><span class="content">right:move</span><span class="delimiter">"</span></span>, (pos) -&gt;
-      console.log <span class="string"><span class="delimiter">"</span><span class="content">right:</span><span class="delimiter">"</span></span>, pos
-
-<span class="constant">Cylon</span>.start()
 </pre>
               </section><section class="public-methods"><div class="commands-api" id="Commands">
                   <h1 id="commands">Commands</h1>

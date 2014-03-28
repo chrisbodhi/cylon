@@ -52,13 +52,14 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Example: Master</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon/tree/master/examples/master" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
@@ -67,32 +68,22 @@
               <div class="example">
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
-<span class="keyword">var</span> bots = [
-  { <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/cu.Sphero-RGB</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Huey</span><span class="delimiter">'</span></span> },
-  { <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/cu.Sphero-GRB</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Dewey</span><span class="delimiter">'</span></span> },
-  { <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/cu.Sphero-BRG</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Louie</span><span class="delimiter">'</span></span> }
-];
+<span class="keyword">var</span> bots = [ <span class="string"><span class="delimiter">'</span><span class="content">Huey</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Dewey</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Louie</span><span class="delimiter">'</span></span> ];
 
-<span class="keyword">var</span> SpheroRobot = (<span class="keyword">function</span>() {
-  <span class="keyword">function</span> <span class="function">SpheroRobot</span>() {}
+<span class="keyword">var</span> MinionBot = (<span class="keyword">function</span>() {
+  <span class="keyword">function</span> <span class="function">MinionBot</span>() {}
 
-  SpheroRobot.prototype.connection = { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> };
-
-  SpheroRobot.prototype.<span class="function">work</span> = <span class="keyword">function</span>(my) {
+  MinionBot.prototype.<span class="function">work</span> = <span class="keyword">function</span>(my) {
     console.log(<span class="string"><span class="delimiter">"</span><span class="content">Robot </span><span class="delimiter">"</span></span> + my.name + <span class="string"><span class="delimiter">"</span><span class="content"> is now working!</span><span class="delimiter">"</span></span>);
   };
 
-  <span class="keyword">return</span> SpheroRobot;
+  <span class="keyword">return</span> MinionBot;
 
 })();
 
 <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="integer">0</span>; i &lt; bots.length; i++) {
-  <span class="keyword">var</span> bot = bots[i];
-  <span class="keyword">var</span> robot = <span class="keyword">new</span> SpheroRobot;
-
-  robot.connection.port = bot.port;
-  robot.name = bot.name;
-
+  <span class="keyword">var</span> robot = <span class="keyword">new</span> MinionBot;
+  robot.name = bots[i];
   Cylon.robot(robot);
 }
 

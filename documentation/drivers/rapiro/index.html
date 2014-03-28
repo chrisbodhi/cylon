@@ -52,7 +52,7 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -82,8 +82,7 @@
                 <p>
                   Connecting to the Rapiro uses a simple serial port protocol. You will need to know which serial port the Rapiro's board is connected to.
                   </p>
-<h3>JavaScript</h3>
-                  <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+<pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
@@ -91,24 +90,12 @@ Cylon.robot({
   <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>},
 ...
 </pre>
-                  <h3>CoffeeScript</h3>
-                  <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
-
-<span class="constant">Cylon</span>.robot
-  <span class="key">connection</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
-
-  <span class="key">device</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>
-  ...
-</pre>
                 
               </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <p>
                   Example of a simple program that makes the Rapiro's LED blink.
                   </p>
-<h3>JavaScript</h3>
-                  <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+<pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span> },
@@ -126,25 +113,6 @@ Cylon.robot({
       }
     });
   }
-</pre>
-                  <h3>CoffeeScript</h3>
-                  <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
-
-<span class="constant">Cylon</span>.robot
-  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span> }
-  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>}
-
-  <span class="key">work</span>: (my) -&gt;
-    on = <span class="predefined-constant">false</span>
-    every <span class="integer">1</span>.second(), -&gt;
-      <span class="keyword">if</span> on is <span class="predefined-constant">true</span>
-        my.rapiro.led(<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>)
-        on = <span class="predefined-constant">false</span>
-      <span class="keyword">else</span>
-        my.rapiro.led(<span class="integer">255</span>, <span class="integer">0</span>, <span class="integer">0</span>)
-        on = <span class="predefined-constant">true</span>
-
-.start();
 </pre>
                 
               </section><section class="public-methods"><div class="commands-api" id="Commands">

@@ -52,13 +52,14 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Example: Display Camera</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon-opencv/tree/master/examples/display_camera" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
@@ -83,11 +84,30 @@ Cylon.robot({
     my.camera.once(<span class="string"><span class="delimiter">'</span><span class="content">cameraReady</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
       console.log(<span class="string"><span class="delimiter">'</span><span class="content">The camera is ready!</span><span class="delimiter">'</span></span>);
 
+      <span class="comment">// We listen for frame ready event, when triggered</span>
+      <span class="comment">// we display the frame/image passed as an argument to</span>
+      <span class="comment">// the listener function, and we tell the window to wait 40 milliseconds</span>
       my.camera.on(<span class="string"><span class="delimiter">'</span><span class="content">frameReady</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(err, im) {
         console.log(<span class="string"><span class="delimiter">"</span><span class="content">FRAMEREADY!</span><span class="delimiter">"</span></span>);
         my.window.show(im, <span class="integer">40</span>);
       });
 
+      <span class="comment">// Here we have two options to start reading frames from</span>
+      <span class="comment">// the camera feed.</span>
+      <span class="comment">// 1. 'As fast as possible': triggering the next frame read</span>
+      <span class="comment">//    in the listener for frameReady, if you need video</span>
+      <span class="comment">//    as smooth as possible uncomment #my.camera.readFrame()</span>
+      <span class="comment">//    in the listener above and the one below this comment.</span>
+      <span class="comment">//    Also comment out the `every 50, my.camera.readFrame`</span>
+      <span class="comment">//    at the end of the comments.</span>
+      <span class="comment">//</span>
+      <span class="comment">// my.camera.readFrame()</span>
+      <span class="comment">//</span>
+      <span class="comment">// 2. `Use an interval of time`: to try to get a set amount</span>
+      <span class="comment">//    of frames per second (FPS), we use an `every 50, myFunction`,</span>
+      <span class="comment">//    we are trying to get 1 frame every 50 milliseconds</span>
+      <span class="comment">//    (20 FPS), hence the following line of code.</span>
+      <span class="comment">//</span>
       every(<span class="integer">50</span>, my.camera.readFrame);
     });
   }

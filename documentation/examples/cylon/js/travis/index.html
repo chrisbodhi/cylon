@@ -52,62 +52,56 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Example: Cylon and Travis</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon/tree/master/examples/travis" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <div class="example">
-                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
-<span class="keyword">var</span> Travis = require(<span class="string"><span class="delimiter">'</span><span class="content">travis-ci</span><span class="delimiter">'</span></span>)
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>),
+    Travis = require(<span class="string"><span class="delimiter">'</span><span class="content">travis-ci</span><span class="delimiter">'</span></span>);
 
 <span class="keyword">var</span> travis = <span class="keyword">new</span> Travis({<span class="key">version</span>: <span class="string"><span class="delimiter">'</span><span class="content">2.0.0</span><span class="delimiter">'</span></span>});
 
-<span class="keyword">var</span> BLUE = <span class="hex">0x0000ff</span>
-<span class="keyword">var</span> GREEN = <span class="hex">0x00ff00</span>
-<span class="keyword">var</span> RED = <span class="hex">0xff0000</span>
-
 Cylon.robot({
-  <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span>},
-  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>},
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> },
 
-  <span class="function">work</span>: <span class="keyword">function</span>(me) {
-    <span class="keyword">var</span> user = <span class="string"><span class="delimiter">"</span><span class="content">hybridgroup</span><span class="delimiter">"</span></span>
-    <span class="keyword">var</span> name = <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    <span class="keyword">var</span> user = <span class="string"><span class="delimiter">"</span><span class="content">hybridgroup</span><span class="delimiter">"</span></span>,
+        name = <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>;
 
-    me.<span class="function">checkTravis</span> = <span class="keyword">function</span>() {
-      console.log(<span class="string"><span class="delimiter">"</span><span class="content">Checking repo </span><span class="delimiter">"</span></span>+user+<span class="string"><span class="delimiter">"</span><span class="content">/</span><span class="delimiter">"</span></span>+name);
-      me.sphero.setRGB(BLUE, <span class="predefined-constant">true</span>);
+    <span class="keyword">var</span> <span class="function">checkTravis</span> = <span class="keyword">function</span>() {
+      console.log(<span class="string"><span class="delimiter">"</span><span class="content">Checking repo </span><span class="delimiter">"</span></span> + user + <span class="string"><span class="delimiter">"</span><span class="content">/</span><span class="delimiter">"</span></span> + name);
+      my.sphero.setColor(<span class="string"><span class="delimiter">'</span><span class="content">blue</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
 
-      travis.repos(
-        { <span class="key">owner_name</span>: user, <span class="key">name</span>: name }, 
-        <span class="keyword">function</span>(err, res) {
-          <span class="keyword">if</span> (res.repo != <span class="predefined-constant">undefined</span>) {
-            <span class="keyword">if</span> (res.repo.last_build_state == <span class="string"><span class="delimiter">'</span><span class="content">passed</span><span class="delimiter">'</span></span>) {
-              me.sphero.setRGB(GREEN, <span class="predefined-constant">true</span>);
-            } <span class="keyword">else</span> <span class="keyword">if</span> (res.repo.last_build_state == <span class="string"><span class="delimiter">'</span><span class="content">failed</span><span class="delimiter">'</span></span>) {
-              me.sphero.setRGB(RED, <span class="predefined-constant">true</span>);
-            } <span class="keyword">else</span> {
-              me.sphero.setRGB(BLUE, <span class="predefined-constant">true</span>);
-            }
-          } <span class="keyword">else</span> {
-            me.sphero.setRGB BLUE, <span class="predefined-constant">true</span>
-          }
-        });
+      travis.repos({ <span class="key">owner_name</span>: user, <span class="key">name</span>: name }, <span class="keyword">function</span>(err, res) {
+        <span class="keyword">if</span> (res.repo === <span class="predefined-constant">undefined</span>) { my.sphero.setColor(<span class="string"><span class="delimiter">'</span><span class="content">blue</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>); }
+
+        <span class="keyword">switch</span> (res.repo.last_build_state) {
+          <span class="keyword">case</span> <span class="string"><span class="delimiter">'</span><span class="content">passed</span><span class="delimiter">'</span></span>:
+            my.sphero.setColor(<span class="string"><span class="delimiter">'</span><span class="content">green</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+            <span class="keyword">break</span>;
+          <span class="keyword">case</span> <span class="string"><span class="delimiter">'</span><span class="content">failed</span><span class="delimiter">'</span></span>:
+            my.sphero.setColor(<span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+            <span class="keyword">break</span>;
+          <span class="keyword">default</span>:
+            my.sphero.setColor(<span class="string"><span class="delimiter">'</span><span class="content">blue</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+        }
+      });
     }
 
-    me.checkTravis();
+    checkTravis();
 
-    every((<span class="integer">10</span>).seconds(), <span class="keyword">function</span>() {
-      me.checkTravis();
-    });
+    every((<span class="integer">10</span>).seconds(), checkTravis);
   }
 }).start();
 </pre>

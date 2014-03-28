@@ -52,13 +52,14 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Example: Spark Core - Blink</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon-spark/tree/master/examples/blink" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
@@ -82,7 +83,7 @@ Cylon.robot({
   },
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    every(<span class="integer">1</span>..second(), <span class="keyword">function</span>() { my.led.toggle(); });
+    every((<span class="integer">1</span>).second(), my.led.toggle);
   }
 }).start();
 </pre>

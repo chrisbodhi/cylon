@@ -52,7 +52,7 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -80,14 +80,10 @@
                 </div>
                 <div class="clear"></div>
               </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
-                <h3>JavaScript</h3>
-                <pre class="CodeRay">coming soon
-</pre>
-                <h3>CoffeeScript</h3>
                 <pre class="CodeRay">coming soon
 </pre>
               </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
-                <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
+                <p>To read the current compass heading, just use the `heading()` function:</p>
                 <pre class="CodeRay">coming soon
 </pre>
                 <h3>Example using a HMC6352 Digital Compass.</h3>
@@ -96,74 +92,28 @@
               </section><section class="public-methods"><div class="commands-api" id="Commands">
                   <h1 id="commands">Commands</h1>
                   
-                  <h2 id="authenticatecreds">authenticate(creds)</h2>
+                  <h2 id="heading">heading()</h2>
                   
-                  <p>This allows you to authenticate the device.</p>
+                  <p>Returns the heading data for the compass.</p>
                   
-                  <h5 id="params">Params</h5>
+                  <h5 id="returns">Returns</h5>
                   
-                  <ul>
-<li>
-<strong>creds</strong> - params</li>
-                  </ul>
-<h5 id="returns">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="subscribestreampath-callback">subscribe(streamPath, callback)</h2>
-                  
-                  <p>This allows you to subscribe the device.</p>
-                  
-                  <h5 id="params-1">Params</h5>
-                  
-                  <ul>
-<li>
-<strong>streamPath</strong> - params</li>
-                    <li>
-<strong>callback</strong> - params</li>
-                  </ul>
-<h5 id="returns-1">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="pushapexpath-method-data">push(apexPath, method, data)</h2>
-                  
-                  <p>This allows you to push data.</p>
-                  
-                  <h5 id="params-2">Params</h5>
-                  
-                  <ul>
-<li>
-<strong>apexPath</strong> - params</li>
-                    <li>
-<strong>method</strong> - params</li>
-                    <li>
-<strong>data</strong> - params</li>
-                  </ul>
-<h5 id="returns-2">Returns</h5>
-                  
-                  <p><code>null</code></p>
+                  <p><code>float</code></p>
                 </div>
                 <div class="commands-api" id="Events">
                   <h1 id="events">Events</h1>
                   
-                  <h2 id="connect">connect</h2>
+                  <h2 id="heading">heading</h2>
                   
-                  <p>Gets triggered when it´s connected.</p>
+                  <p>Gets triggered every time the specified interval is met.</p>
                   
-                  <h2 id="authenticate">authenticate</h2>
+                  <h5 id="data">Data</h5>
                   
-                  <p>Gets triggered when it´s authenticated.</p>
-                  
-                  <h2 id="subscribe">subscribe</h2>
-                  
-                  <p>Gets triggered when it´s subscribed.</p>
-                  
-                  <h2 id="stop">stop</h2>
-                  
-                  <p>Stops the driver.</p>
-                  
-                  <h2 id="start">start</h2>
+                  <ul>
+<li>
+<strong>interval</strong> - Current compass reading</li>
+                  </ul>
+<h2 id="start">start</h2>
                   
                   <p>Sent when the device has been started and is ready to use.</p>
                 </div>

@@ -52,13 +52,14 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Example: Raspberry Pi - LED Brightness</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon-raspi/tree/master/examples/led_brightness" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
@@ -72,8 +73,8 @@ Cylon.robot({
   <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">11</span> },
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    <span class="keyword">var</span> brightness = <span class="integer">0</span>;
-    <span class="keyword">var</span> fade = <span class="integer">5</span>;
+    <span class="keyword">var</span> brightness = <span class="integer">0</span>,
+        fade = <span class="integer">5</span>;
 
     every(<span class="float">0.05</span>.seconds(), <span class="keyword">function</span>() {
       brightness += fade;

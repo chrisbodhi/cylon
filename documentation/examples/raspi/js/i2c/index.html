@@ -52,13 +52,14 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Example: Raspberry Pi BlinkM</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon-raspi/tree/master/examples/i2c" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
@@ -72,15 +73,43 @@ Cylon.robot({
   <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pixel</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">blinkm</span><span class="delimiter">'</span></span> },
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    <span class="comment">// Before you can use and work with I2C in the raspberry pi you</span>
+    <span class="comment">// need to configure it, follow the instructions to enable it here:</span>
+    <span class="comment">//</span>
+    <span class="comment">// http://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c</span>
+
+    <span class="comment">// We first stop the BlinkM light script</span>
     my.pixel.stopScript();
+
+    <span class="comment">// You can pass a callback to all blinkm functions as the last param,</span>
+    <span class="comment">// If you do the command would be executed asynchronously.</span>
+    <span class="comment">// For write operations you get an (err) param passed back,</span>
+    <span class="comment">// null/undefined for success, and containing the error y any encountered.</span>
+
+    <span class="comment">// BlimkM  Write Commands.</span>
+    <span class="comment">//   my.pixel.goToRGB(255, 0, 0)</span>
+    <span class="comment">//   my.pixel.fadeToRGB(0, 255, 0)</span>
+    <span class="comment">//   my.pixel.fadeToRGB(0, 0, 255)</span>
+    <span class="comment">//   my.pixel.fadeToHSB(100, 180, 90)</span>
+    <span class="comment">//   my.pixel.fadeToRandomRGB(0, 0, 255)</span>
+    <span class="comment">//   my.pixel.fadeToRandomHSB(100, 180, 90)</span>
+    <span class="comment">//   my.pixel.playLightScript(1, 0, 0)</span>
+    <span class="comment">//   my.pixel.stopScript()</span>
+    <span class="comment">//   my.pixel.setFadeSpeed(50)</span>
+    <span class="comment">//   my.pixel.setTimeAdjust(50)</span>
+
     my.pixel.goToRGB(<span class="integer">255</span>, <span class="integer">0</span>, <span class="integer">0</span>);
     my.pixel.fadeToRGB(<span class="integer">0</span>, <span class="integer">255</span>, <span class="integer">0</span>);
     my.pixel.fadeToRGB(<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">255</span>);
 
-    <span class="keyword">var</span> color = my.pixel.getRGBColor();
 
+    <span class="comment">// For read commands you get (err, data) passed back to the callback,</span>
+    <span class="comment">// data contains the read data buffer, in case of Sync call (no callback)</span>
+    <span class="comment">// you get a regular return with the data buffer.</span>
+    <span class="keyword">var</span> color = my.pixel.getRGBColor();
     console.log(color);
 
+    <span class="comment">// Example getting the color usinc async call and a callback</span>
     my.pixel.getRGBColor(<span class="keyword">function</span>(err, data) {
       <span class="keyword">if</span> (err == <span class="predefined-constant">null</span>) { console.log(data); }
     });

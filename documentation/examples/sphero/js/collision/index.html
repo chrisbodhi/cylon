@@ -52,13 +52,14 @@
             <a href="/documentation/platforms" class="item">Platforms</a>
             
             <a href="/blog" class="item">Blog</a>
-            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="_blank" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Example: Sphero Collisions</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon-sphero/tree/master/examples/collision" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
@@ -72,8 +73,8 @@ Cylon.robot({
   <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> },
 
   <span class="function">work</span>: <span class="keyword">function</span>(me) {
-    <span class="keyword">var</span> color = <span class="hex">0x00FF00</span>;
-    <span class="keyword">var</span> bitFilter = <span class="hex">0xFFFF00</span>;
+    <span class="keyword">var</span> color = <span class="hex">0x00FF00</span>,
+        bitFilter = <span class="hex">0xFFFF00</span>;
 
     me.sphero.on(<span class="string"><span class="delimiter">'</span><span class="content">connect</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
       console.log(<span class="string"><span class="delimiter">"</span><span class="content">Setting up Collision Detection...</span><span class="delimiter">"</span></span>);
