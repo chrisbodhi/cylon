@@ -88,26 +88,29 @@
 
 Usage: cylon [command] [options]
 
-Commands: 
-   arduino [subcommand] [opts]
+Commands:
+  arduino [subcommand] [opts]
       Install avrdude, and upload sketches to your Arduino
 
-   bluetooth [pair|unpair|connect]
+  bluetooth [pair|unpair|connect]
       Scan, pair, unpair bluetooth devices. Establishes serial to Bluetooth connection.
 
-   crazyflie [subcommand] [opts]
+  crazyflie [subcommand] [opts]
       Set udev rules for Crazyflie
 
-   digispark [subcommand]
+  digispark [subcommand]
       Set udev rules, and upload the Littlewire protocol to your Digispark
 
-   help
+  generate [module|driver] [name]
+      Generate new Cylon components or modules
+
+  help
       Prints help for using the Cylon-CLI commands.
 
-   scan [type]
+  scan [type]
       Scans serial, Bluetooth, or USB for connected devices
 
-   spark upload [access_token] [device_id] [firmware_file]
+  spark upload [access_token] [device_id] [firmware_file]
       Upload new firmare to your Spark Core
 </pre>
                 <h3>Scanning serial port for connected devices</h3>
@@ -134,7 +137,7 @@ Commands:
                 <p>
                   Install avrdude, and upload sketches to your Arduino.
                 </p>
-                <pre class="CodeRay">$ cylon arduino 
+                <pre class="CodeRay">$ cylon arduino
 Usage:
 cylon arduino install                                  # installs avrdude to allow uploading of sketches to Arduino
 cylon arduino upload firmata [port]                    # uploads Firmata sketch to Arduino
@@ -224,7 +227,7 @@ Press CTRL-C for hangup
                 <h2>cylon crazyflie [subcommand] [opts]</h2>
                 <h4>Description</h4>
                 <p>Set udev rules for Crazyflie.</p>
-                <pre class="CodeRay">$ cylon crazyflie 
+                <pre class="CodeRay">$ cylon crazyflie
 Usage:
 cylon crazyflie set-udev-rules
 </pre>
@@ -236,13 +239,49 @@ Usage:
   cylon digispark set-udev-rules
   cylon digispark upload
 </pre>
+                <h2>cylon generate [module|driver] [name]</h2>
+                <h4>Description</h4>
+                <p>Generates a new Cylon component or adaptor module.</p>
+                <pre class="CodeRay">$ cylon generate module octobot
+Creating cylon-octobot adaptor.
+Compiling templates.
+
+$ cylon generate driver octobot
+$ cat lib/octobot.js
+"use strict";
+
+var namespace = require('node-namespace');
+
+namespace("Cylon.Drivers", function() {
+  this.Octobot = (function(klass) {
+    subclass(Octobot, klass);
+
+    function Octobot(opts) {
+      Octobot.__super__.constructor.apply(this, arguments);
+    }
+
+    Octobot.prototype.commands = function() {
+      return [];
+    };
+
+    Octobot.prototype.start = function() {
+      Octobot.__super__.start.apply(this, arguments);
+    };
+
+    return Octobot;
+
+  })(Cylon.Driver);
+});
+
+module.exports = Cylon.Drivers.Octobot;
+</pre>
                 <h2>cylon help</h2>
                 <h4>Description</h4>
                 <p>Prints help for using the Cylon-CLI commands.</p>
                 <pre class="CodeRay">$ cylon help
 Usage: cylon [command] [options]
 
-Commands: 
+Commands:
    arduino [subcommand] [opts]
       Install avrdude, and upload sketches to your Arduino
 
