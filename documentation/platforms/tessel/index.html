@@ -86,18 +86,27 @@
                 <div class="clear"></div>
               </section><section class="how-to" id="HowToInstall"><h2>How to install</h2>
                 <p>Installing cylon.js with Tessel support is pretty easy.</p>
-                <pre class="CodeRay">npm install cylon-tessel
+                <p>
+                  Follow the installation instructions detailed
+                  <a href="https://tessel.io/install/">here</a>
+                </p>
+                <pre class="CodeRay">sudo npm install -g cylon-cli
+cylon generate tessel my-tessel-project
+cd my-tessel-project
+npm install
+tessel push blink.js
 </pre>
+                <p>If the blue light starts to blink, then you're all set!</p>
               </section><section class="how-to" id="HowToUse"><h2>How to use</h2>
                 <p>This small program lets you toggle an LED on and off.</p>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
-  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">tessel</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">tessel</span><span class="delimiter">'</span></span>},
-  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">1</span>},
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">tessel</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">tessel</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">LED</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span> },
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    every((<span class="integer">1</span>).seconds(), <span class="keyword">function</span>() {my.led.toggle()});
+    every((<span class="integer">1</span>).seconds(), my.led.toggle);
   }
 }).start();
 </pre>
