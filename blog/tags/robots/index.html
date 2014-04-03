@@ -71,6 +71,176 @@
                 <header class="header"><div class="date">
                     <div class="blue">
                       <div class="month">
+                        Apr
+                      </div>
+                      <div class="day">
+                        02
+                      </div>
+                    </div>
+                    <div class="red">
+                      <div class="year">
+                        2014
+                      </div>
+                    </div>
+                  </div>
+                  <div class="data">
+                    <h3>
+                      <a href="/blog/2014/04/02/functional-robots.with-wisp/">Functional Robots With Wisp</a>
+                    </h3>
+                    <div class="author">
+                      by Andrew Stewart
+                    </div>
+                  </div>
+                </header><p><a href="https://github.com/Gozala/wisp">Wisp</a> is a really cool project for compiling a subset of Clojure syntax to
+                JavaScript, without having to go through all the hoops that <a href="https://github.com/clojure/clojurescript">ClojureScript</a>
+                forces you through.</p>
+                
+                <p>Wisp also compiles to plain JavaScript, without setting up a number of data
+                structures and language idioms the way ClojureScript or other [lang]-to-JS
+                compilers sometimes do. This lets you write Clojure with a fairly good idea of
+                how it'll map to the resulting JavaScript.</p>
+                
+                <p>For an example, I decided to convert the <a href="https://cylonjs.com">Cylon.JS</a> <a href="http://cylonjs.com/documentation/examples/cylon/js/cattoy/">cat toy</a> example to it,
+                just to get a feel for the process.</p>
+                
+                <p>The example robot I'm converting hooks up to a Digispark with a couple servos
+                and a Leap Motion. The robot uses hand positions picked up by the Leap Motion
+                to control the servos. Simple enough.</p>
+                
+                <p>It's pretty straight-forward JavaScript, so it shouldn't be too hard to convert.
+                Now let's write an analogue in Clojure.</p>
+                
+                <pre class="CodeRay">(<span class="keyword">def</span> <span class="function">Cylon</span> (<span class="keyword">require</span> <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>))
+
+<span class="comment">; We're re-writing how the -&gt; special form works here to allow for method</span>
+<span class="comment">; chaining later on.</span>
+(<span class="keyword">defmacro</span> <span class="function">-&gt;</span>
+  [&amp; operations]
+  (<span class="keyword">reduce</span>
+  (<span class="keyword">fn</span> [form operation]
+    (<span class="keyword">cons</span> (<span class="keyword">first</span> operation)
+          (<span class="keyword">cons</span> form (<span class="keyword">rest</span> operation))))
+  (<span class="keyword">first</span> operations)
+  (<span class="keyword">rest</span> operations)))
+
+(<span class="keyword">def</span> <span class="function">robot</span> {
+  connections [
+    { <span class="symbol">:name</span> <span class="string"><span class="delimiter">"</span><span class="content">digispark</span><span class="delimiter">"</span></span> <span class="symbol">:adaptor</span> <span class="string"><span class="delimiter">"</span><span class="content">digispark</span><span class="delimiter">"</span></span> }
+    { <span class="symbol">:name</span> <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span> <span class="symbol">:adaptor</span> <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span> <span class="symbol">:port</span> <span class="string"><span class="delimiter">"</span><span class="content">127.0.0.1:6437</span><span class="delimiter">"</span></span> }]
+
+  devices [
+    { <span class="symbol">:name</span> <span class="string"><span class="delimiter">"</span><span class="content">servo1</span><span class="delimiter">"</span></span> <span class="symbol">:driver</span> <span class="string"><span class="delimiter">"</span><span class="content">servo</span><span class="delimiter">"</span></span> <span class="symbol">:pin</span> <span class="integer">0</span> <span class="symbol">:connection</span> <span class="string"><span class="delimiter">"</span><span class="content">digispark</span><span class="delimiter">"</span></span> }
+    { <span class="symbol">:name</span> <span class="string"><span class="delimiter">"</span><span class="content">servo2</span><span class="delimiter">"</span></span> <span class="symbol">:driver</span> <span class="string"><span class="delimiter">"</span><span class="content">servo</span><span class="delimiter">"</span></span> <span class="symbol">:pin</span> <span class="integer">1</span> <span class="symbol">:connection</span> <span class="string"><span class="delimiter">"</span><span class="content">digispark</span><span class="delimiter">"</span></span> }
+    { <span class="symbol">:name</span> <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span> <span class="symbol">:driver</span> <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span> <span class="symbol">:connection</span> <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span> }]
+
+  work (<span class="keyword">fn</span> [my]
+    (<span class="keyword">let</span> [x <span class="integer">90</span>
+          z <span class="integer">90</span>]
+      (my.leapmotion.on
+        <span class="symbol">:hand</span>
+        (<span class="keyword">fn</span> [hand]
+          <span class="comment">; wisp gives us this set! form to let us change variables,</span>
+          <span class="comment">; and also using the redefined -&gt; macro we wrote earlier</span>
+          (set! x (<span class="keyword">-&gt;</span> hand.palmX (<span class="keyword">.</span>fromScale <span class="integer">-300</span> <span class="integer">300</span>) (<span class="keyword">.</span>toScale <span class="integer">30</span> <span class="integer">150</span>)))
+          (set! y (<span class="keyword">-&gt;</span> hand.palmY (<span class="keyword">.</span>fromScale <span class="integer">-300</span> <span class="integer">300</span>) (<span class="keyword">.</span>toScale <span class="integer">30</span> <span class="integer">150</span>)))))
+
+      (every
+        <span class="integer">100</span>
+        (<span class="keyword">fn</span> []
+          (my.servo1.angle x)
+          (my.servo2.angle z)
+          (console.log
+            <span class="string"><span class="delimiter">"</span><span class="content">Current Angle:</span><span class="delimiter">"</span></span>
+            (my.servo1.currentAngle)
+            <span class="string"><span class="delimiter">"</span><span class="content">,</span><span class="delimiter">"</span></span>
+            (my.servo2.currentAngle))))))})
+
+(<span class="keyword">.</span>start (Cylon.Robot robot))
+</pre>
+                
+                <p>It still looks a fair bit like the original example, but it's clear we're not in
+                Kansas anymore. We even had to write a macro to get method chaining working
+                properly, but that's another cool thing: we wrote a macro, and it works.</p>
+                
+                <p>The <code>wisp</code> binary has a couple modes; it can run files directly (<code>wisp
+robot.wisp</code>), or will print a compiled version of code passed to <code>STDIN</code>.</p>
+                
+                <p>Running this with <code>cat robot.wisp | wisp &gt; robot.js</code>, we get a fairly decent
+                approximation of the original, which even comes with a generated sourcemap to
+                help with debugging.</p>
+                
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = exports.Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+<span class="keyword">void</span> <span class="integer">0</span>;
+<span class="keyword">var</span> robot = exports.robot = {
+        <span class="key">connections</span>: [
+            {
+                <span class="key"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">adaptor</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>
+            },
+            {
+                <span class="key"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">adaptor</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>
+            }
+        ],
+        <span class="key">devices</span>: [
+            {
+                <span class="key"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">servo1</span><span class="delimiter">'</span></span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">driver</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">pin</span><span class="delimiter">'</span></span>: <span class="integer">0</span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">connection</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>
+            },
+            {
+                <span class="key"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">servo2</span><span class="delimiter">'</span></span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">driver</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">pin</span><span class="delimiter">'</span></span>: <span class="integer">1</span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">connection</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">digispark</span><span class="delimiter">'</span></span>
+            },
+            {
+                <span class="key"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">driver</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>,
+                <span class="key"><span class="delimiter">'</span><span class="content">connection</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>
+            }
+        ],
+        <span class="function">work</span>: <span class="keyword">function</span> (my) {
+            <span class="keyword">return</span> <span class="keyword">function</span> () {
+                <span class="keyword">var</span> x<span class="error">ø</span><span class="integer">1</span> = <span class="integer">90</span>;
+                <span class="keyword">var</span> z<span class="error">ø</span><span class="integer">1</span> = <span class="integer">90</span>;
+                my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">hand</span><span class="delimiter">'</span></span>, <span class="keyword">function</span> (hand) {
+                    x<span class="error">ø</span><span class="integer">1</span> = hand.palmX.fromScale(-<span class="integer">300</span>, <span class="integer">300</span>).toScale(<span class="integer">30</span>, <span class="integer">150</span>);
+                    <span class="keyword">return</span> z<span class="error">ø</span><span class="integer">1</span> = hand.palmY.fromScale(-<span class="integer">300</span>, <span class="integer">300</span>).toScale(<span class="integer">30</span>, <span class="integer">150</span>);
+                });
+                <span class="keyword">return</span> every(<span class="integer">100</span>, <span class="keyword">function</span> () {
+                    my.servo1.angle(x<span class="error">ø</span><span class="integer">1</span>);
+                    my.servo2.angle(z<span class="error">ø</span><span class="integer">1</span>);
+                    <span class="keyword">return</span> console.log(<span class="string"><span class="delimiter">'</span><span class="content">Current Angle:</span><span class="delimiter">'</span></span>, my.servo1.currentAngle(), <span class="string"><span class="delimiter">'</span><span class="content">,</span><span class="delimiter">'</span></span>, my.servo2.currentAngle());
+                });
+            }.call(<span class="local-variable">this</span>);
+        }
+    };
+Cylon.Robot(robot).start();
+<span class="comment">// [source map removed for formatting reasons]</span>
+</pre>
+                
+                <p>I don't know if it's something I'd use in day-to-day yet, but Wisp seems like
+                a really cool project for trying out some functional programming ideas in
+                JavaScript.</p>
+                
+                <p>I also think this could be a great learning tool for people who want to learn
+                Clojure without getting a full JVM set up. It's easy enough to setup (installs
+                through NPM), and generates clear results in a familiar language, allowing users
+                to clearly see what their Clojure source is doing.</p>
+                <div class="tags">
+                  <div class="img">
+                    <img src="/images/elements/tag.png">
+</div>
+                  <a href="/blog/tags/robots/">robots</a>
+                </div>
+              </div>
+              <div class="article">
+                <header class="header"><div class="date">
+                    <div class="blue">
+                      <div class="month">
                         Mar
                       </div>
                       <div class="day">
