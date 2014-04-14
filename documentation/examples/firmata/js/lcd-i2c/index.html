@@ -7,7 +7,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta content="A Cylon.JS code example" name="description">
 <meta content="The Hybrid Group" name="author">
-<title>Cylon.JS Example - hmc6352</title>
+<title>Cylon.JS Example - lcd-i2c</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascript/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
@@ -58,31 +58,28 @@
 </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Example: hmc6352</h1>
-          <h2 class="subtitle"><a href="https://github.com/hybridgroup//tree/master/examples/hmc6352" target="_blank">View In Repo</a></h2>
+          <h1 class="title">Example: lcd-i2c</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/cylon-firmata/tree/master/examples/lcd-i2c" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <div class="example">
-                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
-Cylon.robot(
-  {<span class="key">connection</span>:
-    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> }
 
-  <span class="key">device</span>:
-    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">hmc6352</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">hmc6352</span><span class="delimiter">'</span></span>},
+  device: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">lcd</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">lcd</span><span class="delimiter">'</span></span> },
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    every((<span class="integer">1</span>).second(), <span class="keyword">function</span>() {
-      my.hmc6352.heading(<span class="keyword">function</span>(data) {
-        Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">heading: </span><span class="delimiter">"</span></span> + data);
-      });
+    my.lcd.on(<span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(){
+      my.lcd.print(<span class="string"><span class="delimiter">"</span><span class="content">Hello!</span><span class="delimiter">"</span></span>);
     });
-  }}
-).start();
+  }
+
+}).start()
 </pre>
               </div>
             </div>

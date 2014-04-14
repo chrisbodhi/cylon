@@ -80,8 +80,9 @@
               
               <h3 id="examples">Examples:</h3>
               
-              <pre class="CodeRay">every 5.seconds(), -&gt;
-  console.log "Hello world! (and again in 5 seconds)"
+              <pre class="CodeRay">every(<span class="integer">5</span>..seconds(), <span class="keyword">function</span>() {
+  <span class="keyword">return</span> console.log(<span class="string"><span class="delimiter">"</span><span class="content">Hello world! (and again in 5 seconds)</span><span class="delimiter">"</span></span>);
+});
 </pre>
               
               <h2 id="afterinterval-action">after(interval, action)</h2>
@@ -99,8 +100,9 @@
               
               <h3 id="examples-1">Examples:</h3>
               
-              <pre class="CodeRay">after 10.seconds(), -&gt;
-  console.log "Hello world!"
+              <pre class="CodeRay">after(<span class="integer">10</span>..seconds(), <span class="keyword">function</span>() {
+  <span class="keyword">return</span> console.log(<span class="string"><span class="delimiter">"</span><span class="content">Hello world!</span><span class="delimiter">"</span></span>);
+});
 </pre>
               
               <h2 id="proxyfunctionstoobjectmethods-target-base--this-force--false">proxyFunctionsToObject(methods, target, base = this, force = false)</h2>
@@ -124,18 +126,32 @@
               </ul>
 <h3 id="examples-2">Examples:</h3>
               
-              <pre class="CodeRay">class ProxyClass
-  reverse: (string) -&gt;
-    string.split('').reverse().join('')
+              <pre class="CodeRay"><span class="keyword">var</span> BaseClass, ProxyClass, klass;
 
-class BaseClass
-  constructor: -&gt;
-    @proxy = new ProxyClass
-    proxyFunctionsToObject ['reverse'], @proxy
+ProxyClass = (<span class="keyword">function</span>() {
+  <span class="keyword">function</span> <span class="function">ProxyClass</span>() {}
 
-klass = new BaseClass
-klass.reverse("Hello, World!")
-#=&gt; !dlroW ,olleH
+  ProxyClass.prototype.<span class="function">reverse</span> = <span class="keyword">function</span>(string) {
+    <span class="keyword">return</span> string.split(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>).reverse().join(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>);
+  };
+
+  <span class="keyword">return</span> ProxyClass;
+
+})();
+
+BaseClass = (<span class="keyword">function</span>() {
+  <span class="keyword">function</span> <span class="function">BaseClass</span>() {
+    <span class="local-variable">this</span>.proxy = <span class="keyword">new</span> ProxyClass;
+    proxyFunctionsToObject([<span class="string"><span class="delimiter">'</span><span class="content">reverse</span><span class="delimiter">'</span></span>], <span class="local-variable">this</span>.proxy);
+  }
+
+  <span class="keyword">return</span> BaseClass;
+
+})();
+
+klass = <span class="keyword">new</span> BaseClass;
+
+klass.reverse(<span class="string"><span class="delimiter">"</span><span class="content">Hello, World!</span><span class="delimiter">"</span></span>);
 </pre>
               
               <h2 id="numberseconds">Number::seconds</h2>
@@ -161,8 +177,7 @@ klass.reverse("Hello, World!")
               
               <h3 id="examples-3">Examples:</h3>
               
-              <pre class="CodeRay">10.seconds()
-#=&gt; 10000
+              <pre class="CodeRay"><span class="integer">10</span>..seconds();
 </pre>
               
               <h2 id="numbersecond">Number::second</h2>
@@ -173,8 +188,7 @@ klass.reverse("Hello, World!")
               
               <h3 id="examples-4">Examples:</h3>
               
-              <pre class="CodeRay">1.second()
-#=&gt; 1000
+              <pre class="CodeRay"><span class="integer">1</span>..second();
 </pre>
               
               <h2 id="numberfromscalestart-end">Number::fromScale(start, end)</h2>
@@ -192,11 +206,9 @@ klass.reverse("Hello, World!")
               
               <h3 id="examples-5">Examples:</h3>
               
-              <pre class="CodeRay">150.fromScale(0, 200)
-#=&gt; 0.75
+              <pre class="CodeRay"><span class="integer">150</span>..fromScale(<span class="integer">0</span>, <span class="integer">200</span>);
 
-5.fromScale(0, 10)
-#=&gt; 0.5
+<span class="integer">5</span>..fromScale(<span class="integer">0</span>, <span class="integer">10</span>);
 </pre>
               
               <h2 id="numbertoscalestart-end">Number::toScale(start, end)</h2>
@@ -213,19 +225,16 @@ klass.reverse("Hello, World!")
 <p>This can be chained together with <code>Number::fromScale</code> to quickly and handily
               convert numbers between scales. e.g</p>
               
-              <pre class="CodeRay">100.fromScale(0, 200).toScale(0, 100)
-#=&gt; 50
+              <pre class="CodeRay"><span class="integer">100</span>..fromScale(<span class="integer">0</span>, <span class="integer">200</span>).toScale(<span class="integer">0</span>, <span class="integer">100</span>);
 </pre>
               
               <p>Returns a number representing the scaled value.</p>
               
               <h3 id="examples-6">Examples:</h3>
               
-              <pre class="CodeRay">0.75.toScale(0, 200)
-#=&gt; 150
+              <pre class="CodeRay"><span class="float">0.75</span>.toScale(<span class="integer">0</span>, <span class="integer">200</span>);
 
-0.5.toScale(0, 10)
-#=&gt; 5
+<span class="float">0.5</span>.toScale(<span class="integer">0</span>, <span class="integer">10</span>);
 </pre>
             </div>
           </section>
