@@ -114,10 +114,10 @@ Cylon.robot({
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
     my.drone.on(<span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
       my.drone.takeoff();
-      after((<span class="integer">10</span>).seconds(), <span class="keyword">function</span>() { 
+      after((<span class="integer">10</span>).seconds(), <span class="keyword">function</span>() {
         my.drone.land();
       });
-      after((<span class="integer">15</span>).seconds(), <span class="keyword">function</span>() { 
+      after((<span class="integer">15</span>).seconds(), <span class="keyword">function</span>() {
         my.drone.stop();
       });
     });
@@ -136,6 +136,13 @@ Cylon.robot({
                   If you are have a USB 3.0 port, you might run into this issue
                   <br><a href="http://stackoverflow.com/questions/17204253/crazyflie-usb-3-0-incompability">http://stackoverflow.com/questions/17204253/crazyflie-usb-3-0-incompability</a>
                 </p>
+                <h3>Ubuntu</h3>
+                <p>
+                  You need to install some udev-rules to be able to communicate with the crazyflie,
+                  it is a good thing that we have a cylon-cli command that does just that:
+                </p>
+                <pre class="CodeRay">$ cylon crazyflie set-udev-rules
+</pre>
               </section><section class="drivers" id="Drivers"><h2>Drivers</h2>
                 <p>There is currently only one driver for the Crazyflie, as listed below.</p>
                 <div class="hardware">

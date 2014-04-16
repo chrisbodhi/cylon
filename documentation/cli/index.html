@@ -118,6 +118,13 @@ Commands:
 </pre>
                 <h3>Important note about Cylon CLI commands.</h3>
                 <p>
+                  Parameters described between
+                  <b>&lt;required_param&gt;</b>
+                  are required, parameters between
+                  <b>[optional_param]</b>
+                  are optional.
+                </p>
+                <p>
                   </p>
 <p>To use the commands as described here you need to install cylon as a global module by running <code>sudo npm install -g cylon-cli</code>.</p>
                 
@@ -139,6 +146,7 @@ Commands:
                 </p>
                 <pre class="CodeRay">$ cylon arduino
 Usage:
+cylon arduino scan                                     # scans serialports for Arduino boards
 cylon arduino install                                  # installs avrdude to allow uploading of sketches to Arduino
 cylon arduino upload firmata [port]                    # uploads Firmata sketch to Arduino
 cylon arduino upload rapiro [port]                     # uploads Rapiro sketch to Arduino
@@ -146,7 +154,8 @@ cylon arduino upload [custom-firmware-filename] [port] # uploads a custom sketch
 </pre>
                 <b>
                   Notes:
-                  </b><p>You must run <code>cylon arduino install</code> first.
+                  </b><p>To be able to run the upload command
+                  you must run <code>cylon arduino install</code> first.
                   The serial port must have the correct permissions for your
                   user to read and write, or run it as root (sudo it).</p>
                 
@@ -177,21 +186,31 @@ avrdude: safemode: Fuses OK
 
 avrdude done.  Thank you.
 </pre>
-                <h2>cylon bluetooth [pair|unpair|connect]</h2>
+                <h2>cylon bluetooth [scan|pair|unpair|connect]</h2>
                 <h4>Description</h4>
                 <p>
                   </p>
-<p>Lets you pair, unpair and connect to bluetooth devices by specifying one of three subcommands, the avilable options for the subcommand are <code>pair</code>, <code>unpair</code> or <code>connect</code>.</p>
+<p>Lets you pair, unpair and connect to bluetooth devices by specifying one
+                  of three subcommands, the avilable options for the subcommand are <code>pair</code>,
+                  <code>unpair</code> or <code>connect</code>.</p>
                 
-                <h4>cylon bluetooth pair <address></address>
-</h4>
+                <h4>cylon bluetooth scan</h4>
+                <b>Description</b>
+                <p>
+                  Scans for bluetooth devices
+                </p>
+                <pre class="CodeRay">$ cylon scan bluetooth
+Scanning ...
+  00:06:66:4A:23:C3        Sphero-RPB
+</pre>
+                <h4>cylon bluetooth pair &lt;address&gt; [hciX]</h4>
                 <b>Description</b>
                 <p>
                   Pairs a bluetooth device to the computer.
                 </p>
                 <b>
                   Notes:
-                  </b><p>when prompted, answer <code>yes</code> to confirm pairing pin.</p>
+                  </b><p>when prompted, answer <code>yes</code> or enter any <code>1234</code> to confirm pairing pin.</p>
                 
                 <pre class="CodeRay">$ cylon bluetooth pair 00:06:66:4A:23:C3
 RequestConfirmation (/org/bluez/630/hci0/dev_00_06_66_4A_23_C3, 135070)
@@ -199,8 +218,7 @@ Confirm passkey (yes/no): yes
 Release
 New device (/org/bluez/630/hci0/dev_00_06_66_4A_23_C3)
 </pre>
-                <h4>cylon bluetooth unpair <address></address>
-</h4>
+                <h4>cylon bluetooth unpair &lt;address&gt; [hciX]</h4>
                 <b>Description</b>
                 <p>
                   Unpairs a bluetooth device.
@@ -214,8 +232,7 @@ RequestConfirmation (/org/bluez/630/hci0/dev_00_06_66_4A_23_C3, 761422)
 Confirm passkey (yes/no): no
 Creating device failed: org.bluez.Error.AuthenticationFailed: Authentication Failed
 </pre>
-                <h4>cylon bluetooth connect <address></address>
-</h4>
+                <h4>cylon bluetooth connect &lt;address&gt; [rfcommX]</h4>
                 <b>Description</b>
                 <p>
                   connects a bluetooth device to a serial port to enable communication with CylonJS.
@@ -224,22 +241,23 @@ Creating device failed: org.bluez.Error.AuthenticationFailed: Authentication Fai
 Connected /dev/rfcomm0 to 00:06:66:4A:23:C3 on channel 1
 Press CTRL-C for hangup
 </pre>
-                <h2>cylon crazyflie [subcommand] [opts]</h2>
+                <h2>cylon crazyflie &lt;subcommand&gt;</h2>
                 <h4>Description</h4>
                 <p>Set udev rules for Crazyflie.</p>
                 <pre class="CodeRay">$ cylon crazyflie
 Usage:
 cylon crazyflie set-udev-rules
 </pre>
-                <h2>cylon digispark [subcommand]</h2>
+                <h2>cylon digispark &lt;subcommand&gt;</h2>
                 <h4>Description</h4>
                 <p>Set udev rules, and upload the Littlewire protocol to your Digispark.</p>
                 <pre class="CodeRay">$ cylon digispark
 Usage:
-  cylon digispark set-udev-rules
+  cylon digispark scan
   cylon digispark upload
+  cylon digispark set-udev-rules
 </pre>
-                <h2>cylon generate [module|driver] [name]</h2>
+                <h2>cylon generate &lt;module|driver&gt; &lt;name&gt;</h2>
                 <h4>Description</h4>
                 <p>Generates a new Cylon component or adaptor module.</p>
                 <pre class="CodeRay">$ cylon generate module octobot
@@ -303,7 +321,7 @@ Commands:
    spark upload [access_token] [device_id] [firmware_file]
       Upload new firmare to your Spark Core
 </pre>
-                <h2>cylon scan [type]</h2>
+                <h2>cylon scan &lt;type&gt;</h2>
                 <h4>Description</h4>
                 <p>
                   </p>
@@ -321,7 +339,7 @@ Bus 003 Device 013: ID 2341:0043 Arduino SA Uno R3 (CDC ACM)
 Scanning ...
   00:06:66:4A:23:C3        Sphero-RPB
 </pre>
-                <h2>cylon spark upload [access_token] [device_id] [firmware_file]</h2>
+                <h2>cylon spark upload &lt;access_token&gt; &lt;device_id&gt; &lt;firmware_file&gt;</h2>
                 <h4>Description</h4>
                 <p>
                   <b>Description:</b>
