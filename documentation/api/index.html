@@ -68,7 +68,8 @@
               <div class="api">
                 <h2 id="how-to-connect">How To Connect</h2>
                 
-                <p>Now you're ready to write code that will let you access your robots on a Cylon.js API server.</p>
+                <p>Cylon comes with a built-in API server so you can view details about your
+                robots and control them from anywhere.</p>
                 
                 <h3 id="running-your-robot">Running your robot:</h3>
                 
@@ -120,6 +121,41 @@ Cylon.start();
                 
                 <h2 id="routes">Routes</h2>
                 
+                <p>For this example, we'll be using a basic Cylon robot, hooked up to an Arduino
+                and a Leap Motion:</p>
+                
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">"</span><span class="content">TestBot</span><span class="delimiter">"</span></span>,
+
+  <span class="key">connections</span>: [
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/tty.usbmodem1421</span><span class="delimiter">'</span></span> }
+  ],
+
+  <span class="key">devices</span>: [
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>, <span class="key">connection</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span> }
+  ],
+
+  <span class="key">commands</span>: [<span class="string"><span class="delimiter">"</span><span class="content">hello</span><span class="delimiter">"</span></span>],
+
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    every((<span class="integer">10</span>).seconds(), my.led.toggle);
+  },
+
+  <span class="function">hello</span>: <span class="keyword">function</span>(greeting) {
+    <span class="keyword">return</span> greeting + <span class="string"><span class="delimiter">"</span><span class="content"> world</span><span class="delimiter">"</span></span>;
+  }
+});
+
+Cylon.start();
+</pre>
+                
+                <p>With this setup, Cylon will serve the API at https://localhost:3000. Now, lets
+                run through the routes.</p>
+                
                 <h3 id="get-">GET /</h3>
                 
                 <p>This route will serve up the Angular app bundled with Cylon, which can be used
@@ -130,218 +166,289 @@ Cylon.start();
                 
                 <h3 id="get-robots">GET /robots</h3>
                 
-                <p>Our first route returns all the Robots the master class knows about in JSON
-                format.</p>
+                <p>Returns a JSON array containing information on all robots:</p>
                 
-                <pre class="CodeRay">[
+                <pre class="CodeRay"><span class="comment">// GET /robots</span>
+[
   {
-    "name": "SpheroBot",
-    "connections": [
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">TestBot</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">connections</span><span class="delimiter">"</span></span>: [
       {
-        "name": "sphero",
-        "port": "/dev/rfcomm0",
-        "adaptor": "Sphero",
-        "connection_id": 2778
+        <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">127.0.0.1:6437</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">LeapMotion</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">9835</span>
+      },
+      {
+        <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">arduino</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">/dev/tty.usbmodem1421</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Firmata</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">1234</span>
       }
     ],
-    "devices": [
+    <span class="key"><span class="delimiter">"</span><span class="content">devices</span><span class="delimiter">"</span></span>: [
       {
-        "name": "sphero",
-        "driver": "Sphero",
-        "pin": null,
-        "connection": {
-          "name": "sphero",
-          "port": "/dev/rfcomm0",
-          "adaptor": "Sphero",
-          "connection_id": 2778
+        <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">driver</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">LeapMotion</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">connection</span><span class="delimiter">"</span></span>: {
+          <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span>,
+          <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">127.0.0.1:6437</span><span class="delimiter">"</span></span>,
+          <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">LeapMotion</span><span class="delimiter">"</span></span>,
+          <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">9835</span>
         },
-        "commands": [
-          "detectCollisions",
-          "roll",
-          "setColor",
-          "setRGB",
-          "stop"
+        <span class="key"><span class="delimiter">"</span><span class="content">commands</span><span class="delimiter">"</span></span>: []
+      },
+      {
+        <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">led</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">driver</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Led</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">pin</span><span class="delimiter">"</span></span>: <span class="integer">13</span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">connection</span><span class="delimiter">"</span></span>: {
+          <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">arduino</span><span class="delimiter">"</span></span>,
+          <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">/dev/tty.usbmodem1421</span><span class="delimiter">"</span></span>,
+          <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Firmata</span><span class="delimiter">"</span></span>,
+          <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">1234</span>
+        },
+        <span class="key"><span class="delimiter">"</span><span class="content">commands</span><span class="delimiter">"</span></span>: [
+          <span class="string"><span class="delimiter">"</span><span class="content">isOn</span><span class="delimiter">"</span></span>,
+          <span class="string"><span class="delimiter">"</span><span class="content">turnOn</span><span class="delimiter">"</span></span>,
+          <span class="string"><span class="delimiter">"</span><span class="content">turnOff</span><span class="delimiter">"</span></span>,
+          <span class="string"><span class="delimiter">"</span><span class="content">toggle</span><span class="delimiter">"</span></span>,
+          <span class="string"><span class="delimiter">"</span><span class="content">brightness</span><span class="delimiter">"</span></span>
         ]
       }
+    ],
+    <span class="key"><span class="delimiter">"</span><span class="content">commands</span><span class="delimiter">"</span></span>: [
+      <span class="string"><span class="delimiter">"</span><span class="content">hello</span><span class="delimiter">"</span></span>
     ]
   }
 ]
 </pre>
                 
-                <h3 id="get-robotsrobotname">GET /robots/:robotname</h3>
+                <h3 id="get-robotsrobot">GET /robots/:robot</h3>
                 
-                <p>Given a robot's name, returns JSON information about the requested Robot:</p>
+                <p>Returns more details about a specific robot:</p>
                 
-                <pre class="CodeRay">{
-  "name": "SpheroBot",
-  "connections": [
+                <pre class="CodeRay"><span class="comment">// GET /robots/TestBot</span>
+{
+  <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">TestBot</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">connections</span><span class="delimiter">"</span></span>: [
     {
-      "name": "sphero",
-      "port": "/dev/rfcomm0",
-      "adaptor": "Sphero",
-      "connection_id": 2778
+      <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">127.0.0.1:6437</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">LeapMotion</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">9835</span>
+    },
+    {
+      <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">arduino</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">/dev/tty.usbmodem1421</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Firmata</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">1234</span>
     }
   ],
-  "devices": [
+  <span class="key"><span class="delimiter">"</span><span class="content">devices</span><span class="delimiter">"</span></span>: [
     {
-      "name": "sphero",
-      "driver": "Sphero",
-      "pin": null,
-      "connection": {
-        "name": "sphero",
-        "port": "/dev/rfcomm0",
-        "adaptor": "Sphero",
-        "connection_id": 2778
+      <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">driver</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">LeapMotion</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">connection</span><span class="delimiter">"</span></span>: {
+        <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">127.0.0.1:6437</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">LeapMotion</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">9835</span>
       },
-      "commands": [
-        "detectCollisions",
-        "roll",
-        "setColor",
-        "setRGB",
-        "stop"
+      <span class="key"><span class="delimiter">"</span><span class="content">commands</span><span class="delimiter">"</span></span>: []
+    },
+    {
+      <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">led</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">driver</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Led</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">pin</span><span class="delimiter">"</span></span>: <span class="integer">13</span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">connection</span><span class="delimiter">"</span></span>: {
+        <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">arduino</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">/dev/tty.usbmodem1421</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Firmata</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">1234</span>
+      },
+      <span class="key"><span class="delimiter">"</span><span class="content">commands</span><span class="delimiter">"</span></span>: [
+        <span class="string"><span class="delimiter">"</span><span class="content">isOn</span><span class="delimiter">"</span></span>,
+        <span class="string"><span class="delimiter">"</span><span class="content">turnOn</span><span class="delimiter">"</span></span>,
+        <span class="string"><span class="delimiter">"</span><span class="content">turnOff</span><span class="delimiter">"</span></span>,
+        <span class="string"><span class="delimiter">"</span><span class="content">toggle</span><span class="delimiter">"</span></span>,
+        <span class="string"><span class="delimiter">"</span><span class="content">brightness</span><span class="delimiter">"</span></span>
       ]
     }
+  ],
+  <span class="key"><span class="delimiter">"</span><span class="content">commands</span><span class="delimiter">"</span></span>: [
+    <span class="string"><span class="delimiter">"</span><span class="content">hello</span><span class="delimiter">"</span></span>
   ]
 }
 </pre>
                 
-                <h3 id="get-robotsrobotnamecommands">GET /robots/:robotname/commands</h3>
+                <h3 id="get-robotsrobotcommands">GET /robots/:robot/commands</h3>
                 
-                <p>Given a robot's name, returns JSON information about the commands belonging to
-                the requested Robot:</p>
+                <p>Returns a JSON array of commands the robot has defined:</p>
                 
-                <pre class="CodeRay">[
-  "detectCollisions",
-  "roll",
-  "setColor",
-  "setRGB",
-  "stop"
+                <pre class="CodeRay"><span class="comment">// GET /robots/TestBot/commands</span>
+[
+  <span class="string"><span class="delimiter">"</span><span class="content">hello</span><span class="delimiter">"</span></span>
 ]
 </pre>
                 
-                <h3 id="post-robotsrobotnamecommandscommandname">POST /robots/:robotname/commands/:commandname</h3>
+                <h3 id="all-robotsrobotcommandscommand">ALL /robots/:robot/commands/:command</h3>
                 
-                <p>Given a robot name, commands, and command name, executes a robot's command
-                and returns the result.</p>
+                <p>Executes a robot's command. Commands can be supplied as query params or
+                (preferably) a JSON object in a POST body.</p>
                 
-                <pre class="CodeRay">{
-  result: "successful"
+                <p>Returns a JSON object, the 'result' key is the return value of the command.</p>
+                
+                <pre class="CodeRay"><span class="comment">// GET /robots/TestBot/commands/hello?greeting=hello</span>
+{
+  <span class="key"><span class="delimiter">"</span><span class="content">result</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">hello world</span><span class="delimiter">"</span></span>
+}
+
+<span class="comment">// POST /robots/TestBot/commands/hello</span>
+<span class="comment">// { greeting: "Hello," }</span>
+{
+  <span class="key"><span class="delimiter">"</span><span class="content">result</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Hello, world</span><span class="delimiter">"</span></span>
 }
 </pre>
                 
-                <h3 id="get-robotsrobotnamedevices">GET /robots/:robotname/devices</h3>
+                <h3 id="get-robotsrobotdevices">GET /robots/:robot/devices</h3>
                 
-                <p>Given a robot's name, returns JSON information about the devices belonging to
-                the requested Robot:</p>
+                <p>Returns an array of the robot's devices.</p>
                 
-                <pre class="CodeRay">[
+                <pre class="CodeRay"><span class="comment">// GET /robots/TestBot/devices</span>
+[
   {
-    "name": "sphero",
-    "driver": "Sphero",
-    "pin": null,
-    "connection": {
-      "name": "sphero",
-      "port": "/dev/rfcomm0",
-      "adaptor": "Sphero",
-      "connection_id": 2778
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">driver</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">LeapMotion</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">connection</span><span class="delimiter">"</span></span>: {
+      <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">127.0.0.1:6437</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">LeapMotion</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">9835</span>
     },
-    "commands": [
-      "detectCollisions",
-      "roll",
-      "setColor",
-      "setRGB",
-      "stop"
+    <span class="key"><span class="delimiter">"</span><span class="content">commands</span><span class="delimiter">"</span></span>: []
+  },
+  {
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">led</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">driver</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Led</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">pin</span><span class="delimiter">"</span></span>: <span class="integer">13</span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">connection</span><span class="delimiter">"</span></span>: {
+      <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">arduino</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">/dev/tty.usbmodem1421</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Firmata</span><span class="delimiter">"</span></span>,
+      <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">1234</span>
+    },
+    <span class="key"><span class="delimiter">"</span><span class="content">commands</span><span class="delimiter">"</span></span>: [
+      <span class="string"><span class="delimiter">"</span><span class="content">isOn</span><span class="delimiter">"</span></span>,
+      <span class="string"><span class="delimiter">"</span><span class="content">turnOn</span><span class="delimiter">"</span></span>,
+      <span class="string"><span class="delimiter">"</span><span class="content">turnOff</span><span class="delimiter">"</span></span>,
+      <span class="string"><span class="delimiter">"</span><span class="content">toggle</span><span class="delimiter">"</span></span>,
+      <span class="string"><span class="delimiter">"</span><span class="content">brightness</span><span class="delimiter">"</span></span>
     ]
   }
 ]
 </pre>
                 
-                <h3 id="get-robotsrobotnamedevicesdevicename">GET /robots/:robotname/devices/:devicename</h3>
+                <h3 id="get-robotsrobotdevicesdevice">GET /robots/:robot/devices/:device</h3>
                 
-                <p>Given the names of a device and the robot it belongs to, returns data on the
-                specified device.</p>
+                <p>Returns a JSON object containing specific information about a particular device.</p>
                 
-                <pre class="CodeRay">{
-  "name": "sphero",
-  "driver": "Sphero",
-  "pin": null,
-  "connection": {
-    "name": "sphero",
-    "port": "/dev/rfcomm0",
-    "adaptor": "Sphero",
-    "connection_id": 2778
+                <pre class="CodeRay"><span class="comment">// GET /robots/TestBot/devices/led</span>
+{
+  <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">led</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">driver</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Led</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">pin</span><span class="delimiter">"</span></span>: <span class="integer">13</span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">connection</span><span class="delimiter">"</span></span>: {
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">arduino</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">/dev/tty.usbmodem1421</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Firmata</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">1234</span>
   },
-  "commands": [
-    "detectCollisions",
-    "roll",
-    "setColor",
-    "setRGB",
-    "stop"
+  <span class="key"><span class="delimiter">"</span><span class="content">commands</span><span class="delimiter">"</span></span>: [
+    <span class="string"><span class="delimiter">"</span><span class="content">isOn</span><span class="delimiter">"</span></span>,
+    <span class="string"><span class="delimiter">"</span><span class="content">turnOn</span><span class="delimiter">"</span></span>,
+    <span class="string"><span class="delimiter">"</span><span class="content">turnOff</span><span class="delimiter">"</span></span>,
+    <span class="string"><span class="delimiter">"</span><span class="content">toggle</span><span class="delimiter">"</span></span>,
+    <span class="string"><span class="delimiter">"</span><span class="content">brightness</span><span class="delimiter">"</span></span>
   ]
 }
 </pre>
                 
-                <h3 id="get-robotsrobotnamedevicesdevicenamecommands">GET /robots/:robotname/devices/:devicename/commands</h3>
+                <h3 id="get-robotsrobotdevicesdevicecommands">GET /robots/:robot/devices/:device/commands</h3>
                 
-                <p>Given the names of a device and the robot it belongs to, returns all commands
-                available for the specified device.</p>
+                <p>Returns a JSON array of the commands the device has registered.</p>
                 
-                <pre class="CodeRay">[
-  "detectCollisions",
-  "roll",
-  "setColor",
-  "setRGB",
-  "stop"
+                <pre class="CodeRay"><span class="comment">// GET /robots/TestBot/devices/led/commands</span>
+[
+  <span class="string"><span class="delimiter">"</span><span class="content">isOn</span><span class="delimiter">"</span></span>,
+  <span class="string"><span class="delimiter">"</span><span class="content">turnOn</span><span class="delimiter">"</span></span>,
+  <span class="string"><span class="delimiter">"</span><span class="content">turnOff</span><span class="delimiter">"</span></span>,
+  <span class="string"><span class="delimiter">"</span><span class="content">toggle</span><span class="delimiter">"</span></span>,
+  <span class="string"><span class="delimiter">"</span><span class="content">brightness</span><span class="delimiter">"</span></span>
 ]
 </pre>
                 
-                <h3 id="post-robotsrobotnamedevicesdevicenamecommandscommandname">POST /robots/:robotname/devices/:devicename/commands/:commandname</h3>
+                <h3 id="all-robotsrobotdevicesdevicecommandscommand">ALL /robots/:robot/devices/:device/commands/:command</h3>
                 
-                <p>Given a robot name, device name, and command name, executes a robot's command
-                and returns the result.</p>
+                <p>Executes a command on the robot's device. Params can be passed via query params
+                or (preferably) as a JSON object in the POST body.</p>
                 
-                <pre class="CodeRay">{
-  result: "successful"
-}
+                <p>Returns a JSON object. If the method returns anything, the result will be in the
+                'result' field.</p>
+                
+                <pre class="CodeRay"><span class="comment">// GET /robots/TestBot/devices/led/commands/turnOn</span>
+{}
 </pre>
                 
-                <h3 id="get-robotsrobotnameconnections">GET /robots/:robotname/connections</h3>
+                <h3 id="get-robotsrobotdevicesdeviceeventsevent">GET /robots/:robot/devices/:device/events/:event</h3>
                 
-                <p>Given a robot's name, returns JSON information about the connections belonging
-                to the requested Robot:</p>
+                <p>Opens a long-held Server-Sent Events connection that will stream event data as
+                it comes in from the device. This can be hooked up in a browser by using
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventSource">EventSource</a>.</p>
                 
-                <pre class="CodeRay">[
+                <p>Once the connection is opened, event data is emitted as it's received as a JSON
+                string.</p>
+                
+                <pre class="CodeRay"><span class="comment">// GET /robots/TestBot/devices/leapmotion/events/hand</span>
+data: <span class="string"><span class="delimiter">"</span><span class="content">{ /* data in JSON format here */ }</span><span class="delimiter">"</span></span>
+
+data: <span class="string"><span class="delimiter">"</span><span class="content">{ /* data in JSON format here */ }</span><span class="delimiter">"</span></span>
+</pre>
+                
+                <h3 id="get-robotsrobotconnections">GET /robots/:robot/connections</h3>
+                
+                <p>Returns a JSON array containing information on all the connections the robot
+                has.</p>
+                
+                <pre class="CodeRay"><span class="comment">// GET /robots/TestBot/connections</span>
+[
   {
-    "name": "sphero",
-    "port": "/dev/rfcomm0",
-    "adaptor": "Sphero",
-    "connection_id": 2778
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">127.0.0.1:6437</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">LeapMotion</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">4190</span>
+  },
+  {
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">arduino</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">/dev/tty.usbmodem1421</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Firmata</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">8366</span>
   }
 ]
 </pre>
                 
-                <h3 id="get-robotsrobotnameconnectionsconnectionname">GET /robots/:robotname/connections/:connectionname</h3>
+                <h3 id="get-robotsrobotconnectionsconnection">GET /robots/:robot/connections/:connection</h3>
                 
-                <p>Given a robot's name, returns JSON information about the connections belonging
-                to the requested Robot:</p>
+                <p>Returns a JSON object containing information on a specific robot's connection.</p>
                 
-                <pre class="CodeRay">{
-  "name": "sphero",
-  "port": "/dev/rfcomm0",
-  "adaptor": "Sphero",
-  "connection_id": 2778
+                <pre class="CodeRay"><span class="comment">// GET /robots/TestBot/connections/leapmotion</span>
+{
+  <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">leapmotion</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">port</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">127.0.0.1:6437</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">adaptor</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">LeapMotion</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">connection_id</span><span class="delimiter">"</span></span>: <span class="integer">4190</span>
 }
 </pre>
-                
-                <h3 id="get-robotsrobotnamedevicesdevicenameevents">GET /robots/:robotname/devices/:devicename/events</h3>
-                
-                <p>Routes to a Socket.IO route to handle WebSockets connections requesting updates
-                on device events.</p>
-                
-                <h3 id="wsget-events">WS_GET /events</h3>
-                
-                <p>A Socket.IO route to handle updating clients whenever a device sends
-                an 'update' event.</p>
               </div>
             </div>
           </section>
