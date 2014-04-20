@@ -76,18 +76,37 @@
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/maxbotix.jpg"><div class="info-intro">
-                  <p>Provides tools to use maxbotix sonar (range finder).</p>
+                  <p>Provides tools to use maxbotix sonar (range finder), easy to use ultrasonic distance sensors that provide stable range readings. Our ultrasonic sensors have been designed into a wide range of solutions.</p>
+                  <p>
+                    For more information click
+                    <a target="_blank" href="http://www.maxbotix.com/?gclid=CI7VpM791r0CFenm7AodOSoAjA">here.</a>
+                  </p>
                 </div>
                 <div class="clear"></div>
               </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
-                <pre class="CodeRay">coming soon
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">maxbotix</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">maxbotix</span><span class="delimiter">'</span></span> },
+...
 </pre>
-              </section><section class="how-to" id="HowToUse"><h3>How To Use</h3>
-                <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
-                <pre class="CodeRay">comming soon
-</pre>
-                <h2>Examples</h2>
-                <pre class="CodeRay">comming soon
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
+                <p></p>
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">maxbotix</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">maxbotix</span><span class="delimiter">'</span></span> },
+
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    every((<span class="integer">1</span>).seconds(), <span class="keyword">function</span>() {
+      my.maxbotix.range(<span class="keyword">function</span>(data) {
+        Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">range: </span><span class="delimiter">"</span></span> + data);
+      });
+    });
+  }
+}).start();
 </pre>
               </section><section class="public-methods"><div class="commands-api" id="Commands">
                   <h1 id="commands">Commands</h1>

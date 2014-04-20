@@ -76,18 +76,43 @@
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/hmc6352-compass.jpg"><div class="info-intro">
-                  <p>Allows user to read heading from HMC6352 Digital Compass via i2c interface</p>
+                  <p>Allows user to read heading from HMC6352 Digital Compass via i2c interface.</p>
+                  <p>
+                    For more information click
+                    <a target="_blank" href="https://www.sparkfun.com/products/7915">here.</a>
+                  </p>
                 </div>
                 <div class="clear"></div>
               </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
-                <pre class="CodeRay">coming soon
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot(
+  {<span class="key">connection</span>:
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
+
+  <span class="key">device</span>:
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">hmc6352</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">hmc6352</span><span class="delimiter">'</span></span>},
+... 
 </pre>
               </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
-                <p>To read the current compass heading, just use the `heading()` function:</p>
-                <pre class="CodeRay">coming soon
-</pre>
                 <h3>Example using a HMC6352 Digital Compass.</h3>
-                <pre class="CodeRay">coming soon
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot(
+  {<span class="key">connection</span>:
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
+
+  <span class="key">device</span>:
+    {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">hmc6352</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">hmc6352</span><span class="delimiter">'</span></span>},
+
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    every((<span class="integer">1</span>).second(), <span class="keyword">function</span>() {
+      my.hmc6352.heading(<span class="keyword">function</span>(data) {
+        Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">heading: </span><span class="delimiter">"</span></span> + data);
+      });
+    });
+  }}
+).start();
 </pre>
               </section><section class="public-methods"><div class="commands-api" id="Commands">
                   <h1 id="commands">Commands</h1>
