@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Cylon.js - Rapiro Driver</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascript/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascript/script.js"></script><script src="/hybridpages/assets/javascript/accordeon.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -58,34 +58,41 @@
 </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Rapiro</h1>
-          <h2 class="subtitle">Driver</h2>
+          <h1 class="title">Drivers</h1>
+          <h2 class="subtitle">Cylon has a extensible system for connecting to hardware devices.</h2>
         </div>
       </div>
-      <section class="subnav-drivers" id="mainsubnav"><div class="container">
-          <nav><a href="#HowToConnect">How to Connect</a>
-            <a href="#HowToUse">How To Use</a>
-            <a href="#Commands">Commands</a>
-            <a href="#Events">Events</a>
-            <a href="#Compatability">Compatibility</a>
-            <a href="#top">Top</a>
-          </nav>
-</div>
-      </section><div class="container">
+      <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/rapiro.jpg"><div class="info-intro">
-                  <p>Allows user to interact with the Rapiro robot using Cylon.js.</p>
-                  <p>
-                    For more information click
-                    <a target="_blank" href="http://www.rapiro.com/">here</a>
-                  </p>
+              <div class="container-documentation">
+                <div class="page-title-docs">
+                  <div class="w">
+                    <h1 class="title">Rapiro</h1>
+                    <h2 class="subtitle">Driver</h2>
+                  </div>
                 </div>
-                <div class="clear"></div>
-              </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
-                <p>
-                  Connecting to the Rapiro uses a simple serial port protocol. You will need to know which serial port the Rapiro's board is connected to.
-                  </p>
+                <section class="subnav-drivers" id="mainsubnav"><div class="container">
+                    <nav><a href="#HowToConnect">How to Connect</a>
+                      <a href="#HowToUse">How To Use</a>
+                      <a href="#Commands">Commands</a>
+                      <a href="#Events">Events</a>
+                      <a href="#Compatability">Compatibility</a>
+                      <a href="#top">Top</a>
+                    </nav>
+</div>
+                </section><br><section class="intro"><img class="display" src="/images/devices/rapiro.jpg"><div class="info-intro">
+                    <p>Allows user to interact with the Rapiro robot using Cylon.js.</p>
+                    <p>
+                      For more information click
+                      <a target="_blank" href="http://www.rapiro.com/">here</a>
+                    </p>
+                  </div>
+                  <div class="clear"></div>
+                </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
+                  <p>
+                    Connecting to the Rapiro uses a simple serial port protocol. You will need to know which serial port the Rapiro's board is connected to.
+                    </p>
 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -94,11 +101,11 @@ Cylon.robot({
   <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">rapiro</span><span class="delimiter">'</span></span>},
 ...
 </pre>
-                
-              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
-                <p>
-                  Example of a simple program that makes the Rapiro's LED blink.
-                  </p>
+                  
+                </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
+                  <p>
+                    Example of a simple program that makes the Rapiro's LED blink.
+                    </p>
 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -118,308 +125,589 @@ Cylon.robot({
     });
   }
 </pre>
-                
-              </section><section class="public-methods"><div class="commands-api" id="Commands">
-                  <h1 id="commands">Commands</h1>
                   
-                  <h2 id="halt">halt()</h2>
-                  
-                  <p>Stop moving.</p>
-                  
-                  <h5 id="returns">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="forward">forward()</h2>
-                  
-                  <p>Move forward.</p>
-                  
-                  <h5 id="returns-1">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="backward">backward()</h2>
-                  
-                  <p>Move backward.</p>
-                  
-                  <h5 id="returns-2">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="right">right()</h2>
-                  
-                  <p>Turn right.</p>
-                  
-                  <h5 id="returns-3">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="left">left()</h2>
-                  
-                  <p>Turn left.</p>
-                  
-                  <h5 id="returns-4">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="happy">happy()</h2>
-                  
-                  <p>Make a happy move.</p>
-                  
-                  <h5 id="returns-5">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="unhappy">unhappy()</h2>
-                  
-                  <p>Make an unhappy move :(</p>
-                  
-                  <h5 id="returns-6">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="concerned">concerned()</h2>
-                  
-                  <p>Act concerned.</p>
-                  
-                  <h5 id="returns-7">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="mad">mad()</h2>
-                  
-                  <p>Get mad.</p>
-                  
-                  <h5 id="returns-8">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="push">push()</h2>
-                  
-                  <p>Push things around.</p>
-                  
-                  <h5 id="returns-9">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="ledred-green-blue">led(red, green, blue)</h2>
-                  
-                  <p>Sets the RGB LED to a specific color.</p>
-                  
-                  <h5 id="params">Params</h5>
-                  
-                  <ul>
+                </section><section class="public-methods"><div class="commands-api" id="Commands">
+                    <h1 id="commands">Commands</h1>
+                    
+                    <h2 id="halt">halt()</h2>
+                    
+                    <p>Stop moving.</p>
+                    
+                    <h5 id="returns">Returns</h5>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="forward">forward()</h2>
+                    
+                    <p>Move forward.</p>
+                    
+                    <h5 id="returns-1">Returns</h5>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="backward">backward()</h2>
+                    
+                    <p>Move backward.</p>
+                    
+                    <h5 id="returns-2">Returns</h5>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="right">right()</h2>
+                    
+                    <p>Turn right.</p>
+                    
+                    <h5 id="returns-3">Returns</h5>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="left">left()</h2>
+                    
+                    <p>Turn left.</p>
+                    
+                    <h5 id="returns-4">Returns</h5>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="happy">happy()</h2>
+                    
+                    <p>Make a happy move.</p>
+                    
+                    <h5 id="returns-5">Returns</h5>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="unhappy">unhappy()</h2>
+                    
+                    <p>Make an unhappy move :(</p>
+                    
+                    <h5 id="returns-6">Returns</h5>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="concerned">concerned()</h2>
+                    
+                    <p>Act concerned.</p>
+                    
+                    <h5 id="returns-7">Returns</h5>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="mad">mad()</h2>
+                    
+                    <p>Get mad.</p>
+                    
+                    <h5 id="returns-8">Returns</h5>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="push">push()</h2>
+                    
+                    <p>Push things around.</p>
+                    
+                    <h5 id="returns-9">Returns</h5>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="ledred-green-blue">led(red, green, blue)</h2>
+                    
+                    <p>Sets the RGB LED to a specific color.</p>
+                    
+                    <h5 id="params">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>red</strong> - Numeric value for red.</li>
-                    <li>
+                      <li>
 <strong>green</strong> - Numeric value for green.</li>
-                    <li>
+                      <li>
 <strong>blue</strong> - Numeric value for blue.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-10">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="headangle">head(angle)</h2>
-                  
-                  <p>Sets head servo to a specific angle.</p>
-                  
-                  <h5 id="params-1">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="headangle">head(angle)</h2>
+                    
+                    <p>Sets head servo to a specific angle.</p>
+                    
+                    <h5 id="params-1">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-11">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="waistangle">waist(angle)</h2>
-                  
-                  <p>Sets waist servo to a specific angle.</p>
-                  
-                  <h5 id="params-2">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="waistangle">waist(angle)</h2>
+                    
+                    <p>Sets waist servo to a specific angle.</p>
+                    
+                    <h5 id="params-2">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-12">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="rightshoulderrollangle">rightShoulderRoll(angle)</h2>
-                  
-                  <p>Sets rightShoulderRoll servo to a specific angle.</p>
-                  
-                  <h5 id="params-3">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="rightshoulderrollangle">rightShoulderRoll(angle)</h2>
+                    
+                    <p>Sets rightShoulderRoll servo to a specific angle.</p>
+                    
+                    <h5 id="params-3">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-13">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="rightshoulderpitchangle">rightShoulderPitch(angle)</h2>
-                  
-                  <p>Sets rightShoulderPitch servo to a specific angle.</p>
-                  
-                  <h5 id="params-4">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="rightshoulderpitchangle">rightShoulderPitch(angle)</h2>
+                    
+                    <p>Sets rightShoulderPitch servo to a specific angle.</p>
+                    
+                    <h5 id="params-4">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-14">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="righthandangle">rightHand(angle)</h2>
-                  
-                  <p>Sets rightHand servo to a specific angle.</p>
-                  
-                  <h5 id="params-5">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="righthandangle">rightHand(angle)</h2>
+                    
+                    <p>Sets rightHand servo to a specific angle.</p>
+                    
+                    <h5 id="params-5">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-15">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="rightfootyawangle">rightFootYaw(angle)</h2>
-                  
-                  <p>Sets rightFootYaw servo to a specific angle.</p>
-                  
-                  <h5 id="params-6">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="rightfootyawangle">rightFootYaw(angle)</h2>
+                    
+                    <p>Sets rightFootYaw servo to a specific angle.</p>
+                    
+                    <h5 id="params-6">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-16">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="rightfootpitchangle">rightFootPitch(angle)</h2>
-                  
-                  <p>Sets rightFootPitch servo to a specific angle.</p>
-                  
-                  <h5 id="params-7">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="rightfootpitchangle">rightFootPitch(angle)</h2>
+                    
+                    <p>Sets rightFootPitch servo to a specific angle.</p>
+                    
+                    <h5 id="params-7">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-17">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="leftshoulderrollangle">leftShoulderRoll(angle)</h2>
-                  
-                  <p>Sets leftShoulderRoll servo to a specific angle.</p>
-                  
-                  <h5 id="params-8">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="leftshoulderrollangle">leftShoulderRoll(angle)</h2>
+                    
+                    <p>Sets leftShoulderRoll servo to a specific angle.</p>
+                    
+                    <h5 id="params-8">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-18">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="leftshoulderpitchangle">leftShoulderPitch(angle)</h2>
-                  
-                  <p>Sets leftShoulderPitch servo to a specific angle.</p>
-                  
-                  <h5 id="params-9">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="leftshoulderpitchangle">leftShoulderPitch(angle)</h2>
+                    
+                    <p>Sets leftShoulderPitch servo to a specific angle.</p>
+                    
+                    <h5 id="params-9">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-19">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="lefthandangle">leftHand(angle)</h2>
-                  
-                  <p>Sets leftHand servo to a specific angle.</p>
-                  
-                  <h5 id="params-10">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="lefthandangle">leftHand(angle)</h2>
+                    
+                    <p>Sets leftHand servo to a specific angle.</p>
+                    
+                    <h5 id="params-10">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-20">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="leftfootyawangle">leftFootYaw(angle)</h2>
-                  
-                  <p>Sets leftFootYaw servo to a specific angle.</p>
-                  
-                  <h5 id="params-11">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="leftfootyawangle">leftFootYaw(angle)</h2>
+                    
+                    <p>Sets leftFootYaw servo to a specific angle.</p>
+                    
+                    <h5 id="params-11">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-21">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="leftfootpitchangle">leftFootPitch(angle)</h2>
-                  
-                  <p>Sets leftFootPitch servo to a specific angle.</p>
-                  
-                  <h5 id="params-12">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="leftfootpitchangle">leftFootPitch(angle)</h2>
+                    
+                    <p>Sets leftFootPitch servo to a specific angle.</p>
+                    
+                    <h5 id="params-12">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-22">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="setservoservo-angle">setServo(servo, angle)</h2>
-                  
-                  <p>Sets a servo to a specific angle.</p>
-                  
-                  <h5 id="params-13">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="setservoservo-angle">setServo(servo, angle)</h2>
+                    
+                    <p>Sets a servo to a specific angle.</p>
+                    
+                    <h5 id="params-13">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>servo</strong> - Servo number.</li>
-                    <li>
+                      <li>
 <strong>angle</strong> - Servo angle.</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-23">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                </div>
-                <div class="commands-api" id="Events">
-                  <h1 id="events">Events</h1>
-                  
-                  <h2 id="start">start</h2>
-                  
-                  <p>Gets triggered when the connection to Rapiro driver has been started.</p>
-                </div>
-              </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
-                <div class="devices">
-                  <!-- /Platforms Parts -->
-                  <!-- // Rapiro -->
-                  <a class="device" href="/documentation/platforms/rapiro" title="Rapiro">
-                    <img src="/images/devices/rapiro.jpg"></a>
-                </div>
-              </section>
+                    
+                    <p><code>null</code></p>
+                  </div>
+                  <div class="commands-api" id="Events">
+                    <h1 id="events">Events</h1>
+                    
+                    <h2 id="start">start</h2>
+                    
+                    <p>Gets triggered when the connection to Rapiro driver has been started.</p>
+                  </div>
+                </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
+                  <div class="devices">
+                    <!-- /Platforms Parts -->
+                    <!-- // Rapiro -->
+                    <a class="device" href="/documentation/platforms/rapiro" title="Rapiro">
+                      <img src="/images/devices/rapiro.jpg"></a>
+                  </div>
+                </section>
 </div>
+              <div class="side-documentation">
+                <div class="mobile-menu">
+                  <a href="#" id="menu-docs">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                  </a>
+                </div>
+                <dl class="accordion-docs hide">
+<h5 class="doc-button">
+                    <a href="/documentation">Docs</a>
+                  </h5>
+                  <span></span>
+                  <dt>
+                    <a href="">Getting Started</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="getting-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/getting-started">Setup your environment</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Guides</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="guides-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/guides/what_is_cylon">
+                          About Cylon
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/api">
+                          API
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/cli">
+                          CLI
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/test-driven-robotics">Test Driven Robotic</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/helpers">Helper Methods</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Platforms</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="platform-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/platforms/ardrone">Ardrone</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/arduino">Arduino</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/beaglebone">Beaglebone</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/crazyflie">Crazyflie</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/digispark">Digispark</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/galileo">Intel Galileo</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/joystick">Joystick</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/keyboard">Keyboard</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/force">Force</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/leapmotion">Leap Motion</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/neurosky">Neurosky Mindware</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/opencv">OpenCV</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/pebble">Pebble</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/rapiro">Rapiro</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/raspberry-pi">Raspberry Pi</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/skynet">Skynet</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/spark">Spark</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/sphero">Sphero</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/tessel">Tessel</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Drivers</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="driver-panel">
+                    GPIO
+                    <ul id="gpio">
+<li>
+                        <a href="/documentation/drivers/analog-sensor">Analog Sensor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/button">Button</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/continuous-servo">Continuos Servo</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/ir-range-finder">Sharp IR Proximity Sensor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/led">LED</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/makey-button">Makey Button</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/maxbotix">Maxbotix</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/motor">Motor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/servo">Servo</a>
+                      </li>
+                    </ul>
+                    I2C
+                    <ul id="i2c">
+<li>
+                        <a href="/documentation/drivers/blinkm">Blinkm</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/bmp180">BPM180</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/hmc6352-compass">HMC6352 Compass</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/lcd">LCD</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/mpl115a2">MPL115A2</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/mpu6050">MPU6050</a>
+                      </li>
+                    </ul>
+                    ARDrone
+                    <ul id="ardrone">
+<li>
+                        <a href="/documentation/drivers/ardrone">Ardrone Flight</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/ardrone-navigation">Ardrone Navigation</a>
+                      </li>
+                    </ul>
+                    Crazyflie
+                    <ul id="crazyflie">
+<li>
+                        <a href="/documentation/drivers/crazyflie">Crazyflie Flight</a>
+                      </li>
+                    </ul>
+                    Force
+                    <ul id="force">
+<li>
+                        <a href="/documentation/drivers/force">Force</a>
+                      </li>
+                    </ul>
+                    Joystick
+                    <ul id="joystick">
+<li>
+                        <a href="/documentation/drivers/dualshock">Dualshock3 Controller</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/xbox360">XBox360 Controller</a>
+                      </li>
+                    </ul>
+                    Other Drivers
+                    <ul id="others">
+<li>
+                        <a href="/documentation/drivers/keyboard">Keyboard</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/leapmotion">Leap Motion</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/neurosky">Neurosky Mindware</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/pebble">Pebble</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/rapiro">Rapiro</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/skynet">Skynet</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/sphero">Sphero</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Contribute</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="contribute-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/contribute/guidelines">Guidelines</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/contribute/contact-us">Contact us</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Examples</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="example-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/examples">All examples</a>
+                      </li>
+                    </ul>
+</dd>
+                </dl>
+<script>
+                    $(document).ready(function(){
+                      $("#menu-docs").click(function(){
+                        $(".accordion-docs").removeClass("hide");
+                        $(this).addClass("active");
+                      });
+                    });
+                </script><script>
+                  $("#driver-panel").addClass("active-panel");
+                  $("#others li:nth-child(5)").addClass("active-link");
+                  $(".accordion-docs dt:nth-child(9) a:nth-child(2) img").addClass("rotate");
+                </script>
+</div>
+            </div>
           </section>
 </div>
       </div>

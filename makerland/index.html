@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Cylon.js - Makerland</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascript/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascript/script.js"></script><script src="/hybridpages/assets/javascript/accordeon.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -65,55 +65,57 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="makerland"><h2>Installation</h2>
-                <ul>
+              <div class="container-documentation">
+                
+                <section class="makerland"><h2>Installation</h2>
+                  <ul>
 <li>
-                    <p>
-                      First, install
-                      <a href="http://nodejs.org/download/">Node.js</a>
-                    </p>
-                    <p>
-                      If you already have Node.js installed, you can skip to the next step.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Now, make sure you have all the dependencies listed
-                      <a href="https://github.com/TooTallNate/node-gyp#installation">here.</a>
-                    </p>
-                    <p>
-                      If you have already installed node-serialport, then you already have this, and can skip to the next step.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Next up, install Cylon.js globally, so you can make use of the CLI commands it provides:
+                      <p>
+                        First, install
+                        <a href="http://nodejs.org/download/">Node.js</a>
                       </p>
+                      <p>
+                        If you already have Node.js installed, you can skip to the next step.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        Now, make sure you have all the dependencies listed
+                        <a href="https://github.com/TooTallNate/node-gyp#installation">here.</a>
+                      </p>
+                      <p>
+                        If you have already installed node-serialport, then you already have this, and can skip to the next step.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        Next up, install Cylon.js globally, so you can make use of the CLI commands it provides:
+                        </p>
 <pre class="CodeRay">$ npm install -g cylon cylon-gpio cylon-i2c cylon-firmata cylon-sphero cylon-leapmotion &amp;&amp; npm install cylon cylon-gpio cylon-i2c cylon-firmata cylon-sphero cylon-leapmotion
 </pre>
-                    
-                    <p>
-                      Once that's finished, you should be able to check if it's working by
-                      opening another terminal window and entering this command, which should
-                      give you a similar result:
-                      </p>
+                      
+                      <p>
+                        Once that's finished, you should be able to check if it's working by
+                        opening another terminal window and entering this command, which should
+                        give you a similar result:
+                        </p>
 <pre class="CodeRay">$ which cylon
 /usr/local/bin/cylon
 </pre>
-                    
-                  </li>
-                  <li>
-                    <p>
-                      Finally, install the
-                      <a href="https://www.leapmotion.com/setup">Leap Motion</a>
-                      software.
-                    </p>
-                  </li>
-                </ul>
+                      
+                    </li>
+                    <li>
+                      <p>
+                        Finally, install the
+                        <a href="https://www.leapmotion.com/setup">Leap Motion</a>
+                        software.
+                      </p>
+                    </li>
+                  </ul>
 <h2>Test Your Install - Arduino Blink</h2>
-                <p>You can now test your installation. Plug in your Arduino, and run the following code, that makes the built-in LED on your Arduino turn on/off every second:</p>
-                <h3>JavaScript</h3>
-                <pre class="CodeRay"><span class="comment">//blink.js</span>
+                  <p>You can now test your installation. Plug in your Arduino, and run the following code, that makes the built-in LED on your Arduino turn on/off every second:</p>
+                  <h3>JavaScript</h3>
+                  <pre class="CodeRay"><span class="comment">//blink.js</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -126,18 +128,18 @@ Cylon.robot({
   }
 }).start();
 </pre>
-                <p>Please note that you might need to change the value for port.</p>
-                <p>
-                  Use
-                  <code>cylon scan serial</code>
-                  to find your connection info and serial port address:
-                  </p>
+                  <p>Please note that you might need to change the value for port.</p>
+                  <p>
+                    Use
+                    <code>cylon scan serial</code>
+                    to find your connection info and serial port address:
+                    </p>
 <pre class="CodeRay">  $ cylon scan serial
 </pre>
-                
-              </section><section class="makerland"><h2>Makey button</h2>
-                <img alt="" src="/documentation/drivers/breadboards/gpio/makey_button_bb.png" style="width:50%"><h3>JavaScript</h3>
-                <pre class="CodeRay"><span class="comment">//makey.js</span>
+                  
+                </section><section class="makerland"><h2>Makey button</h2>
+                  <img alt="" src="/documentation/drivers/breadboards/gpio/makey_button_bb.png" style="width:50%"><h3>JavaScript</h3>
+                  <pre class="CodeRay"><span class="comment">//makey.js</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -154,14 +156,14 @@ Cylon.robot({
   }
 }).start();
 </pre>
-                <h2>Connect To Sphero</h2>
-                <p>
-                  Connect to your Sphero using Bluetooth. Here are instructions on
-                  <a href="https://github.com/hybridgroup/cylon-sphero#how-to-connect">how to connect</a>
-                </p>
-                <h2>Sphero Color</h2>
-                <h3>JavaScript</h3>
-                <pre class="CodeRay"><span class="comment">//sphero_color.js</span>
+                  <h2>Connect To Sphero</h2>
+                  <p>
+                    Connect to your Sphero using Bluetooth. Here are instructions on
+                    <a href="https://github.com/hybridgroup/cylon-sphero#how-to-connect">how to connect</a>
+                  </p>
+                  <h2>Sphero Color</h2>
+                  <h3>JavaScript</h3>
+                  <pre class="CodeRay"><span class="comment">//sphero_color.js</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -175,9 +177,9 @@ Cylon.robot({
   }
 }).start();
 </pre>
-                <h2>Sphero Makey Button</h2>
-                <h3>JavaScript</h3>
-                <pre class="CodeRay"><span class="comment">//sphero_makey_button.js</span>
+                  <h2>Sphero Makey Button</h2>
+                  <h3>JavaScript</h3>
+                  <pre class="CodeRay"><span class="comment">//sphero_makey_button.js</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 <span class="keyword">var</span> time = <span class="integer">0</span>;
 <span class="keyword">var</span> calibration = <span class="predefined-constant">false</span>;
@@ -253,9 +255,9 @@ Cylon.robot({
   }
 }).start();
 </pre>
-                <h2>Leap Motion</h2>
-                <h3>JavaScript</h3>
-                <pre class="CodeRay"><span class="comment">//leap.js</span>
+                  <h2>Leap Motion</h2>
+                  <h3>JavaScript</h3>
+                  <pre class="CodeRay"><span class="comment">//leap.js</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -289,9 +291,9 @@ Cylon.robot({
   }
 }).start();
 </pre>
-                <h2>Leap Motion Sphero</h2>
-                <h3>JavaScript</h3>
-                <pre class="CodeRay"><span class="comment">//leap_sphero.js</span>
+                  <h2>Leap Motion Sphero</h2>
+                  <h3>JavaScript</h3>
+                  <pre class="CodeRay"><span class="comment">//leap_sphero.js</span>
 <span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -311,8 +313,285 @@ Cylon.robot({
   }
 }).start();
 </pre>
-              </section>
+                </section>
 </div>
+              <div class="side-documentation">
+                <div class="mobile-menu">
+                  <a href="#" id="menu-docs">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                  </a>
+                </div>
+                <dl class="accordion-docs hide">
+<h5 class="doc-button">
+                    <a href="/documentation">Docs</a>
+                  </h5>
+                  <span></span>
+                  <dt>
+                    <a href="">Getting Started</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="getting-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/getting-started">Setup your environment</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Guides</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="guides-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/guides/what_is_cylon">
+                          About Cylon
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/api">
+                          API
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/cli">
+                          CLI
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/test-driven-robotics">Test Driven Robotic</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/helpers">Helper Methods</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Platforms</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="platform-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/platforms/ardrone">Ardrone</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/arduino">Arduino</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/beaglebone">Beaglebone</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/crazyflie">Crazyflie</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/digispark">Digispark</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/galileo">Intel Galileo</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/joystick">Joystick</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/keyboard">Keyboard</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/force">Force</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/leapmotion">Leap Motion</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/neurosky">Neurosky Mindware</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/opencv">OpenCV</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/pebble">Pebble</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/rapiro">Rapiro</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/raspberry-pi">Raspberry Pi</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/skynet">Skynet</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/spark">Spark</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/sphero">Sphero</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/tessel">Tessel</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Drivers</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="driver-panel">
+                    GPIO
+                    <ul id="gpio">
+<li>
+                        <a href="/documentation/drivers/analog-sensor">Analog Sensor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/button">Button</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/continuous-servo">Continuos Servo</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/ir-range-finder">Sharp IR Proximity Sensor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/led">LED</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/makey-button">Makey Button</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/maxbotix">Maxbotix</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/motor">Motor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/servo">Servo</a>
+                      </li>
+                    </ul>
+                    I2C
+                    <ul id="i2c">
+<li>
+                        <a href="/documentation/drivers/blinkm">Blinkm</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/bmp180">BPM180</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/hmc6352-compass">HMC6352 Compass</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/lcd">LCD</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/mpl115a2">MPL115A2</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/mpu6050">MPU6050</a>
+                      </li>
+                    </ul>
+                    ARDrone
+                    <ul id="ardrone">
+<li>
+                        <a href="/documentation/drivers/ardrone">Ardrone Flight</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/ardrone-navigation">Ardrone Navigation</a>
+                      </li>
+                    </ul>
+                    Crazyflie
+                    <ul id="crazyflie">
+<li>
+                        <a href="/documentation/drivers/crazyflie">Crazyflie Flight</a>
+                      </li>
+                    </ul>
+                    Force
+                    <ul id="force">
+<li>
+                        <a href="/documentation/drivers/force">Force</a>
+                      </li>
+                    </ul>
+                    Joystick
+                    <ul id="joystick">
+<li>
+                        <a href="/documentation/drivers/dualshock">Dualshock3 Controller</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/xbox360">XBox360 Controller</a>
+                      </li>
+                    </ul>
+                    Other Drivers
+                    <ul id="others">
+<li>
+                        <a href="/documentation/drivers/keyboard">Keyboard</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/leapmotion">Leap Motion</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/neurosky">Neurosky Mindware</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/pebble">Pebble</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/rapiro">Rapiro</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/skynet">Skynet</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/sphero">Sphero</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Contribute</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="contribute-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/contribute/guidelines">Guidelines</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/contribute/contact-us">Contact us</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Examples</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="example-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/examples">All examples</a>
+                      </li>
+                    </ul>
+</dd>
+                </dl>
+<script>
+                    $(document).ready(function(){
+                      $("#menu-docs").click(function(){
+                        $(".accordion-docs").removeClass("hide");
+                        $(this).addClass("active");
+                      });
+                    });
+                </script>
+</div>
+            </div>
           </section>
 </div>
       </div>

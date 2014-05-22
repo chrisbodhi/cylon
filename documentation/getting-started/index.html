@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Cylon.js Getting Started</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascript/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascript/script.js"></script><script src="/hybridpages/assets/javascript/accordeon.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -64,53 +64,54 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><section class="intro"><h2>What is Cylon.js?</h2>
-              <p>Cylon.js is a JavaScript framework for robotics and physical computing using Node.js.</p>
-              <p>It provides a simple, yet powerful way to create solutions that incorporate multiple, different hardware devices at the same time.</p>
-            </section><section class="how-to"><h2>How to Install Node.js</h2>
-              <h3>OSX</h3>
-              <p></p>
-              Go to the Node.js downloads page at
-              <a target="blank" href="http://nodejs.org/download/">http://nodejs.org/download/</a>
-              download the installer file and run it.
-              <h3>Ubuntu</h3>
-              <p></p>
-              Follow the installation instructions at
-              <a target="_blank" href="https://github.com/joyent/node/wiki/Installation">https://github.com/joyent/node/wiki/Installation</a>
-              to install the latest Node.js
-              <h3>Windows</h3>
-              <p></p>
-              Go to the Node.js downloads page at
-              <a target="blank" href="http://nodejs.org/download/">http://nodejs.org/download/</a>
-              download the installer file and run it.
-              <h2>How to Install CoffeeScript (Optional)</h2>
-              <p>
-                If you want to program Cylon.js using CoffeeScript, it is easy to install using NPM, the Node Package Manager:
-              </p>
-              <pre class="CodeRay">npm install -g coffee-script
+          <section class="content full"><div class="documentation">
+              <div class="container-documentation">
+                
+                <section class="how-to"><h1>Setup your environment.</h1>
+                  <h2>How to Install Node.js</h2>
+                  <h3>OSX</h3>
+                  <p></p>
+                  Go to the Node.js downloads page at
+                  <a target="blank" href="http://nodejs.org/download/">http://nodejs.org/download/</a>
+                  download the installer file and run it.
+                  <h3>Ubuntu</h3>
+                  <p></p>
+                  Follow the installation instructions at
+                  <a target="_blank" href="https://github.com/joyent/node/wiki/Installation">https://github.com/joyent/node/wiki/Installation</a>
+                  to install the latest Node.js
+                  <h3>Windows</h3>
+                  <p></p>
+                  Go to the Node.js downloads page at
+                  <a target="blank" href="http://nodejs.org/download/">http://nodejs.org/download/</a>
+                  download the installer file and run it.
+                  <h2>How to Install CoffeeScript (Optional)</h2>
+                  <p>
+                    If you want to program Cylon.js using CoffeeScript, it is easy to install using NPM, the Node Package Manager:
+                  </p>
+                  <pre class="CodeRay">npm install -g coffee-script
 </pre>
-              <p>
-                You might need to install under the 'root' user by running the above install command using `sudo`.
-              </p>
-            </section><section class="installation"><h2>How to Install Cylon.js</h2>
-              <p>
-                In order to use Cylon.js, you must install the Cylon.js node modules needed to control your particular hardware setup. For example, to use Cylon.js with an Arduino, you will need to install the `cylon-firmata` module. Check out this example:
-              </p>
-              <pre class="CodeRay">npm install cylon
+                  <p>
+                    You might need to install under the 'root' user by running the above install command using `sudo`.
+                  </p>
+                </section><section class="installation"><h2>How to Install Cylon.js</h2>
+                  <p>
+                    In order to use Cylon.js, you must install the Cylon.js node modules needed to control your particular hardware setup. For example, to use Cylon.js with an Arduino, you will need to install the `cylon-firmata` module. Check out this example:
+                  </p>
+                  <pre class="CodeRay">npm install cylon
 npm install cylon-firmata
 </pre>
-              <section class="running"></section><h2>Cylon.js Robots</h2>
-              <h3>Writing your robot code:</h3>
-              <p></p>
-              Now you are ready to write your own code. Take a look at the examples below, or go to the
-              <a target="blank" href="https://github.com/hybridgroup/cylon/tree/master/examples">examples</a>
-              directory for a whole bunch of code you can use to help get started. We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.
-              <h3>Running your robot:</h3>
-              <pre class="CodeRay">node robotfilename.js
+                  <section class="running"></section><h2>Cylon.js Robots</h2>
+                  <h3>Writing your robot code:</h3>
+                  <p></p>
+                  Now you are ready to write your own code. Take a look at the examples below, or go to the
+                  <a target="blank" href="https://github.com/hybridgroup/cylon/tree/master/examples">examples</a>
+                  directory for a whole bunch of code you can use to help get started. We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.
+                  <h3>Running your robot:</h3>
+                  <pre class="CodeRay">node robotfilename.js
 </pre>
-            </section><section class="app-code"><h2>Cylon.js Code Examples</h2>
-              <h3>Example: Hello</h3>
-              <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+                </section><section class="app-code"><h2>Cylon.js Code Examples</h2>
+                  <h3>Example: Hello</h3>
+                  <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">looped</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">loopback</span><span class="delimiter">'</span></span>},
@@ -120,9 +121,9 @@ Cylon.robot({
   }
 }).start();
 </pre>
-              <h3>Example: Arduino with LED and a button</h3>
-              <p>To use this example, you must first run <code>npm install cylon-firmata</code></p>
-              <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+                  <h3>Example: Arduino with LED and a button</h3>
+                  <p>To use this example, you must first run <code>npm install cylon-firmata</code></p>
+                  <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
@@ -134,9 +135,9 @@ Cylon.robot({
   }
 }).start();
 </pre>
-              <h3>Parrot ARDrone 2.0</h3>
-              <p>To use this example, you must first run <code>npm install cylon-ardrone</code></p>
-              <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+                  <h3>Parrot ARDrone 2.0</h3>
+                  <p>To use this example, you must first run <code>npm install cylon-ardrone</code></p>
+                  <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1</span><span class="delimiter">'</span></span>},
@@ -154,9 +155,9 @@ Cylon.robot({
   }
 }).start();
 </pre>
-            </section><h2>CLI</h2>
-            <p>Cylon has a Command Line Interface (CLI) so you can access important features right from the command line.</p>
-            <pre class="CodeRay">Usage: cylon [command] [options]
+                </section><h2>CLI</h2>
+                <p>Cylon has a Command Line Interface (CLI) so you can access important features right from the command line.</p>
+                <pre class="CodeRay">Usage: cylon [command] [options]
 
   Commands: 
      arduino [subcommand] [opts]
@@ -180,18 +181,301 @@ Cylon.robot({
      spark upload [access_token] [device_id] [firmware_file]
         Upload new firmare to your Spark Core
 </pre>
-            <section class="contributing"><h2>Contributing</h2>
-              <p>
-                You can help cylon grow by contributing your code, new drivers or platforms to the project, check the Github page
-                <a href="https://github.com/hybridgroup/cylon">cylon on github.</a>
-              </p>
-              <ul>
+                <section class="contributing"><h2>Contributing</h2>
+                  <p>
+                    You can help cylon grow by contributing your code, new drivers or platforms to the project, check the Github page
+                    <a href="https://github.com/hybridgroup/cylon">cylon on github.</a>
+                  </p>
+                  <ul>
 <li>Fork it</li>
-                <li>Create your feature branch (git checkout -b my-new-feature)</li>
-                <li>Commit your changes (git commit -am 'Add some feature')</li>
-                <li>Push to the branch (git push origin my-new-feature)</li>
-                <li>Create new Pull Request</li>
-              </ul></section><section class="footer"></section></section>
+                    <li>Create your feature branch (git checkout -b my-new-feature)</li>
+                    <li>Commit your changes (git commit -am 'Add some feature')</li>
+                    <li>Push to the branch (git push origin my-new-feature)</li>
+                    <li>Create new Pull Request</li>
+                  </ul></section><section class="footer"></section>
+</div>
+              <div class="side-documentation">
+                <div class="mobile-menu">
+                  <a href="#" id="menu-docs">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                  </a>
+                </div>
+                <dl class="accordion-docs hide">
+<h5 class="doc-button">
+                    <a href="/documentation">Docs</a>
+                  </h5>
+                  <span></span>
+                  <dt>
+                    <a href="">Getting Started</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="getting-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/getting-started">Setup your environment</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Guides</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="guides-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/guides/what_is_cylon">
+                          About Cylon
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/api">
+                          API
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/cli">
+                          CLI
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/test-driven-robotics">Test Driven Robotic</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/helpers">Helper Methods</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Platforms</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="platform-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/platforms/ardrone">Ardrone</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/arduino">Arduino</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/beaglebone">Beaglebone</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/crazyflie">Crazyflie</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/digispark">Digispark</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/galileo">Intel Galileo</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/joystick">Joystick</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/keyboard">Keyboard</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/force">Force</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/leapmotion">Leap Motion</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/neurosky">Neurosky Mindware</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/opencv">OpenCV</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/pebble">Pebble</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/rapiro">Rapiro</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/raspberry-pi">Raspberry Pi</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/skynet">Skynet</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/spark">Spark</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/sphero">Sphero</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/tessel">Tessel</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Drivers</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="driver-panel">
+                    GPIO
+                    <ul id="gpio">
+<li>
+                        <a href="/documentation/drivers/analog-sensor">Analog Sensor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/button">Button</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/continuous-servo">Continuos Servo</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/ir-range-finder">Sharp IR Proximity Sensor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/led">LED</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/makey-button">Makey Button</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/maxbotix">Maxbotix</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/motor">Motor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/servo">Servo</a>
+                      </li>
+                    </ul>
+                    I2C
+                    <ul id="i2c">
+<li>
+                        <a href="/documentation/drivers/blinkm">Blinkm</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/bmp180">BPM180</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/hmc6352-compass">HMC6352 Compass</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/lcd">LCD</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/mpl115a2">MPL115A2</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/mpu6050">MPU6050</a>
+                      </li>
+                    </ul>
+                    ARDrone
+                    <ul id="ardrone">
+<li>
+                        <a href="/documentation/drivers/ardrone">Ardrone Flight</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/ardrone-navigation">Ardrone Navigation</a>
+                      </li>
+                    </ul>
+                    Crazyflie
+                    <ul id="crazyflie">
+<li>
+                        <a href="/documentation/drivers/crazyflie">Crazyflie Flight</a>
+                      </li>
+                    </ul>
+                    Force
+                    <ul id="force">
+<li>
+                        <a href="/documentation/drivers/force">Force</a>
+                      </li>
+                    </ul>
+                    Joystick
+                    <ul id="joystick">
+<li>
+                        <a href="/documentation/drivers/dualshock">Dualshock3 Controller</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/xbox360">XBox360 Controller</a>
+                      </li>
+                    </ul>
+                    Other Drivers
+                    <ul id="others">
+<li>
+                        <a href="/documentation/drivers/keyboard">Keyboard</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/leapmotion">Leap Motion</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/neurosky">Neurosky Mindware</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/pebble">Pebble</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/rapiro">Rapiro</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/skynet">Skynet</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/sphero">Sphero</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Contribute</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="contribute-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/contribute/guidelines">Guidelines</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/contribute/contact-us">Contact us</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Examples</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="example-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/examples">All examples</a>
+                      </li>
+                    </ul>
+</dd>
+                </dl>
+<script>
+                    $(document).ready(function(){
+                      $("#menu-docs").click(function(){
+                        $(".accordion-docs").removeClass("hide");
+                        $(this).addClass("active");
+                      });
+                    });
+                </script><script>
+                  $("#getting-panel").addClass("active-panel");
+                  $("#getting-panel ul li:nth-child(1)").addClass("active-link");
+                  $(".accordion-docs dt:nth-child(3) a:nth-child(2) img").addClass("rotate");
+                </script>
+</div>
+            </div>
+          </section>
 </div>
       </div>
     </div>

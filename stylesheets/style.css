@@ -1544,34 +1544,40 @@ a:hover, a:focus {
   .CodeRay .span {
     display: inline-block; }
 
-/* line 3, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+/* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+html {
+  min-height: 100%;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004); }
+
+/* line 11, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
 #THG-logo img {
   margin-bottom: -15px;
   width: 150px;
   padding: 5px; }
-  /* line 9, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 17, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
   #THG-logo img:hover {
     background: #41071b; }
 
-/* line 16, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+/* line 24, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
 .container, .w {
   width: 964px;
   margin: 0 auto; }
   @media only screen and (min-width: 767px) and (max-width: 964px) {
-    /* line 16, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+    /* line 24, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
     .container, .w {
       width: 767px;
       padding: 0 15px; } }
   @media only screen and (max-width: 767px) {
-    /* line 16, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+    /* line 24, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
     .container, .w {
       width: 100%;
       padding: 0 15px; } }
 
-/* line 32, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+/* line 40, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
 .main[role="main"] {
-  padding-bottom: 50px;
-  margin-top: 20px;
+  padding-bottom: 40px;
   *zoom: 1;
   max-width: 68em;
   margin-left: auto;
@@ -1583,7 +1589,7 @@ a:hover, a:focus {
   /* line 23, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
   .main[role="main"]:after {
     clear: both; }
-  /* line 40, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 47, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .videos .video {
     float: left;
     display: block;
@@ -1593,19 +1599,19 @@ a:hover, a:focus {
     /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
     .main[role="main"] .videos .video:last-child {
       margin-right: 0; }
-    /* line 45, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+    /* line 52, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
     .main[role="main"] .videos .video h3 {
       font-size: 16px; }
-    /* line 49, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+    /* line 56, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
     .main[role="main"] .videos .video iframe, .main[role="main"] .videos .video object {
       width: 100%;
       height: 300px; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 57, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+      /* line 64, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
       .main[role="main"] .videos .video iframe, .main[role="main"] .videos .video object {
         height: 240px; } }
     @media only screen and (max-width: 767px) {
-      /* line 40, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+      /* line 47, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
       .main[role="main"] .videos .video {
         float: left;
         display: block;
@@ -1614,10 +1620,10 @@ a:hover, a:focus {
         /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
         .main[role="main"] .videos .video:last-child {
           margin-right: 0; }
-        /* line 66, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+        /* line 73, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
         .main[role="main"] .videos .video iframe, .main[role="main"] .videos .video object {
           height: 240px; } }
-  /* line 73, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 80, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .videos .video-index {
     float: left;
     display: block;
@@ -1626,30 +1632,30 @@ a:hover, a:focus {
     /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
     .main[role="main"] .videos .video-index:last-child {
       margin-right: 0; }
-    /* line 77, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+    /* line 84, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
     .main[role="main"] .videos .video-index iframe, .main[role="main"] .videos .video-index object {
       width: 100%;
       height: 400px; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 85, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+      /* line 92, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
       .main[role="main"] .videos .video-index iframe, .main[role="main"] .videos .video-index object {
         height: 300px; } }
     @media only screen and (max-width: 767px) {
-      /* line 93, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+      /* line 100, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
       .main[role="main"] .videos .video-index iframe, .main[role="main"] .videos .video-index object {
         height: 180px; } }
-  /* line 103, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 110, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .content.full {
     width: 100%;
     clear: both; }
-  /* line 109, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 116, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .content h1, .main[role="main"] .content h2 {
     color: #971542; }
-  /* line 114, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
-  .main[role="main"] .content h1 {
-    font-size: 1.9em;
-    padding: 10px 0; }
   /* line 121, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+  .main[role="main"] .content h1 {
+    font-size: 35pt;
+    padding: 10px 0; }
+  /* line 129, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .aside.right {
     float: left;
     display: block;
@@ -1660,12 +1666,12 @@ a:hover, a:focus {
     /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
     .main[role="main"] .aside.right:last-child {
       margin-right: 0; }
-    /* line 127, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+    /* line 135, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
     .main[role="main"] .aside.right img {
       width: 100%;
       margin-top: 20px;
       margin-left: 20px; }
-  /* line 137, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 145, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] section.content .index-content {
     float: left;
     display: block;
@@ -1866,7 +1872,8 @@ a:hover, a:focus {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 65.88078%; }
+  width: 65.88078%;
+  padding-top: 20px; }
   /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
   .articles:last-child {
     margin-right: 0; }
@@ -1884,16 +1891,16 @@ a:hover, a:focus {
     /* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles {
       margin-right: 0; } }
-  /* line 15, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 16, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
   .articles .article {
     margin-bottom: 30px; }
-    /* line 19, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 20, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article img {
       width: 100%; }
-    /* line 24, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 25, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article h3, .articles .article h4, .articles .article a {
       color: #ee274a; }
-    /* line 29, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 30, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article h3 {
       display: inline-block;
       font-size: 24px;
@@ -1901,61 +1908,61 @@ a:hover, a:focus {
       vertical-align: top;
       margin: 0px;
       max-width: 80%; }
-    /* line 39, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 40, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article p {
       text-align: justify; }
-    /* line 44, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 45, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article .data {
       padding-left: 71px; }
-    /* line 49, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 50, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article .date {
       color: white;
       width: 50px;
       text-align: center;
       margin-right: 20px;
       float: left; }
-      /* line 57, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 58, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
       .articles .article .date .blue {
         padding: 5px;
         background-color: #b39f89; }
-        /* line 62, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+        /* line 63, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
         .articles .article .date .blue .month {
           text-transform: uppercase;
           font-size: 12px;
           line-height: 12px; }
-        /* line 69, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+        /* line 70, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
         .articles .article .date .blue .day {
           font-size: 16px;
           line-height: 16px; }
-      /* line 76, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 77, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
       .articles .article .date .red {
         padding: 2px;
         background-color: #ee274a; }
-        /* line 81, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+        /* line 82, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
         .articles .article .date .red .year {
           font-size: 10px;
           line-height: 10px; }
-    /* line 89, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 90, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article .comments, .articles .article .tags {
       display: inline-block; }
-      /* line 93, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 94, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
       .articles .article .comments .img, .articles .article .tags .img {
         vertical-align: top;
         display: inline-block;
         width: 24px;
         height: 24px; }
-      /* line 101, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 102, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
       .articles .article .comments a, .articles .article .tags a {
         vertical-align: top;
         text-decoration: underline; }
-      /* line 107, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 108, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
       .articles .article .comments img, .articles .article .tags img {
         margin-right: 4px; }
-    /* line 113, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 114, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article .comments {
       margin-right: 60px; }
 
-/* line 121, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+/* line 122, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
 .side-column {
   float: left;
   display: block;
@@ -1965,7 +1972,7 @@ a:hover, a:focus {
   .side-column:last-child {
     margin-right: 0; }
   @media only screen and (max-width: 767px) {
-    /* line 121, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 122, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .side-column {
       float: left;
       display: block;
@@ -1974,62 +1981,70 @@ a:hover, a:focus {
       /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
       .side-column:last-child {
         margin-right: 0; } }
-  /* line 129, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 130, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
   .side-column .categories, .side-column .network, .side-column .tweets, .side-column .titles {
     vertical-align: top;
     margin-bottom: 20px; }
-    /* line 134, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 135, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .side-column .categories a, .side-column .network a, .side-column .tweets a, .side-column .titles a {
       color: black; }
-      /* line 138, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 139, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
       .side-column .categories a:hover, .side-column .network a:hover, .side-column .tweets a:hover, .side-column .titles a:hover {
         text-decoration: underline; }
-    /* line 144, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 145, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .side-column .categories h4, .side-column .network h4, .side-column .tweets h4, .side-column .titles h4 {
       color: #ee274a;
       font-size: 20px;
       line-height: 24px; }
-  /* line 154, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 155, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
   .side-column .titles ul {
     list-style: none;
     margin: 0; }
-  /* line 160, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 161, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
   .side-column .titles li {
     font-size: .8em;
     border-bottom: #580a25 1px solid;
     padding: 2px 5px; }
-    /* line 166, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 167, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .side-column .titles li:hover {
       background: #580a25; }
-      /* line 170, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 171, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
       .side-column .titles li:hover a {
         color: white;
         text-decoration: none; }
-  /* line 181, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 182, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
   .side-column .network img {
     width: 30px; }
-  /* line 188, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 189, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
   .side-column .categories ul {
     margin: 0;
     list-style: none; }
-    /* line 193, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 194, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
     .side-column .categories ul a {
       color: black;
       font-size: .9em; }
-      /* line 198, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 199, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
       .side-column .categories ul a:hover {
         text-decoration: underline; }
 
 @media only screen and (max-width: 400) {
-  /* line 212, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 210, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_blog.scss */
   .twitter-share-button {
     margin-bottom: 10px; } }
-/* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+/* line 5, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+.page-title-docs .w .title {
+  font-size: 35pt !important;
+  margin-bottom: 10px; }
+/* line 13, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+.page-title-docs .w .subtitle a {
+  color: #ee274a; }
+
+/* line 21, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
 .page-title {
   background: #580a25;
   padding: 25px 0;
   margin: 10px 0 0 0; }
-  /* line 7, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+  /* line 27, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
   .page-title .title {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -2039,7 +2054,7 @@ a:hover, a:focus {
     clear: both;
     opacity: 0.94;
     margin: 0; }
-  /* line 19, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+  /* line 39, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
   .page-title .subtitle {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -2051,39 +2066,80 @@ a:hover, a:focus {
     line-height: 21px;
     margin-top: 7px; }
 
-/* line 38, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+/* line 58, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
 .subNavfixed {
   width: 100%;
   left: 0;
   position: fixed;
   top: 0;
-  z-index: 99; }
+  z-index: 99;
+  padding: 0 !important; }
+  /* line 67, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+  .subNavfixed .app-logo {
+    display: inline-block !important; }
+  /* line 72, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+  .subNavfixed .container-subnav {
+    width: 964px;
+    margin: 0 auto; }
+    @media only screen and (min-width: 767px) and (max-width: 964px) {
+      /* line 72, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+      .subNavfixed .container-subnav {
+        width: 767px;
+        padding: 0 15px; } }
+    @media only screen and (max-width: 767px) {
+      /* line 72, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+      .subNavfixed .container-subnav {
+        width: 100%;
+        padding: 0 15px; } }
+  /* line 88, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+  .subNavfixed nav {
+    float: left;
+    margin: 20px 0; }
+  /* line 94, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+  .subNavfixed a {
+    margin: 20px 10px !important; }
 
-/* line 47, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+/* line 100, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
 .marginTopSubnav {
   padding-top: 65px; }
 
-/* line 54, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+/* line 107, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
 .subnav-drivers {
   background: #b39f89;
   padding: 20px 0; }
   @media only screen and (max-width: 767px) {
-    /* line 54, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+    /* line 107, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
     .subnav-drivers {
       display: none; } }
-  /* line 66, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+  /* line 117, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+  .subnav-drivers .app-logo {
+    color: #ee274a;
+    font-size: 2em;
+    float: left;
+    font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: 5px;
+    display: none; }
+  /* line 130, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
   .subnav-drivers nav a {
     padding: 5px 10px;
-    margin: 20px 10px;
-    color: #504338; }
-    /* line 72, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+    margin: 20px 2px;
+    color: #504338;
+    font-size: .9em; }
+    @media only screen and (min-width: 767px) and (max-width: 964px) {
+      /* line 130, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+      .subnav-drivers nav a {
+        font-size: .7em; } }
+    /* line 142, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
     .subnav-drivers nav a:hover {
       color: white;
       background: #504338; }
-  /* line 79, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+  /* line 149, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
   .subnav-drivers nav .active {
     color: white;
     background: #504338; }
+  /* line 157, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_page.scss */
+  .subnav-drivers nav a:last-child:hover {
+    background: none; }
 
 /* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_hardware.scss */
 .more {
@@ -2133,9 +2189,9 @@ a:hover, a:focus {
     margin-right: 2.99668%;
     width: 29.52859%;
     background: #a7011e;
-    height: 100px;
+    height: 130px;
     margin-bottom: 20px;
-    border-radius: 5px; }
+    border-radius: 2px; }
     /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
     .documentation .index section:last-child {
       margin-right: 0; }
@@ -2153,20 +2209,22 @@ a:hover, a:focus {
     .documentation .index section a {
       width: 100%;
       height: 100%;
-      padding: 10px;
       display: block; }
-    /* line 50, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 49, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
     .documentation .index section:hover {
       background: #8e0119; }
-    /* line 55, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 54, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
     .documentation .index section .title {
       color: #fafaf1;
-      font-weight: bold; }
-    /* line 61, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+      font-weight: bold;
+      background: #ed143a;
+      padding: 5px 10px; }
+    /* line 62, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
     .documentation .index section .description {
-      color: #b39f89; }
+      color: #b39f89;
+      font-size: 10pt; }
 
-/* line 70, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 72, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .documentation {
   float: left;
   display: block;
@@ -2175,96 +2233,96 @@ a:hover, a:focus {
   /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
   .documentation:last-child {
     margin-right: 0; }
-  /* line 74, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 76, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .index {
     padding: 0 0 0 8px; }
-    /* line 78, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 80, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
     .documentation .index li {
       margin: 8px 0; }
-  /* line 84, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 86, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .link {
     font-size: 20px; }
-  /* line 89, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 91, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .description {
     color: gray;
     font-size: 14px;
     line-height: 21px;
     margin: 10px; }
-  /* line 97, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 99, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .display {
     width: 35%;
     float: right;
     border: 1px solid rgba(88, 10, 37, 0.14);
     margin: 0 0 19px 20px; }
     @media only screen and (max-width: 767px) {
-      /* line 97, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+      /* line 99, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
       .documentation .display {
         width: 100%; } }
 
-/* line 111, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 113, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .clear {
   clear: both; }
 
-/* line 118, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 120, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .circuit .image-circuit {
   width: 50%;
   float: left; }
-  /* line 123, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 125, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .circuit .image-circuit img {
     height: 300px; }
-/* line 128, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 130, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .circuit .description-circuit {
   width: 50%;
   float: right; }
 
-/* line 135, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 137, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .image-size-300 {
   width: 200px; }
 
-/* line 142, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 144, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands-api h2 {
   background: #971542;
   color: white !important;
   padding: 5px 10px;
   font-size: 12pt;
   margin: 20px 0 0 0; }
-/* line 152, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 154, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands-api h4 {
   background: transparent;
   font-size: 11pt;
   font-weight: normal; }
-/* line 159, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 161, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands-api h3 {
   background: white;
   padding: 10px;
   margin: 0;
   font-size: 11pt; }
-/* line 167, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 169, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands-api h5 {
   background: white;
   padding: 10px;
   margin: 0;
   font-size: 10pt; }
-/* line 175, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 177, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands-api pre {
   background: white;
   margin: 0; }
-/* line 181, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 183, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands-api p, .commands-api ul {
   background: white;
   font-size: 10.5pt;
   margin: 0;
   padding: 10px;
   font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace; }
-/* line 190, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 192, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands-api li {
   margin-left: 20px; }
 
-/* line 196, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 198, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands {
   background: white;
   font-size: 10.5pt; }
-  /* line 201, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 203, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands span {
     font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace;
     font-size: 14px;
@@ -2273,25 +2331,25 @@ a:hover, a:focus {
     border: 1px solid #ccc;
     color: #444;
     padding: 5px; }
-  /* line 212, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 214, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands th {
     background: #971542;
     color: white; }
-  /* line 218, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 220, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands td {
     border-bottom: 1px solid #d4d4d4; }
-  /* line 223, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 225, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands .command {
     font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
     font-weight: bold;
     font-size: 11pt; }
-  /* line 234, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 236, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands .param .markdown span {
     background: none;
     border: none;
     padding: 0; }
 
-/* line 246, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 248, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .methods dt {
   font-weight: bold;
   background: white;
@@ -2301,15 +2359,15 @@ a:hover, a:focus {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
   font-size: 17px;
   border: aliceblue; }
-/* line 258, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 260, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .methods dd {
   margin-bottom: 29px;
   padding-left: 10px; }
-/* line 264, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 266, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .methods li {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
 
-/* line 270, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 272, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
 .colors {
   float: left;
   display: block;
@@ -2319,7 +2377,7 @@ a:hover, a:focus {
   .colors:last-child {
     margin-right: 0; }
   @media only screen and (min-width: 767px) and (max-width: 964px) {
-    /* line 270, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 272, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
     .colors {
       float: left;
       display: block;
@@ -2328,11 +2386,11 @@ a:hover, a:focus {
       /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
       .colors:last-child {
         margin-right: 0; }
-      /* line 278, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+      /* line 280, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
       .colors p {
         font-size: 10px; } }
   @media only screen and (max-width: 767px) {
-    /* line 270, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 272, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
     .colors {
       float: left;
       display: block;
@@ -2341,7 +2399,7 @@ a:hover, a:focus {
       /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
       .colors:last-child {
         margin-right: 0; } }
-  /* line 289, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 291, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .colors dt {
     font-weight: bold;
     padding: 5px;
@@ -2350,11 +2408,11 @@ a:hover, a:focus {
     font-size: 15px;
     border: aliceblue;
     margin-top: 15px; }
-  /* line 300, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 302, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
   .colors dd {
     margin-bottom: 20px;
     display: block; }
-    /* line 305, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 307, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_documentation.scss */
     .colors dd p {
       margin: 0;
       line-height: 50px; }
@@ -2926,6 +2984,178 @@ a:hover, a:focus {
 /* line 705, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_sphero_colors.scss */
 .yellowgreen {
   background: yellowgreen; }
+
+/* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+.side-documentation {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+  background: #f5efe8; }
+  /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
+  .side-documentation:last-child {
+    margin-right: 0; }
+  @media only screen and (max-width: 767px) {
+    /* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%;
+      height: auto !important;
+      position: absolute;
+      left: 0; }
+      /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
+      .side-documentation:last-child {
+        margin-right: 0; } }
+  /* line 14, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+  .side-documentation .mobile-menu {
+    background: #971542;
+    text-align: right;
+    display: none; }
+    @media only screen and (max-width: 767px) {
+      /* line 14, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+      .side-documentation .mobile-menu {
+        display: block; } }
+    /* line 25, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .mobile-menu .active {
+      background: white; }
+      /* line 29, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+      .side-documentation .mobile-menu .active .line {
+        background: #971542; }
+    /* line 35, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .mobile-menu a {
+      border: solid 2px white;
+      padding: 10px;
+      width: 55px;
+      display: inline-block; }
+      /* line 42, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+      .side-documentation .mobile-menu a:hover {
+        background: white; }
+        /* line 46, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+        .side-documentation .mobile-menu a:hover .line {
+          background: #971542; }
+      /* line 52, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+      .side-documentation .mobile-menu a .line {
+        height: 2px;
+        width: 30px;
+        margin: 5px 0;
+        background: white; }
+  @media only screen and (max-width: 767px) {
+    /* line 64, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .hide {
+      display: none; } }
+  @media only screen and (max-width: 767px) {
+    /* line 70, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .accordion-docs {
+      margin: 0; } }
+  /* line 80, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+  .side-documentation .accordion-docs ul {
+    list-style: none; }
+    /* line 84, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .accordion-docs ul .active-link {
+      list-style: square;
+      font-weight: bold; }
+      /* line 89, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+      .side-documentation .accordion-docs ul .active-link a {
+        color: black; }
+  /* line 96, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+  .side-documentation .accordion-docs .arrowDown {
+    float: right; }
+    /* line 100, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .accordion-docs .arrowDown .rotate {
+      transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      /* IE 9 */
+      -webkit-transform: rotate(180deg);
+      /* Opera, Chrome, and Safari */ }
+  /* line 108, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+  .side-documentation .accordion-docs .doc-button {
+    padding: 10px;
+    margin: 0;
+    font-size: 1em; }
+    @media only screen and (max-width: 767px) {
+      /* line 108, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+      .side-documentation .accordion-docs .doc-button {
+        border-bottom: 2px solid #971542;
+        padding-bottom: 10px; } }
+    /* line 120, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .accordion-docs .doc-button a {
+      display: block;
+      color: #971542; }
+      @media only screen and (max-width: 767px) {
+        /* line 120, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+        .side-documentation .accordion-docs .doc-button a {
+          font-size: 1.3em; } }
+  /* line 133, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+  .side-documentation .accordion-docs dt, .side-documentation .accordion-docs dd {
+    padding: 10px;
+    border-bottom: 0; }
+    @media only screen and (max-width: 767px) {
+      /* line 133, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+      .side-documentation .accordion-docs dt, .side-documentation .accordion-docs dd {
+        border-bottom: 2px solid #971542; } }
+    /* line 144, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .accordion-docs dt a, .side-documentation .accordion-docs dd a {
+      display: block;
+      color: #580a25; }
+  /* line 153, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+  .side-documentation .accordion-docs dt a {
+    color: #971542;
+    float: left; }
+    /* line 158, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .accordion-docs dt a:hover {
+      cursor: pointer; }
+    @media only screen and (max-width: 767px) {
+      /* line 153, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+      .side-documentation .accordion-docs dt a {
+        font-size: 1.3em; } }
+  /* line 169, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+  .side-documentation .accordion-docs dd {
+    border-top: 0;
+    margin-left: 0; }
+    /* line 173, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .accordion-docs dd a {
+      color: #580a25; }
+    /* line 179, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .accordion-docs dd:last-of-type {
+      position: relative;
+      top: -1px; }
+    /* line 186, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .side-documentation .accordion-docs dd ul li {
+      margin: 5px 0; }
+      /* line 190, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+      .side-documentation .accordion-docs dd ul li a {
+        font-size: 10pt; }
+        @media only screen and (max-width: 767px) {
+          /* line 190, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+          .side-documentation .accordion-docs dd ul li a {
+            font-size: 1em; } }
+        /* line 198, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+        .side-documentation .accordion-docs dd ul li a span {
+          color: black; }
+
+/* line 209, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+.container-documentation {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 74.41059%;
+  padding-top: 20px; }
+  /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
+  .container-documentation:last-child {
+    margin-right: 0; }
+  @media only screen and (max-width: 767px) {
+    /* line 209, /home/ron/Development/cylonjs/cylonjs.com/source/hybridpages/assets/stylesheets/elements/_accordeon.scss */
+    .container-documentation {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%;
+      margin-top: 50px; }
+      /* line 38, /home/ron/.rvm/gems/ruby-2.0.0-p247@cylon/gems/neat-1.5.1/app/assets/stylesheets/grid/_span-columns.scss */
+      .container-documentation:last-child {
+        margin-right: 0; } }
 
 /* line 6, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/style.css.scss */
 .app-logo a {

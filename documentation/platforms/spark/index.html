@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Spark with Cylon.js</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascript/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascript/script.js"></script><script src="/hybridpages/assets/javascript/accordeon.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -58,38 +58,45 @@
 </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Spark</h1>
-          <h2 class="subtitle">
-<a href="https://github.com/hybridgroup/cylon-spark" target="_blank" class="repository">Repository</a> <a class="issues" href="https://github.com/hybridgroup/cylon-spark/issues" target="_blank">Issues</a>
-</h2>
+          <h1 class="title">Platforms</h1>
+          <h2 class="subtitle">Cylon has a extensible system for connecting to hardware devices.</h2>
         </div>
       </div>
-      <section class="subnav-drivers" id="mainsubnav"><div class="container">
-          <nav><a href="#HowToInstall">How To Install</a>
-            <a href="#HowToUse">How To Use</a>
-            <a href="#HowToConnect">How To Connect</a>
-            <a href="#Drivers">Drivers</a>
-            <a href="#top">Top</a>
-          </nav>
-</div>
-      </section><div class="container">
+      <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/spark.jpg"><div class="info-intro">
-                  <p>The Spark Core contains a Wi-Fi connected microcontroller. Once it connects to a Wi-Fi network, it automatically connects with a central server (the "Spark Cloud") and stays connected so it can be controlled from external systems, such as a Cylon.js program.</p>
-                  <p>
-                    For more info about the Spark platform go to
-                    <a target="blank" href="https://www.spark.io/">https://www.spark.io/</a>.
-                  </p>
+              <div class="container-documentation">
+                <div class="page-title-docs">
+                  <div class="w">
+                    <h1 class="title">Spark</h1>
+                    <h2 class="subtitle">
+<a href="https://github.com/hybridgroup/cylon-spark" target="_blank" class="repository">Repository</a> <a class="issues" href="https://github.com/hybridgroup/cylon-spark/issues" target="_blank">Issues</a>
+</h2>
+                  </div>
                 </div>
-                <div class="clear"></div>
-              </section><section class="how-to" id="HowToInstall"><h2>How To Install</h2>
-                <p>Installing Cylon.js with Spark support is pretty easy.</p>
-                <pre class="CodeRay">npm install cylon-spark
+                <section class="subnav-drivers" id="mainsubnav"><div class="container">
+                    <nav><a href="#HowToInstall">How To Install</a>
+                      <a href="#HowToUse">How To Use</a>
+                      <a href="#HowToConnect">How To Connect</a>
+                      <a href="#Drivers">Drivers</a>
+                      <a href="#top">Top</a>
+                    </nav>
+</div>
+                </section><br><section class="intro"><img class="display" src="/images/devices/spark.jpg"><div class="info-intro">
+                    <p>The Spark Core contains a Wi-Fi connected microcontroller. Once it connects to a Wi-Fi network, it automatically connects with a central server (the "Spark Cloud") and stays connected so it can be controlled from external systems, such as a Cylon.js program.</p>
+                    <p>
+                      For more info about the Spark platform go to
+                      <a target="blank" href="https://www.spark.io/">https://www.spark.io/</a>.
+                    </p>
+                  </div>
+                  <div class="clear"></div>
+                </section><section class="how-to" id="HowToInstall"><h2>How To Install</h2>
+                  <p>Installing Cylon.js with Spark support is pretty easy.</p>
+                  <pre class="CodeRay">npm install cylon-spark
 </pre>
-              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
-                <p>This small program lets you turn on or off a LED for every 1 sec.</p>
-                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+                </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
+                  <p>This small program lets you turn on or off a LED for every 1 sec.</p>
+                  <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">spark</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">spark</span><span class="delimiter">'</span></span>, <span class="key">accessToken</span>: <span class="string"><span class="delimiter">'</span><span class="content">XYZPDQ123</span><span class="delimiter">'</span></span>, <span class="key">deviceId</span>: <span class="string"><span class="delimiter">'</span><span class="content">123ABC456</span><span class="delimiter">'</span></span> },
@@ -100,118 +107,399 @@ Cylon.robot({
   }
 }).start();
 </pre>
-              </section><section class="public-methods" id="PublicMethods"><div class="commands-api">
-                  <h1 id="commands">Commands</h1>
-                  
-                  <h2 id="commandcommandname-args-callback">command(commandName, args, callback)</h2>
-                  
-                  <p>Calls a function on the Spark Core via the API.</p>
-                  
-                  <h5 id="params">Params</h5>
-                  
-                  <ul>
+                </section><section class="public-methods" id="PublicMethods"><div class="commands-api">
+                    <h1 id="commands">Commands</h1>
+                    
+                    <h2 id="commandcommandname-args-callback">command(commandName, args, callback)</h2>
+                    
+                    <p>Calls a function on the Spark Core via the API.</p>
+                    
+                    <h5 id="params">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>commandName</strong> - string name of the function to call on the Spark</li>
-                    <li>
+                      <li>
 <strong>args</strong> - array of arguments to pass to the function call</li>
-                    <li>
+                      <li>
 <strong>callback</strong> - optional, callback to be triggered with the response_value from
-                  Spark's API</li>
-                  </ul>
+                    Spark's API</li>
+                    </ul>
 <h5 id="returns">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="variablevariablename-callback">variable(variableName, callback)</h2>
-                  
-                  <p>Requests the value of a variable from the Spark Core via the API</p>
-                  
-                  <h5 id="params-1">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="variablevariablename-callback">variable(variableName, callback)</h2>
+                    
+                    <p>Requests the value of a variable from the Spark Core via the API</p>
+                    
+                    <h5 id="params-1">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>variableName</strong> - name of the variable to request from the Spark Core</li>
-                    <li>
+                      <li>
 <strong>callback</strong> - callback to be triggered with the value from the Spark Core</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-1">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                  
-                  <h2 id="listenforeventsevents">listenForEvents(events)</h2>
-                  
-                  <p>Listens to Server-Sent Events coming from the Spark Core, and emits the same
-                  events.</p>
-                  
-                  <h5 id="params-2">Params</h5>
-                  
-                  <ul>
+                    
+                    <p><code>null</code></p>
+                    
+                    <h2 id="listenforeventsevents">listenForEvents(events)</h2>
+                    
+                    <p>Listens to Server-Sent Events coming from the Spark Core, and emits the same
+                    events.</p>
+                    
+                    <h5 id="params-2">Params</h5>
+                    
+                    <ul>
 <li>
 <strong>events</strong> - array of events to add listeners for</li>
-                  </ul>
+                    </ul>
 <h5 id="returns-2">Returns</h5>
-                  
-                  <p><code>null</code></p>
-                </div>
-                <br><strong>Note:</strong> In addition to the above methods, the Spark adaptor supports the full GPIO pin interface, as long as you are using Tinker, or a Tinker compatible program running on the Spark itself.
-              </section><section class="how-to" id="HowToConnect"><h2>Uploading</h2>
-                <h3>Uploading Code To Your Spark Core Using the Cylon CLI</h3>
-                <pre class="CodeRay">$ cylon spark upload [access_token] [device_id] new_firmware.cpp
+                    
+                    <p><code>null</code></p>
+                  </div>
+                  <br><strong>Note:</strong> In addition to the above methods, the Spark adaptor supports the full GPIO pin interface, as long as you are using Tinker, or a Tinker compatible program running on the Spark itself.
+                </section><section class="how-to" id="HowToConnect"><h2>Uploading</h2>
+                  <h3>Uploading Code To Your Spark Core Using the Cylon CLI</h3>
+                  <pre class="CodeRay">$ cylon spark upload [access_token] [device_id] new_firmware.cpp
 </pre>
-                <p>The <code>cylon spark upload</code> command can help if you want to upload new source code directly to your Spark Core.</p>
-                <p>
-                  For more information on how to program your Spark, please see
-                  <a target="blank" href="http://docs.spark.io/#/examples">Spark's examples</a>
-                </p>
-                <p>
-                  You'll need your <code>access_token</code> and <code>device_id</code> to push new software to your Spark, and you can get both of these from Spark's
-                  <a target="blank" href="https://spark.io/build">Build tool</a>
-                </p>
-                <ul>
+                  <p>The <code>cylon spark upload</code> command can help if you want to upload new source code directly to your Spark Core.</p>
+                  <p>
+                    For more information on how to program your Spark, please see
+                    <a target="blank" href="http://docs.spark.io/#/examples">Spark's examples</a>
+                  </p>
+                  <p>
+                    You'll need your <code>access_token</code> and <code>device_id</code> to push new software to your Spark, and you can get both of these from Spark's
+                    <a target="blank" href="https://spark.io/build">Build tool</a>
+                  </p>
+                  <ul>
 <li>
 <code>access_token:</code> In the Build tool, click on the Settings cog in the bottom-left corner to find your access token.</li>
-                  <li>
+                    <li>
 <code>device_id:</code> After you have your Spark Core registered to your account through the Tinker app, click on the Cores section (just above the Settings cog) on the Build tool. Then, click on the arrow next to your core's name to get its device ID.</li>
-                </ul></section><section class="how-to" id="HowToConnect"><h2>How to Connect</h2>
-                <p>
-                  You don't actually need to setup anything in your computer to be able to connect to the Spark,
-                  just make sure you have a working internet connection and go through the process of setting up
-                  you board, by following the Getting started guide in the
-                  <a href="www.spark.io">Spark.io</a>
-                  site, that way you'll be able to obtain your token and device id, needed to connect Cylon.js to
-                  the Spark. You can follow the instructiona to acoomplish this by clicking in the link below.
-                </p>
-                <a href="After%20the%20board%20has%20rebooted,%20we%20log%20back%20in%20and%20execute%20the%20following%20commands">Spark: Getting Started</a>
-              </section><section class="drivers" id="Drivers"><h2>Drivers</h2>
-                <p>Available drivers for the spark platform are listed below, the drivers contain detailed documentation and examples of what kinds of physical computing (using Cylon.js and Node.js) you can be doing:</p>
-                <div class="hardware">
-                  <h2>GPIO Drivers</h2>
-                  <div class="devices">
-                    <!-- // Analog Sensor -->
-                    <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
-                      <img src="/images/devices/analog-sensor.jpg"></a>
-                    <!-- // Button -->
-                    <a class="device" href="/documentation/drivers/button" title="Button">
-                      <img src="/images/devices/button.jpg"></a>
-                    <!-- // Continuos Servo -->
-                    <a class="device" href="/documentation/drivers/continuous-servo" title="Continuous Servo">
-                      <img src="/images/devices/continuous-servo.jpg"></a>
-                    <!-- // LED -->
-                    <a class="device" href="/documentation/drivers/led" title="LED">
-                      <img src="/images/devices/LED.jpg"></a>
-                    <!-- // Maxbotix -->
-                    <a class="device" href="/documentation/drivers/maxbotix" title="Maxbotix Range Finder">
-                      <img src="/images/devices/maxbotix.jpg"></a>
-                    <!-- // Motor -->
-                    <a class="device" href="/documentation/drivers/motor" title="Motor">
-                      <img src="/images/devices/motor.jpg"></a>
-                    <!-- // Servo -->
-                    <a class="device" href="/documentation/drivers/servo" title="Servo">
-                      <img src="/images/devices/servo.jpg"></a>
+                  </ul></section><section class="how-to" id="HowToConnect"><h2>How to Connect</h2>
+                  <p>
+                    You don't actually need to setup anything in your computer to be able to connect to the Spark,
+                    just make sure you have a working internet connection and go through the process of setting up
+                    you board, by following the Getting started guide in the
+                    <a href="www.spark.io">Spark.io</a>
+                    site, that way you'll be able to obtain your token and device id, needed to connect Cylon.js to
+                    the Spark. You can follow the instructiona to acoomplish this by clicking in the link below.
+                  </p>
+                  <a href="After%20the%20board%20has%20rebooted,%20we%20log%20back%20in%20and%20execute%20the%20following%20commands">Spark: Getting Started</a>
+                </section><section class="drivers" id="Drivers"><h2>Drivers</h2>
+                  <p>Available drivers for the spark platform are listed below, the drivers contain detailed documentation and examples of what kinds of physical computing (using Cylon.js and Node.js) you can be doing:</p>
+                  <div class="hardware">
+                    <h2>GPIO Drivers</h2>
+                    <div class="devices">
+                      <!-- // Analog Sensor -->
+                      <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
+                        <img src="/images/devices/analog-sensor.jpg"></a>
+                      <!-- // Button -->
+                      <a class="device" href="/documentation/drivers/button" title="Button">
+                        <img src="/images/devices/button.jpg"></a>
+                      <!-- // Continuos Servo -->
+                      <a class="device" href="/documentation/drivers/continuous-servo" title="Continuous Servo">
+                        <img src="/images/devices/continuous-servo.jpg"></a>
+                      <!-- // LED -->
+                      <a class="device" href="/documentation/drivers/led" title="LED">
+                        <img src="/images/devices/LED.jpg"></a>
+                      <!-- // Maxbotix -->
+                      <a class="device" href="/documentation/drivers/maxbotix" title="Maxbotix Range Finder">
+                        <img src="/images/devices/maxbotix.jpg"></a>
+                      <!-- // Motor -->
+                      <a class="device" href="/documentation/drivers/motor" title="Motor">
+                        <img src="/images/devices/motor.jpg"></a>
+                      <!-- // Servo -->
+                      <a class="device" href="/documentation/drivers/servo" title="Servo">
+                        <img src="/images/devices/servo.jpg"></a>
+                    </div>
                   </div>
-                </div>
-              </section>
+                </section>
 </div>
+              <div class="side-documentation">
+                <div class="mobile-menu">
+                  <a href="#" id="menu-docs">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                  </a>
+                </div>
+                <dl class="accordion-docs hide">
+<h5 class="doc-button">
+                    <a href="/documentation">Docs</a>
+                  </h5>
+                  <span></span>
+                  <dt>
+                    <a href="">Getting Started</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="getting-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/getting-started">Setup your environment</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Guides</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="guides-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/guides/what_is_cylon">
+                          About Cylon
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/api">
+                          API
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/cli">
+                          CLI
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/test-driven-robotics">Test Driven Robotic</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/guides/helpers">Helper Methods</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Platforms</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="platform-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/platforms/ardrone">Ardrone</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/arduino">Arduino</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/beaglebone">Beaglebone</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/crazyflie">Crazyflie</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/digispark">Digispark</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/galileo">Intel Galileo</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/joystick">Joystick</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/keyboard">Keyboard</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/force">Force</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/leapmotion">Leap Motion</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/neurosky">Neurosky Mindware</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/opencv">OpenCV</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/pebble">Pebble</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/rapiro">Rapiro</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/raspberry-pi">Raspberry Pi</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/skynet">Skynet</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/spark">Spark</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/sphero">Sphero</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/platforms/tessel">Tessel</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Drivers</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="driver-panel">
+                    GPIO
+                    <ul id="gpio">
+<li>
+                        <a href="/documentation/drivers/analog-sensor">Analog Sensor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/button">Button</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/continuous-servo">Continuos Servo</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/ir-range-finder">Sharp IR Proximity Sensor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/led">LED</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/makey-button">Makey Button</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/maxbotix">Maxbotix</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/motor">Motor</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/servo">Servo</a>
+                      </li>
+                    </ul>
+                    I2C
+                    <ul id="i2c">
+<li>
+                        <a href="/documentation/drivers/blinkm">Blinkm</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/bmp180">BPM180</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/hmc6352-compass">HMC6352 Compass</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/lcd">LCD</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/mpl115a2">MPL115A2</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/mpu6050">MPU6050</a>
+                      </li>
+                    </ul>
+                    ARDrone
+                    <ul id="ardrone">
+<li>
+                        <a href="/documentation/drivers/ardrone">Ardrone Flight</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/ardrone-navigation">Ardrone Navigation</a>
+                      </li>
+                    </ul>
+                    Crazyflie
+                    <ul id="crazyflie">
+<li>
+                        <a href="/documentation/drivers/crazyflie">Crazyflie Flight</a>
+                      </li>
+                    </ul>
+                    Force
+                    <ul id="force">
+<li>
+                        <a href="/documentation/drivers/force">Force</a>
+                      </li>
+                    </ul>
+                    Joystick
+                    <ul id="joystick">
+<li>
+                        <a href="/documentation/drivers/dualshock">Dualshock3 Controller</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/xbox360">XBox360 Controller</a>
+                      </li>
+                    </ul>
+                    Other Drivers
+                    <ul id="others">
+<li>
+                        <a href="/documentation/drivers/keyboard">Keyboard</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/leapmotion">Leap Motion</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/neurosky">Neurosky Mindware</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/pebble">Pebble</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/rapiro">Rapiro</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/skynet">Skynet</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/sphero">Sphero</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Contribute</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="contribute-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/contribute/guidelines">Guidelines</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/contribute/contact-us">Contact us</a>
+                      </li>
+                    </ul>
+</dd>
+                  <dt>
+                    <a href="">Examples</a>
+                    <a class="arrowDown">
+                      <img alt="Arrow" src="/images/elements/arrowSide.png" width="20px"></a>
+                    <div class="clear"></div>
+                  </dt>
+                  <dd id="example-panel">
+                    <ul>
+<li>
+                        <a href="/documentation/examples">All examples</a>
+                      </li>
+                    </ul>
+</dd>
+                </dl>
+<script>
+                    $(document).ready(function(){
+                      $("#menu-docs").click(function(){
+                        $(".accordion-docs").removeClass("hide");
+                        $(this).addClass("active");
+                      });
+                    });
+                </script><script>
+                  $("#platform-panel").addClass("active-panel");
+                  $("#platform-panel ul li:nth-child(17)").addClass("active-link");
+                  $(".accordion-docs dt:nth-child(7) a:nth-child(2) img").addClass("rotate");
+                </script>
+</div>
+            </div>
           </section>
 </div>
       </div>
