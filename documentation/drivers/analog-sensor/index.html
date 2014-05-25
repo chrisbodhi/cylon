@@ -114,11 +114,22 @@ Cylon.robot({
   <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sensor</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">analogSensor</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">0</span>, <span class="key">lowerLimit</span>: <span class="integer">100</span>, <span class="key">upperLimit</span>: <span class="integer">900</span>},
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    my.sensor.on(<span class="string"><span class="delimiter">'</span><span class="content">lowerLimit</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
-      Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">Lower limit reached!</span><span class="delimiter">"</span></span>);
+
+    <span class="keyword">var</span> analogValue = <span class="integer">0</span>;
+
+    every((<span class="integer">1</span>).second(), <span class="keyword">function</span>() {
+      analogValue = my.sensor.analogRead();
+      Logger.info(<span class="string"><span class="delimiter">'</span><span class="content">Analog value =&gt; </span><span class="delimiter">'</span></span>, analogValue);
     });
-    my.sensor.on(<span class="string"><span class="delimiter">'</span><span class="content">upperLimit</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+
+    my.sensor.on(<span class="string"><span class="delimiter">'</span><span class="content">lowerLimit</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(val) {
+      Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">Lower limit reached!</span><span class="delimiter">"</span></span>);
+      Logger.info(<span class="string"><span class="delimiter">'</span><span class="content">Analog value =&gt; </span><span class="delimiter">'</span></span>, val);
+    });
+
+    my.sensor.on(<span class="string"><span class="delimiter">'</span><span class="content">upperLimit</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(val) {
       Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">Upper limit reached!</span><span class="delimiter">"</span></span>);
+      Logger.info(<span class="string"><span class="delimiter">'</span><span class="content">Analog value =&gt; </span><span class="delimiter">'</span></span>, val);
     });
   }
 }).start();

@@ -121,7 +121,7 @@ Cylon.robot({
   }
 }).start();
 </pre>
-                </section><section class="how-to" id="HowToConnect"><h2>How to Setup the beaglebone clack</h2>
+                </section><section class="how-to" id="HowToConnect"><h2>How to Setup the Beaglebone Black.</h2>
                   <h3>Installing Beaglebone Black drivers.</h3>
                   <p>
                     For OSX and Windows some drivers need to be installed, for Linux you only need to setup some udev-rules.
@@ -179,8 +179,7 @@ Cylon.robot({
 </pre>
                   <h4>Flashing the SD card</h4>
                   <p>
-                    The final step in setting up the SD card is to actually flashing the image we just downloaded and uncompressed into the sd card. You
-                    can accomplish just that by running the following command.
+                    The final step in setting up the SD card is to actually flashing the image we just downloaded and uncompressed into the sd card. You can accomplish just that by running the following command(make sure to specify the appropiate `/dev/sdX` device that represents your SD Card).
                   </p>
                   <pre class="CodeRay">$ sudo dd bs=1M count=3950 if=./robot-ubuntu_13.10-armv7-1394437089.img of=/dev/sdb &amp;&amp; sudo sync
 </pre>
@@ -273,8 +272,7 @@ $ shutdown -r now
 $ shutdown -r now
 </pre>
                   <p>
-                    Once again we wait for the board to reboot and log back in to make sure the
-                    partition has been resised successfully by running
+                    Once again we wait for the board to reboot and log back in to make sure the partition has been resized successfully by running
                   </p>
                   <pre class="CodeRay">$ df -h
 </pre>

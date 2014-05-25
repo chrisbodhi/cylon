@@ -107,7 +107,7 @@ Cylon.robot({
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
     every((<span class="integer">1</span>).seconds(), <span class="keyword">function</span>() {
-      my.mpu6050.getMotion6(<span class="keyword">function</span>(data) {
+      my.mpu6050.getMotionAndTemp(<span class="keyword">function</span>(data) {
         Logger.info(data);
       });
       

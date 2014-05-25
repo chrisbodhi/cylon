@@ -134,22 +134,13 @@ Cylon.robot(pebbleRobot);
 Cylon.start();
 </pre>
                 </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
-                  <p>This software requires version 1.12.0 of the Pebble watch firmware.</p>
-                  <h3>OSX</h3>
+                  <p>This software requires version 2.X of the Pebble watch firmware.</p>
                   <p>The main steps are:</p>
                   <ul>
-<li>Pair your computer and the Pebble</li>
-                    <li>Use a socket to serial connection to map a TCP socket to the local port</li>
-                    <li>Connect to the device via Cylon.js</li>
-                  </ul>
-<h3>Ubuntu</h3>
-                  <p>The main steps are:</p>
-                  <ul>
-<li>Pair your computer and the Pebble</li>
-                    <li>Map your device to a port</li>
-                    <li>Use a socket to serial connection to map a TCP socket to the local port</li>
-                    <li>Connect to the device via Cylon.js</li>
-                    <li>You will need to pair with the Pebble, entering any needed password.</li>
+<li>Install Pebble 2.0 iOS or Android app. (If you haven't already)</li>
+                    <li><a href="https://github.com/hybridgroup/watchbot/raw/master/README.md">Install watchbot by following this instructions</a></li>
+                    <li>After app is installed, click on "Settings" and configure robot name, robot api host, and robot api port</li>
+                    <li>Configuration settings must match with your program, in this example, api host would be your computer IP, robot name is 'pebble', and robot api port is 8080</li>
                   </ul></section><section class="drivers" id="Drivers"><h2>Drivers</h2>
                   <p>There is only one driver for the Pebble platform, as listed below.</p>
                   <div class="hardware">
