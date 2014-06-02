@@ -83,19 +83,17 @@
                 
                 <p>Let's define the connections and devices:</p>
                 
-                <p>```
-                  connections: [
-                    { name: 'leapmotion', adaptor: 'leapmotion', port: '127.0.0.1:6437' },
-                    { name: 'ardrone', adaptor: 'ardrone', port: '192.168.1.1' },
-                    { name: 'keyboard', adaptor: 'keyboard' }
-                  ],</p>
-                
-                <p>devices: [
-                    { name: 'drone', driver: 'ardrone', connection:'ardrone' },
-                    { name: 'leapmotion', driver: 'leapmotion', connection:'leapmotion' },
-                    { name: 'keyboard', driver: 'keyboard', connection:'keyboard'}
-                  ],
-                ``` </p>
+                <pre class="CodeRay">connections: [
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1</span><span class="delimiter">'</span></span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span> }
+],
+<span class="key">devices</span>: [
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">connection</span>:<span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">connection</span>:<span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span> },
+    { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>, <span class="key">connection</span>:<span class="string"><span class="delimiter">'</span><span class="content">keyboard</span><span class="delimiter">'</span></span>}
+],
+</pre>
                 
                 <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
                 tell it what work we want to do:</p>
@@ -105,122 +103,113 @@
                 
                 <p>Lets use the circle gesture to take off and land : two rounds clockwise will trigger the takeoff() and counter clockwise will tell the drone to land: </p>
                 
-                <p>```
-                    my.leapmotion.on('gesture', function(gesture) {
-                      if (gesture.type=='circle' &amp;&amp; gesture.state=='stop' &amp;&amp; gesture.progress &gt; CIRCLE_THRESHOLD ){
-                        if (gesture.normal[2] &lt; 0) {
-                          my.drone.takeoff();
-                        };</p>
-                
-                <pre class="CodeRay">    <span class="keyword">if</span> (gesture.normal[<span class="integer">2</span>] &gt; <span class="integer">0</span>) {
-      my.drone.land();
-    }
-  }
-}); <span class="error">`</span><span class="error">`</span><span class="error">`</span>
+                <pre class="CodeRay">    my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">gesture</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(gesture) {
+        <span class="keyword">if</span> (gesture.type==<span class="string"><span class="delimiter">'</span><span class="content">circle</span><span class="delimiter">'</span></span> &amp;&amp; gesture.state==<span class="string"><span class="delimiter">'</span><span class="content">stop</span><span class="delimiter">'</span></span> &amp;&amp; gesture.progress &gt; CIRCLE_THRESHOLD ){
+            <span class="keyword">if</span> (gesture.normal[<span class="integer">2</span>] &lt; <span class="integer">0</span>) {
+                my.drone.takeoff();
+            };
+
+            <span class="keyword">if</span> (gesture.normal[<span class="integer">2</span>] &gt; <span class="integer">0</span>) {
+                my.drone.land();
+            }
+        }
+    });
 </pre>
                 
                 <p>Whenever we get a 'hand' gesture event from Leap Motion we need to tell ARDrone what to do. </p>
                 
-                <pre class="CodeRay">my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">hand</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(hand) {
+                <pre class="CodeRay">    my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">hand</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(hand) {
 </pre>
                 
                 <p>In case we turn our hand to the right or left we want the drone to rotate clockwise or counter clockwise respectively:</p>
                 
-                <p>``` 
-                      if(hand.s&gt;1.5 &amp;&amp; Math.abs(handStartDirection[0]-hand.direction[0]) &gt; TURN_TRESHOLD ) {
-                        var signal = handStartDirection[0]-hand.direction[0];
-                        var value = (Math.abs(handStartDirection[0]-hand.direction[0])-TURN_TRESHOLD) * TURN_SPEED_FACTOR;
-                        if (signal&gt;0){
-                          my.drone.counterClockwise(value);
-                        }</p>
-                
-                <pre class="CodeRay">    <span class="keyword">if</span> (signal&lt;<span class="integer">0</span>){
-      my.drone.clockwise(value);
-    }      
-  } <span class="error">`</span><span class="error">`</span><span class="error">`</span> 
+                <pre class="CodeRay">    <span class="keyword">if</span>(hand.s&gt;<span class="float">1.5</span> &amp;&amp; Math.abs(handStartDirection[<span class="integer">0</span>]-hand.direction[<span class="integer">0</span>]) &gt; TURN_TRESHOLD ) {
+        <span class="keyword">var</span> signal = handStartDirection[<span class="integer">0</span>]-hand.direction[<span class="integer">0</span>];
+        <span class="keyword">var</span> value = (Math.abs(handStartDirection[<span class="integer">0</span>]-hand.direction[<span class="integer">0</span>])-TURN_TRESHOLD) * TURN_SPEED_FACTOR;
+        <span class="keyword">if</span> (signal&gt;<span class="integer">0</span>){
+            my.drone.counterClockwise(value);
+        }
+
+        <span class="keyword">if</span> (signal&lt;<span class="integer">0</span>){
+            my.drone.clockwise(value);
+        }      
+    }
 </pre>
                 
                 <p>In case we raise our hand up or lower it down we tell the drone to go up or down respectively:</p>
                 
-                <p>``` 
-                      if (hand.s&gt;1.5 &amp;&amp; Math.abs(hand.palmPosition[1]-handStartPosition[1]) &gt; UP_CONTROL_THRESHOLD) {  <br>
-                        var signal = (hand.palmPosition[1]-handStartPosition[1]) &gt;= 0 ? 1 : -1;
-                        var value = Math.round(Math.abs((hand.palmPosition[1]-handStartPosition[1]))-UP_CONTROL_THRESHOLD) * UP_SPEED_FACTOR;</p>
-                
-                <pre class="CodeRay">    if (signal&gt;0) {
-      my.drone.up(value);
-    };
+                <pre class="CodeRay">    <span class="keyword">if</span> (hand.s&gt;<span class="float">1.5</span> &amp;&amp; Math.abs(hand.palmPosition[<span class="integer">1</span>]-handStartPosition[<span class="integer">1</span>]) &gt; UP_CONTROL_THRESHOLD) {    
+        <span class="keyword">var</span> signal = (hand.palmPosition[<span class="integer">1</span>]-handStartPosition[<span class="integer">1</span>]) &gt;= <span class="integer">0</span> ? <span class="integer">1</span> : -<span class="integer">1</span>;
+        <span class="keyword">var</span> value = Math.round(Math.abs((hand.palmPosition[<span class="integer">1</span>]-handStartPosition[<span class="integer">1</span>]))-UP_CONTROL_THRESHOLD) * UP_SPEED_FACTOR;
 
-:::javascript
-    if (signal&lt;0) {
-        my.drone.down(value);
+        <span class="keyword">if</span> (signal&gt;<span class="integer">0</span>) {
+            my.drone.up(value);
+        };
+
+        <span class="keyword">if</span> (signal&lt;<span class="integer">0</span>) {
+            my.drone.down(value);
+        }
     }
-  } ``` In order to move the drone forward, backward, left or right we need to detect the hand inclination. Imagine your hand is the drone and lean it towards the direction we want it to move.
 </pre>
                 
-                <p>```
-                      if (hand.s&gt;1.5 &amp;&amp; (Math.abs(hand.palmNormal[2])&gt;DIRECTION_THRESHOLD)) {
-                        if (hand.palmNormal[2]&gt;0) {
-                            var value = Math.abs(Math.round( hand.palmNormal[2] * 10 + DIRECTION_THRESHOLD ) * DIRECTION_SPEED_FACTOR);
-                            my.drone.forward( value );
-                        };</p>
+                <p>In order to move the drone forward, backward, left or right we need to detect the hand inclination. Imagine your hand is the drone and lean it towards the direction we want it to move.</p>
                 
-                <pre class="CodeRay">    if (hand.palmNormal[2]&lt;0) {
-        var value = Math.abs(Math.round( hand.palmNormal[2] * 10 - DIRECTION_THRESHOLD ) * DIRECTION_SPEED_FACTOR);
-        my.drone.back( value );
-    };
-  } 
-
-:::javascript
-  if (hand.s&gt;1.5 &amp;&amp; (Math.abs(hand.palmNormal[0])&gt;DIRECTION_THRESHOLD)) {
-    if (hand.palmNormal[0]&gt;0) {
-        var value = Math.abs(Math.round( hand.palmNormal[0] * 10 + DIRECTION_THRESHOLD ) * DIRECTION_SPEED_FACTOR);
-        my.drone.left( value );
-    };
+                <pre class="CodeRay">    <span class="keyword">if</span> (hand.s&gt;<span class="float">1.5</span> &amp;&amp; (Math.abs(hand.palmNormal[<span class="integer">2</span>])&gt;DIRECTION_THRESHOLD)) {
+        <span class="keyword">if</span> (hand.palmNormal[<span class="integer">2</span>]&gt;<span class="integer">0</span>) {
+            <span class="keyword">var</span> value = Math.abs(Math.round( hand.palmNormal[<span class="integer">2</span>] * <span class="integer">10</span> + DIRECTION_THRESHOLD ) * DIRECTION_SPEED_FACTOR);
+            my.drone.forward( value );
+        };
     
-    if (hand.palmNormal[0]&lt;0) {
-        var value = Math.abs(Math.round( hand.palmNormal[0] * 10 - DIRECTION_THRESHOLD ) * DIRECTION_SPEED_FACTOR);
-        my.drone.right( value );
-    };
-  } ``` Whenever we close our hand we tell the drone no stop:
+        <span class="keyword">if</span> (hand.palmNormal[<span class="integer">2</span>]&lt;<span class="integer">0</span>) {
+            <span class="keyword">var</span> value = Math.abs(Math.round( hand.palmNormal[<span class="integer">2</span>] * <span class="integer">10</span> - DIRECTION_THRESHOLD ) * DIRECTION_SPEED_FACTOR);
+            my.drone.back( value );
+        };
+    } 
+
+    <span class="keyword">if</span> (hand.s&gt;<span class="float">1.5</span> &amp;&amp; (Math.abs(hand.palmNormal[<span class="integer">0</span>])&gt;DIRECTION_THRESHOLD)) {
+        <span class="keyword">if</span> (hand.palmNormal[<span class="integer">0</span>]&gt;<span class="integer">0</span>) {
+            <span class="keyword">var</span> value = Math.abs(Math.round( hand.palmNormal[<span class="integer">0</span>] * <span class="integer">10</span> + DIRECTION_THRESHOLD ) * DIRECTION_SPEED_FACTOR);
+            my.drone.left( value );
+        };
+    
+        <span class="keyword">if</span> (hand.palmNormal[<span class="integer">0</span>]&lt;<span class="integer">0</span>) {
+            <span class="keyword">var</span> value = Math.abs(Math.round( hand.palmNormal[<span class="integer">0</span>] * <span class="integer">10</span> - DIRECTION_THRESHOLD ) * DIRECTION_SPEED_FACTOR);
+            my.drone.right( value );
+        };
+    }
 </pre>
                 
-                <p>```
-                      if (hand.s&lt;=1.5 &amp;&amp; lastS &gt; 1.5) { // closed hand
-                        my.drone.stop();
-                      }</p>
+                <p>Whenever we close our hand we tell the drone no stop:</p>
                 
-                <pre class="CodeRay">});<span class="comment">// end hand ```</span>
+                <pre class="CodeRay">    <span class="keyword">if</span> (hand.s&lt;=<span class="float">1.5</span> &amp;&amp; lastS &gt; <span class="float">1.5</span>) { <span class="comment">// closed hand</span>
+        my.drone.stop();
+    }
 </pre>
                 
                 <p>And finally lets use the arrow keys to tell the drone to do some cool stunts:</p>
                 
-                <p>```
-                    my.keyboard.on('right', function(key) { 
-                      my.drone.rightFlip();
-                    });</p>
-                
-                <pre class="CodeRay">my.keyboard.on(<span class="string"><span class="delimiter">'</span><span class="content">left</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(key) { 
-  my.drone.leftFlip();
-});
+                <pre class="CodeRay">    my.keyboard.on(<span class="string"><span class="delimiter">'</span><span class="content">right</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(key) { 
+        my.drone.rightFlip();
+    });
 
-my.keyboard.on(<span class="string"><span class="delimiter">'</span><span class="content">up</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(key) { 
-  my.drone.frontFlip();
-});
+    my.keyboard.on(<span class="string"><span class="delimiter">'</span><span class="content">left</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(key) { 
+        my.drone.leftFlip();
+    });
 
-my.keyboard.on(<span class="string"><span class="delimiter">'</span><span class="content">down</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(key) { 
-  my.drone.backFlip();
-});
+    my.keyboard.on(<span class="string"><span class="delimiter">'</span><span class="content">up</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(key) { 
+        my.drone.frontFlip();
+    });
+
+    my.keyboard.on(<span class="string"><span class="delimiter">'</span><span class="content">down</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(key) { 
+        my.drone.backFlip();
+    });
 </pre>
-                
-                <p>} //end work
-                ```</p>
                 
                 <p>Now that our robot knows what work to do, and the work it will be doing that
                 hardware with, we can start it:</p>
                 
-                <p><code>
-}).start();</code></p>
+                <pre class="CodeRay">    }).start();
+</pre>
               </div>
               <div class="side-documentation">
                 <div class="mobile-menu">
