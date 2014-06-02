@@ -151,29 +151,25 @@ Cylon.start();
                 </section><section class="public-methods"><div class="commands-api" id="Commands">
                     <h1 id="commands">Commands</h1>
                     
-                    <h2 id="message">message()</h2>
+                    <h2 id="sendnotification">send_notification</h2>
                     
-                    <p>The message for the pebble driver.</p>
+                    <p>Used to send a notification to pebble watch</p>
+                    
+                    <h2 id="pendingmessage">pending_message</h2>
+                    
+                    <p>Used from watchbot app to get pending notification message. DIRECT USE IS NOT RECOMMENDED.</p>
                     
                     <h5 id="returns">Returns</h5>
                     
-                    <p><code>nil</code></p>
+                    <p><code>String</code> with the last message on the queue.</p>
                     
-                    <h2 id="messagequeue">message_queue()</h2>
+                    <h2 id="publishevent">publish_event</h2>
                     
-                    <p>The queue of messages that are being passed in via calls from the Pebble watch app.</p>
+                    <p>Used from watchbot app to publish "Button" events. DIRECT USE IS NOT RECOMMENDED.</p>
                     
                     <h5 id="returns-1">Returns</h5>
                     
-                    <p><code>nil</code></p>
-                    
-                    <h2 id="lastmessage">last_message()</h2>
-                    
-                    <p>The last message in the queue of messages passed in via calls from the Pebble watch app.</p>
-                    
-                    <h5 id="returns-2">Returns</h5>
-                    
-                    <p><code>nil</code></p>
+                    <p><code>boolean</code> operation result</p>
                   </div>
                   <div class="commands-api" id="Events">
                     <h1 id="events">Events</h1>
@@ -185,6 +181,22 @@ Cylon.start();
                     <h2 id="start">start</h2>
                     
                     <p>Sent when the device has been started and is ready to use.</p>
+                    
+                    <h2 id="startdriver">start_driver</h2>
+                    
+                    <p>Starts the driver.</p>
+                    
+                    <h2 id="button">button</h2>
+                    
+                    <p>When a pebble button is pushed.</p>
+                    
+                    <h2 id="accel">accel</h2>
+                    
+                    <p>Receives x,y,z values from pebble accelerometer.</p>
+                    
+                    <h2 id="tap">tap</h2>
+                    
+                    <p>When a pebble tap event is detected.</p>
                   </div>
                 </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                   <div class="devices">
@@ -336,6 +348,9 @@ Cylon.start();
                       </li>
                       <li>
                         <a href="/documentation/drivers/continuous-servo">Continuos Servo</a>
+                      </li>
+                      <li>
+                        <a href="/documentation/drivers/direct-pin">Direct Pin</a>
                       </li>
                       <li>
                         <a href="/documentation/drivers/ir-range-finder">Sharp IR Proximity Sensor</a>
